@@ -1,0 +1,130 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.header__inner {
+    @extend %flexItemCenter;
+    justify-content: space-between;
+}
+
+.header-top {
+    padding: 12px 0;
+    background: var(--Primary-color-BlueDark);
+
+    &__left {
+        @extend %flexItemCenter;
+        gap: 30px;
+    }
+
+    &__wrap {
+        @extend %flexItemCenter;
+        gap: 5px;
+    }
+
+    &__text {
+        color: var(--Primary-Color-White);
+    }
+
+    &__right {
+        @extend %flexItemCenter;
+        gap: 45px;
+    }
+
+    &__action {
+        @extend %flexItemCenter;
+        gap: 7px;
+    }
+
+    &__separate {
+        width: 2px;
+        height: 19px;
+        border-radius: 2px;
+        background: var(--Primary-Color-White);
+    }
+
+    &__language {
+        @extend %flexItemCenter;
+        gap: 3px;
+    }
+
+    &__flags {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__flag {
+        width: 34px;
+        height: 23px;
+        border-radius: 5px;
+    }
+}
+
+.header-bot {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--Primary-Color-Dark);
+    background: var(--Primary-Color-White);
+}
+
+.header-search {
+    @extend %flexItemCenter;
+    gap: 15px;
+    padding: 5px 10px;
+    border: 1px solid var(--Primary-Color-White);
+    border-radius: 8px;
+
+    &__input {
+        width: 328px;
+        color: var(--Primary-Color-White);
+        font-size: 1.6rem;
+        line-height: 1.62;
+
+        &::placeholder {
+            color: var(--Primary-Color-White);
+            font-size: 1.6rem;
+            line-height: 1.62;
+        }
+    }
+}
+
+.navbar {
+    &__list {
+        @extend %flexItemCenter;
+        gap: 32px;
+    }
+
+    &__item {
+        position: relative;
+        padding: 10px;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    &__item--active > &__separate {
+        display: block;
+    }
+
+    &__link {
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__separate {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 26px;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--Primary-color-BlueDark);
+    }
+}
