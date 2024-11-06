@@ -29,6 +29,10 @@
     border-radius: 26px 0px 0px 0px;
     background: var(--Primary-Color-BlueLight);
     margin-bottom: 20px;
+
+    &__title {
+        color: var(--Primary-Color-White);
+    }
 }
 
 .chat-body {

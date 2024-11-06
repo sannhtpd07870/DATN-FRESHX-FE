@@ -8,6 +8,33 @@
 .hero {
     position: relative;
 
+    &--other1 {
+        position: relative;
+    }
+
+    &__image {
+        width: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &--overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    &__title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        color: var(--Primary-Color-White);
+    }
+
     &__wrap-img {
         display: flex;
         transition: transform 1s ease;

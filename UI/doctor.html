@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- JS load -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Font -->
+        <link rel="stylesheet" href="./font/stylesheet.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Fresh-X</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header.html");
+        </script>
+
+        <!-- Main -->
+        <main>
+            <!-- Hero -->
+            <div class="hero--other1">
+                <img
+                    src="./assets/img/hero/bg-other1.png"
+                    alt=""
+                    class="hero__image"
+                />
+                <div class="hero--overlay">
+                    <h1 class="hero__title heading1">Tìm Bác Sĩ</h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="action">
+                    <button class="action__text button-large">Liên hệ</button>
+                    <span class="action__separate"></span>
+                    <a href="./book.html" class="action__text button-large">
+                        Đặt lịch hẹn
+                    </a>
+                    <span class="action__separate"></span>
+                    <a
+                        href="#!"
+                        class="action__text action__text--active button-large"
+                    >
+                        Tìm Bác sĩ
+                    </a>
+                </div>
+
+                <div class="action-large">
+                    <div class="action-large__container">
+                        <div class="action-large__wrap">
+                            <img src="./assets/icons/address.svg" alt="" />
+                            <p class="desc2">Lựa chọn cơ sở</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+
+                        <span class="action-large__separate"></span>
+
+                        <div class="action-large__wrap">
+                            <img src="./assets/icons/expertise.svg" alt="" />
+                            <p class="desc2">Yêu cầu chuyên môn</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+
+                        <span class="action-large__separate"></span>
+
+                        <div class="action-large__wrap">
+                            <img src="./assets/icons/laguage.svg" alt="" />
+                            <p class="desc2">Ngôn ngữ</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+
+                        <span class="action-large__separate"></span>
+
+                        <div class="action-large__wrap">
+                            <img src="./assets/icons/job.svg" alt="" />
+                            <p class="desc2">Nghề nghiệp</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+
+                        <span class="action-large__separate"></span>
+
+                        <div class="action-large__wrap">
+                            <img
+                                src="./assets/icons/academicTitle.svg"
+                                alt=""
+                            />
+                            <p class="desc2">Học hàm</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+
+                        <span class="action-large__separate"></span>
+
+                        <div class="action-large__wrap">
+                            <img
+                                src="./assets/icons/academicTitle.svg"
+                                alt=""
+                            />
+                            <p class="desc2">Học vị</p>
+                            <button>
+                                <img
+                                    src="./assets/icons/arrowDown3.svg"
+                                    alt=""
+                                />
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="action-large__bot">
+                        <div class="action-large__wrap">
+                            <img src="./assets/icons/searchDoctor.svg" alt="" />
+                            <input
+                                placeholder="Nhập tên Bác sĩ...."
+                                type="search"
+                                class="action-large__input"
+                            />
+                        </div>
+
+                        <button class="action-large__btn btn">
+                            Tìm Bác sĩ
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class="heading2">Danh sách Bác sĩ</h2>
+
+                <div id="doctor" class="doctor"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./templates/footer.html");
+        </script>
+
+        <!-- HTML -->
+        <button id="iconChat" class="chat">
+            <img src="./assets/icons/Chat.svg" alt="" />
+        </button>
+
+        <div id="chatBox" class="chat-box">
+            <div class="chat-header">
+                <p class="chat-header__title button-large">Fresh-X AI</p>
+                <img src="./assets/icons/close.svg" alt="" id="close" />
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <!-- AI chat -->
+                <div class="chat-body__wrap">
+                    <p class="chat-body__name button-large">AI</p>
+                    <p class="chat-body__ai-chat desc2">
+                        Xin chào, tôi là Fresh-X AI trợ lý ảo sức khỏa của bạn.
+                        Hôm nay bạn cảm thấy thế nào?
+                    </p>
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <div class="chat-footer__action">
+                    <img src="./assets/icons/camera.svg" alt="" id="camera" />
+                    <img src="./assets/icons/image.svg" alt="" id="image" />
+                    <img src="./assets/icons/mic.svg" alt="" id="mic" />
+                </div>
+
+                <form action="" class="chat-footer__form" id="chatForm">
+                    <input
+                        placeholder="Viết gì đó, ..."
+                        type="text"
+                        class="chat-footer__input desc2"
+                        id="chatInput"
+                    />
+                    <button type="submit" class="chat-footer__send">
+                        <img src="./assets/icons/send.svg" alt="" />
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal cho camera -->
+        <div id="cameraModal" style="display: none">
+            <video id="video" width="300" height="200" autoplay></video>
+            <button id="captureButton">Chụp ảnh</button>
+        </div>
+        <!-- Js -->
+        <script type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>
