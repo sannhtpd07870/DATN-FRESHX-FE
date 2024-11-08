@@ -1,0 +1,111 @@
+@use "../abstracts";
+
+.chat {
+    position: fixed;
+    top: 80%;
+    right: 20px;
+}
+
+.chat-box {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 474px;
+    height: 668px;
+    border-radius: 30px 0px 0px 0px;
+    border-top: 4px solid var(--Primary-Color-Dark);
+    border-left: 4px solid var(--Primary-Color-Dark);
+    background: var(--Primary-Color-White);
+}
+
+.chat-header {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px;
+    gap: 150px;
+    border-radius: 26px 0px 0px 0px;
+    background: var(--Primary-Color-BlueLight);
+    margin-bottom: 20px;
+
+    &__title {
+        color: var(--Primary-Color-White);
+    }
+}
+
+.chat-body {
+    padding: 0 20px;
+    height: 520px;
+    overflow: auto;
+
+    &__wrap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        gap: 10px;
+
+        &--client {
+            justify-content: flex-end;
+        }
+    }
+
+    &__wrap + &__wrap {
+        margin-top: 20px;
+    }
+
+    &__name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+
+        width: 37px;
+        height: 37px;
+        border-radius: 50%;
+        background: var(--Primary-Color-BlueLight);
+        color: var(--Primary-Color-White);
+    }
+
+    &__ai-chat {
+        padding: 10px;
+        border-radius: 10px 10px 10px 0px;
+        background: var(--Primary-Color-Gray);
+        color: var(--Primary-Color-White);
+    }
+
+    &__client-chat {
+        padding: 10px;
+        border-radius: 10px 10px 0px 10px;
+        background: var(--Primary-Color-Gray);
+        color: var(--Primary-Color-White);
+    }
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--Primary-Color-BlueLight);
+    padding: 20px 10px;
+
+    &__form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+
+        border-radius: 5px;
+        border: 1px solid var(--Primary-Color-White);
+    }
+
+    &__input {
+        width: 323px;
+        color: var(--Primary-Color-White);
+
+        &::placeholder {
+            color: var(--Primary-Color-White);
+        }
+    }
+}

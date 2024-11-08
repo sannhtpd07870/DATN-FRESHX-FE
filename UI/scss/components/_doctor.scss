@@ -1,0 +1,46 @@
+@use "../abstracts";
+
+.doctor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.doctor-container {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    background: var(--Primary-Color-White);
+    border-radius: 15px;
+
+    &__avt {
+        width: 178px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    &__btn {
+        color: var(--Primary-Color-White);
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px;
+        width: 100%;
+        background: var(--Primary-Color-BlueLight);
+        border-radius: 5px;
+    }
+
+    &__name {
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+}
