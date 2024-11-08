@@ -149,6 +149,10 @@ $error-color: #e74747;
     &__radio-container {
         @extend %flexItemCenter;
         gap: 12px;
+
+        &--speci {
+            justify-content: space-between;
+        }
     }
 
     &--checkbox-bot {

@@ -61,7 +61,7 @@
             width: 100px;
             height: 3px;
             background: var(--Primary-Color-BlueLight);
-            transition: left 0.3s ease-in-out;
+            transition: left 3s linear;
         }
     }
 
@@ -79,6 +79,7 @@
         align-items: center;
         border-radius: 20px;
         border: 1px solid var(--Primary-Color-Gray);
+        cursor: pointer;
 
         &:hover {
             border: none;

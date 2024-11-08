@@ -10,7 +10,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="./assets/css/main.css" />
-        <title>Fresh-X | Bác sĩ</title>
+        <title>Fresh-X | Gói khám</title>
     </head>
     <body>
         <!-- Header -->
@@ -24,12 +24,12 @@
             <!-- Hero -->
             <div class="hero--other1">
                 <img
-                    src="./assets/img/hero/bg-other1.png"
+                    src="./assets/img/hero/bg-other3.png"
                     alt=""
                     class="hero__image"
                 />
                 <div class="hero--overlay">
-                    <h1 class="hero__title heading1">Tìm Bác Sĩ</h1>
+                    <h1 class="hero__title heading1">Gói Khám</h1>
                 </div>
             </div>
 
@@ -46,118 +46,30 @@
                         Đặt lịch hẹn
                     </a>
                     <span class="action__separate"></span>
-                    <a
-                        href="#!"
-                        class="action__text action__text--active button-large"
-                    >
+                    <a href="#!" class="action__text button-large">
                         Tìm Bác sĩ
                     </a>
                 </div>
 
-                <div class="action-large">
-                    <div class="action-large__container">
-                        <div class="action-large__wrap">
-                            <img src="./assets/icons/address.svg" alt="" />
-                            <p class="desc2">Lựa chọn cơ sở</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
+                <div class="medical">
+                    <div class="medical-container">
+                        <h2 class="medical-container__title">Thai sản</h2>
 
-                        <span class="action-large__separate"></span>
-
-                        <div class="action-large__wrap">
-                            <img src="./assets/icons/expertise.svg" alt="" />
-                            <p class="desc2">Yêu cầu chuyên môn</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
-
-                        <span class="action-large__separate"></span>
-
-                        <div class="action-large__wrap">
-                            <img src="./assets/icons/laguage.svg" alt="" />
-                            <p class="desc2">Ngôn ngữ</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
-
-                        <span class="action-large__separate"></span>
-
-                        <div class="action-large__wrap">
-                            <img src="./assets/icons/job.svg" alt="" />
-                            <p class="desc2">Nghề nghiệp</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
-
-                        <span class="action-large__separate"></span>
-
-                        <div class="action-large__wrap">
-                            <img
-                                src="./assets/icons/academicTitle.svg"
-                                alt=""
-                            />
-                            <p class="desc2">Học hàm</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
-
-                        <span class="action-large__separate"></span>
-
-                        <div class="action-large__wrap">
-                            <img
-                                src="./assets/icons/academicTitle.svg"
-                                alt=""
-                            />
-                            <p class="desc2">Học vị</p>
-                            <button>
-                                <img
-                                    src="./assets/icons/arrowDown3.svg"
-                                    alt=""
-                                />
-                            </button>
-                        </div>
+                        <div
+                            id="maternity"
+                            class="medical-container__maternity"
+                        ></div>
                     </div>
 
-                    <div class="action-large__bot">
-                        <div class="action-large__wrap">
-                            <img src="./assets/icons/searchDoctor.svg" alt="" />
-                            <input
-                                placeholder="Nhập tên Bác sĩ...."
-                                type="search"
-                                class="action-large__input"
-                            />
-                        </div>
+                    <div class="medical-container">
+                        <h2 class="medical-container__title">Khám sức khỏe</h2>
 
-                        <button class="action-large__btn btn">
-                            Tìm Bác sĩ
-                        </button>
+                        <div
+                            id="physical"
+                            class="medical-container__maternity"
+                        ></div>
                     </div>
                 </div>
-
-                <h2 class="heading2">Danh sách Bác sĩ</h2>
-
-                <div id="doctor" class="doctor"></div>
             </div>
         </main>
 
@@ -324,7 +236,13 @@
             <div class="modal__overlay"></div>
         </div>
 
+        <!-- Modal Item -->
+        <div id="modal2" class="modal"></div>
+
+        <!-- Modal giới thiệu chuyên khoa -->
+        <div class="modal"></div>
+
         <!-- Js -->
-        <script type="module" src="./assets/js/main.js"></script>
+        <script defer type="module" src="./assets/js/main.js"></script>
     </body>
 </html>

@@ -76,4 +76,9 @@
     &__title {
         margin: 8px 0 10px;
     }
+
+    &__btn,
+    &__title {
+        transition: 0.25s ease-in;
+    }
 }
