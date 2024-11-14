@@ -64,6 +64,8 @@
 }
 
 .header-bot {
+    position: sticky;
+    top: 0;
     padding: 10px 0;
     border-bottom: 1px solid var(--Primary-Color-Dark);
     background: var(--Primary-Color-White);

@@ -28,6 +28,52 @@ const doctorTemplate = (dataDoctor) => `
     </article>
 `;
 
+const doctorMedical = (dataDoctorMedical) => `
+<article class="doctor-medical__item">
+<img
+    src="${dataDoctorMedical.avatar}"
+    alt=""
+    class="doctor-medical__avt"
+/>
+<section class="doctor-medical__content">
+    <h4 class="doctor-medical__name button-large">
+    ${dataDoctorMedical.name}
+    </h4>
+    <div class="doctor-container__box">
+        <img
+            src="./assets/icons/academicTitle-white.svg"
+            alt="Chuyên khoa"
+        />
+        <p class="desc2">${dataDoctorMedical.specialty}</p>
+    </div>
+    <div class="doctor-container__box">
+        <img
+            src="./assets/icons/searchDoctor-white.svg"
+            alt="Chuyên môn"
+        />
+        <p class="desc2">
+            ${dataDoctorMedical.specialized}
+        </p>
+    </div>
+    <div class="doctor-container__box">
+        <img
+            src="./assets/icons/home-white.svg"
+            alt="Khoa"
+        />
+        <p class="desc2">${dataDoctorMedical.part}</p>
+    </div>
+</section>
+</article>
+`;
+
+const medicine = (dataMedicine) => `
+<a
+href="${dataMedicine.link}"
+class="medicine-list__item button-large"
+>${dataMedicine.name}</a
+>
+`;
+
 const newsTemplate = (dataNew) => `
     <a href="${dataNew.link}" class="new-container__item">
         <div class="new-container__wrap">
@@ -237,6 +283,8 @@ render("client", data.client, clientTemplate);
 renderSpeci("speci", data.speci, speciTemplate);
 render("physical", data.physical, physicalTemplate);
 render("maternity", data.maternity, medicalTemplate);
+render("doctor-medical", data.doctor, doctorMedical);
+render("medicine-list", data.medicine, medicine);
 
 // Copy phần tử client-container
 const clientContainer = document.querySelector(".client-container");

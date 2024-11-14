@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- JS load -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Font -->
+        <link rel="stylesheet" href="./font/stylesheet.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Fresh-X | Chi tiết gói khám</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header.html");
+        </script>
+
+        <!-- Main -->
+        <main>
+            <!-- Hero -->
+            <div class="hero-medical">
+                <section class="hero-medical__content">
+                    <h1 class="heading1 hero-medical__title">
+                        NHẬN NGAY ƯU ĐÃI 10%
+                    </h1>
+                    <p class="hero-medical__sub-title heading4">
+                        Khi đăng ký gói sinh “Hạnh phúc Fresh-X”
+                    </p>
+                    <p class="desc1">
+                        Tại Phòng khám Fresh-X Đà Nẵng, khi tham gia gói sinh ở
+                        bất kỳ tuần thai nào, bạn đều sẽ nhận được sự hỗ trợ tốt
+                        nhất từ đội ngũ y bác sĩ, điều dưỡng và hộ lý. Chúng tôi
+                        tin rằng việc cung cấp nguồn thông tin đảm bảo từ các
+                        bác sĩ có chuyên môn cao chính là hành trang cần thiết
+                        để bạn đón chào thiên thần nhỏ của mình. Đặc biệt, đừng
+                        bỏ lỡ ưu đãi này. Hãy để Phòng khám Fresh-X Đà Nẵng trở
+                        thành người bạn đáng tin cậy trên hành trình đón bé khoẻ
+                        mạnh như ý.
+                    </p>
+
+                    <div class="hero-medical__action">
+                        <button class="btn">Liên hệ hotline</button>
+                        <button class="btn">Nhận tư vấn</button>
+                    </div>
+                </section>
+
+                <img
+                    src="./assets/img/medical/hero/bg.png"
+                    alt=""
+                    class="hero-medical__img"
+                />
+            </div>
+
+            <div class="container">
+                <div class="why-medical">
+                    <div class="why-medical__container">
+                        <img
+                            src="./assets/img/choose/medical.png"
+                            alt=""
+                            class="why-medical__img"
+                        />
+                        <section class="why-medical__content">
+                            <h2 class="why-medical__title heading4">
+                                Vì sao hàng ngàn gia đình tin chọn Phòng khám
+                                Fresh-X Đà Nẵng cùng đồng hành?
+                            </h2>
+                            <ul class="why-medical__list">
+                                <li class="why-medical__item desc1">
+                                    Phòng khám Fresh-X Đà Nẵng tự hào khi là cơ
+                                    sở sản phụ khoa uy tín, chất lượng hàng đầu
+                                    trong hơn 20 năm qua.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Đội ngũ bác sĩ có chuyên môn cao, tay nghề
+                                    vững, chủ động tư vấn cho mẹ giải pháp sinh
+                                    phù hợp nhất.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Mẹ và bé được thụ hưởng các dịch vụ đạt
+                                    chuẩn trước, trong và sau sinh.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Trang thiết bị, máy móc hiện đại, đạt chuẩn
+                                    ISO dành riêng cho mẹ và bé.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Đội ngũ hướng dẫn nhiệt tình, tận tâm đồng
+                                    hành với khách hàng 24/24 trong quá trình sử
+                                    dụng dịch vụ tại phòng khám.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Không gian phòng khám, phòng nghỉ rộng rãi,
+                                    thoáng mát, tạo cảm giác thoải mái.
+                                </li>
+                                <li class="why-medical__item desc1">
+                                    Phòng khám Fresh-X Đà Nẵng có đa dạng các
+                                    chuyên khoa giúp bảo đảm tối đa sự an toàn
+                                    cho cả mẹ và bé trong quá trình vượt cạn.
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <button class="btn why-medical__btn">Tư vấn ngay</button>
+                </div>
+            </div>
+
+            <div class="doctor-medical">
+                <h2 class="doctor-medical__title">
+                    ĐỘI NGŨ BÁC SĨ ĐẦU NGÀNH SẢN KHOA
+                </h2>
+                <h3 class="doctor-medical__sub-title heading4">
+                    Trong suốt quá trình sử dụng dịch vụ tại viện, mẹ và bé sẽ
+                    được đội ngũ bác sĩ đầu ngành sản khoa của bệnh viện hỗ trợ
+                    24/24 đến khi khoẻ mạnh xuất viện.
+                </h3>
+
+                <div class="doctor-medical__container">
+                    <div id="doctor-medical" class="doctor-medical__wrap"></div>
+
+                    <div class="doctor-medical__dots">
+                        <span
+                            class="doctor-medical__dot doctor-medical__dot--active"
+                        ></span>
+                        <span class="doctor-medical__dot"></span>
+                        <span class="doctor-medical__dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-medical">
+                <h2 class="doctor-medical__title">
+                    QUYỀN LỢI DÀNH CHO MẸ VÀ BÉ KHI CHỌN GÓI SINH 'HẠNH PHÚC
+                    FRESH-X'
+                </h2>
+
+                <div class="container">
+                    <section class="medical-content">
+                        <div class="medical-content__wrap">
+                            <h3 class="medical-content__heading button-large">
+                                1. Phí nằm viện
+                            </h3>
+                            <p class="medical-content__desc desc1">
+                                – Phòng hậu phẫu.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Phí bác sĩ Sản/Nhi thăm khám.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Điều dưỡng chăm sóc 24/24.
+                            </p>
+                        </div>
+
+                        <div class="medical-content__wrap">
+                            <h3 class="medical-content__heading button-large">
+                                2. Xét nghiệm và Chẩn đoán
+                            </h3>
+                            <p class="medical-content__desc desc1">
+                                – Xét nghiệm (các xét nghiệm cần thiết cho sản
+                                phụ trước sinh) bao gồm: Chức năng gan, chức
+                                năng thận, chức năng đông máu, tổng phân tích
+                                nước tiểu, HIV, HCV, HBsAg, đường huyết, ion đồ
+                                máu, tổng phân tích tế bào máu.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Siêu âm kiểm tra thai, nước ối (siêu âm 2D).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Điện tâm đồ (ECG).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Theo dõi tim thai, cơn gò tử cung (CTG).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                Xét nghiệm sàng lọc sơ sinh, bao gồm:
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Định lượng G6PD: Xét nghiệm tầm soát sự thiếu
+                                hụt enzym G6PD ở trẻ sơ sinh. Trẻ bị thiếu
+                                enzyme G6PD nếu không được phát hiện bệnh sớm,
+                                theo dõi vàng da sơ sinh dễ dẫn đến tán huyết
+                                cấp đưa đến thiếu máu, vàng da.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Định lượng nồng độ 17 OH Progresteron: Xét
+                                nghiệm phát hiện sớm bệnh tăng sinh tuyến thượng
+                                thận bẩm sinh.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – TSH, Free T4 II: Xét nghiệm tầm soát sớm bệnh
+                                suy giáp bẩm sinh.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Định lượng nồng độ Bilirubin trong máu: Xét
+                                nghiệm giúp chẩn đoán phân biệt bệnh vàng da ở
+                                trẻ sơ sinh.
+                            </p>
+                        </div>
+
+                        <div class="medical-content__wrap">
+                            <h3 class="medical-content__heading button-large">
+                                3. Chi phí phòng sinh/phẫu thuật
+                            </h3>
+                            <p class="medical-content__desc desc1">
+                                – Dịch vụ sinh/phẫu thuật.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Vật tư tiêu hao & Trang thiết bị cần thiết.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Dụng cụ sản khoa.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Dịch vụ gây mê (Bác sĩ gây mê thăm khám, thuốc
+                                tiền mê, phòng tiền mê, gây tê cột sống hoặc gây
+                                mê, các loại khí y tế).
+                            </p>
+                        </div>
+
+                        <div class="medical-content__wrap">
+                            <h3 class="medical-content__heading button-large">
+                                4. Thuốc, dịch truyền và vật tư y tế
+                            </h3>
+                        </div>
+
+                        <div class="medical-content__wrap">
+                            <h3 class="medical-content__heading button-large">
+                                5. Dịch vụ khác
+                            </h3>
+                            <p class="medical-content__desc desc1">
+                                – Bác sĩ Nhi khám sơ sinh hằng ngày.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Tắm và vệ sinh rốn cho bé sơ sinh mỗi ngày.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Chích ngừa lao, viêm gan B cho trẻ sơ sinh và
+                                tiêm vitamin K cho bé sau sinh.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Phí khám tiền mê.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Nôi cho bé (khi có yêu cầu).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Ghế cho người thân.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Vệ sinh tầng sinh môn và chăm sóc vết mổ cho
+                                mẹ.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – 01 bộ vật dụng cá nhân khi nhập viện: Khăn
+                                mặt, bàn chải, kem đánh răng.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Dịch vụ đón sản phụ đến bệnh viện bằng xe cấp
+                                cứu trong khu vực dưới 5km khi có dấu hiệu
+                                chuyển dạ.
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="doctor-medical">
+                <h2 class="doctor-medical__title">
+                    CÁC DỊCH VỤ KHÔNG BAO GỒM CÓ TRONG GÓI
+                </h2>
+
+                <div class="container">
+                    <section class="medical-content">
+                        <div class="medical-content__wrap">
+                            <p class="medical-content__desc desc1">
+                                – Các chi phí về truyền máu, các xét nghiệm phản
+                                ứng chéo về nhóm máu, truyền tiểu cầu.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Chi phí phát sinh thêm trong quá trình sinh
+                                nở/phòng mổ và quá trình nằm viện (do can thiệp
+                                của các chuyên khoa khác như phụ khoa, tim
+                                mạch,…).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Điều trị các biến chứng sau phẫu thuật kể cả
+                                phẫu thuật lại do các bệnh ngoài chương trình
+                                sinh.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Chi phí chăm sóc đặc biệt nếu có cho trẻ sơ
+                                sinh (để điều trị bệnh cho trẻ sơ sinh).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Thuốc và các vật tư khác mang về nhà sau khi
+                                điều trị tại bệnh viện hoặc phát sinh trong quá
+                                trình nằm viện ngoài chương trình sinh sanh nở
+                                (do các chuyên khoa khác đảm trách như tim mạch,
+                                tiêu hóa,…).
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Dịch vụ yêu cầu bác sĩ ngoại viện (theo yêu
+                                cầu của sản phụ và người thân) vào đỡ tại Bệnh
+                                viện Hoàn Mỹ Sài Gòn.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Dịch vụ sinh không đau.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Sinh song thai.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Sàng lọc thính lực bằng phương pháp OAE cho
+                                bé.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Sàng lọc tim bẩm sinh bằng đo độ bão hòa oxy
+                                qua da.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Phí hội chẩn chuyên khoa nếu có bệnh lý đi
+                                kèm.
+                            </p>
+                            <p class="medical-content__desc desc1">
+                                – Huyết thanh kháng viêm gan B cho trẻ sơ sinh
+                                (trường hợp mẹ nhiễm virus viêm gan B).
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <button class="btn doctor-medical__btn">Đăng ký ngay</button>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./templates/footer.html");
+        </script>
+
+        <!-- Chat box -->
+        <div>
+            <button class="chat">
+                <img src="./assets/icons/Chat.svg" alt="" />
+            </button>
+
+            <div class="chat-box">
+                <div class="chat-header">
+                    <p class="chat-header__title button-large">Fresh-X AI</p>
+                    <img src="./assets/icons/close.svg" alt="" class="close" />
+                </div>
+
+                <div class="chat-body">
+                    <!-- AI chat -->
+                    <div class="chat-body__wrap">
+                        <p class="chat-body__name button-large">AI</p>
+                        <p class="chat-body__ai-chat desc2">
+                            Xin chào, tôi là Fresh-X AI trợ lý ảo sức khỏe của
+                            bạn. Hôm nay bạn cảm thấy thế nào?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="chat-footer__action">
+                        <img
+                            src="./assets/icons/camera.svg"
+                            alt=""
+                            class="camera"
+                        />
+                        <img
+                            src="./assets/icons/image.svg"
+                            alt=""
+                            class="image"
+                        />
+                        <img src="./assets/icons/mic.svg" alt="" class="mic" />
+                    </div>
+
+                    <form action="" class="chat-footer__form">
+                        <input
+                            placeholder="Viết gì đó, ..."
+                            type="text"
+                            class="chat-footer__input desc2"
+                        />
+                        <button type="submit" class="chat-footer__send">
+                            <img src="./assets/icons/send.svg" alt="" />
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal cho camera -->
+            <div class="camera-modal" style="display: none">
+                <video class="video" width="300" height="200" autoplay></video>
+                <button class="capture-button">Chụp ảnh</button>
+            </div>
+        </div>
+
+        <!-- Modal contact -->
+        <div id="modal1" class="modal">
+            <div class="modal__container">
+                <div class="modal__col">
+                    <h2 class="modal__title">Hotline</h2>
+
+                    <img
+                        src="./assets/icons/close2.svg"
+                        alt=""
+                        class="modal-close"
+                    />
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hà Nội</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vinh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hới</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hà</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Huế</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đà Nẵng</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hội An</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quảng Ngải</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quy Nhơn</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vũng Tàu</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Tp.Hồ Chí Minh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Cần Thơ</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                </div>
+
+                <div class="modal__col modal__col--bot">
+                    <div class="modal__wrap">
+                        <img src="./assets/icons/request.svg" alt="" />
+                        <p class="button-large">Cổng dịch vụ CSKH 24/7</p>
+                    </div>
+                    <button class="btn modal__btn">Gửi yêu cầu</button>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal Item -->
+        <div id="modal2" class="modal"></div>
+
+        <!-- Modal giới thiệu chuyên khoa -->
+        <div class="modal"></div>
+
+        <!-- Js -->
+        <script defer type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>

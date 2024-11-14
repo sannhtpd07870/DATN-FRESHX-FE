@@ -105,7 +105,7 @@ export const data = {
             part: "Khoa Gây mê Phẫu thuật - Phòng khám Đa khoa Fresh-X",
         },
         {
-            avatar: "/UI/assets/img/doctor/avt1.png",
+            avatar: "/UI/assets/img/doctor/avt2.png",
             name: "Hoàng Bảo Trung",
             specialty: "Bác sĩ chuyên khoa II",
             specialized: "Gây mê hồi xuân",
@@ -154,19 +154,19 @@ export const data = {
     maternity: [
         {
             image: "/UI/assets/img/medical/maternity1.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Sinh mổ",
             desc: "Gói trọn an tâm khi chọn Sinh mổ tại phòng khám Fresh-X. Mẹ và bé sẽ nhận được hỗ trợ chăm sóc y tế toàn diện từ trước, trong và sau sinh. Tất cả gói trọn trong gói dịch vụ này.",
         },
         {
             image: "/UI/assets/img/medical/maternity2.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Sinh thường",
             desc: "Gói trọn an tâm khi Sinh thường tại phòng khám Fresh-X. Mẹ và bé sẽ nhận được hỗ trợ chăm sóc y tế toàn diện từ trước, trong và sau sinh. Tất cả gói trọn trong gói dịch vụ này.",
         },
         {
             image: "/UI/assets/img/medical/maternity3.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Sinh con trọn gói",
             desc: "Gói trọn an tâm khi chọn Sinh con trọn Fresh-X. Mẹ và bé sẽ nhận được hỗ trợ chăm sóc y tế toàn diện từ trước, trong và sau sinh. Tất cả gói trọn trong gói dịch vụ này.",
         },
@@ -175,21 +175,120 @@ export const data = {
     physical: [
         {
             image: "/UI/assets/img/medical/physical1.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Khám sức khỏe gia đình",
             desc: "Gói khám gia đình giúp bạn chủ động bảo vệ và phòng ngừa các bệnh lý nguy cơ từ sớm cho những người thân yêu. Từ đó giúp gia đình bạn điều trị kịp thời và tối ưu hoá chi phí. Đầu tư vào sức khoẻ dài hạn ngay hôm nay.",
         },
         {
             image: "/UI/assets/img/medical/physical2.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Khám sức khỏe doanh nghiệp",
             desc: "Nâng cao sức khỏe doanh nghiệp với dịch vụ Kiểm tra sức khỏe doanh nghiệp ngay hôm nay. Chúng tôi đặc biệt cung cấp các gói kiểm tra linh hoạt, có thể thực hiện tại văn phòng của bạn hoặc tại bệnh viện. Minh mẩn và khoẻ mạnh là chìa khoá vàng",
         },
         {
             image: "/UI/assets/img/medical/physical3.png",
-            link: "",
+            link: "/UI/medical-detail.html",
             title: "Khám sức khỏe tổng quát",
             desc: "Gói khám mang đến cho bạn sự an tâm với sự kỹ lưỡng trong khám, xét nghiệm, đánh và tư vấn chuyên môn từ đội ngũ y tế lành nghề; từ đó giúp phát hiện và điều trị kịp thời bệnh lý nguy hiểm.",
+        },
+    ],
+
+    medicine: [
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Abobotulinum Toxin A",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Abobotulinum Toxin A",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acarbose",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acenocoumarol",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acetazolamide",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acetyl-Dl-Leucine",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acetylcysteine",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acid Folic",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acid Thioctic",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acid Ursodeoxycholic",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acyclovir (Tra mắt)",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Acyclovir (Uống)",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Adalimumab",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Adapalene",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Adapalene/ Clindamycin",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Adenosine",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Adrenaline",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Afatinib",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Albendazole",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Albumin",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Alendronate",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Alendronate",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Alfuzosin",
+        },
+        {
+            link: "/UI/medicine-detail.html",
+            name: "Alimemazine",
         },
     ],
 };
