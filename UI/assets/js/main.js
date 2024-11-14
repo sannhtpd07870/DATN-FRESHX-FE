@@ -103,7 +103,9 @@ const blogTemplate = (dataBlog, index) => `
         <section class="blog-container__content">
             <h3 class="heading4">${dataBlog.title}</h3>
             <p class="blog-container__desc desc2">${dataBlog.desc}</p>
-            <button class="btn blog-container__btn">Tìm hiểu thêm</button>
+            <a href=${
+                dataBlog.link
+            } class="btn blog-container__btn">Tìm hiểu thêm</a>
         </section>
         ${
             index === 1

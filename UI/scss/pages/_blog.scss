@@ -1,0 +1,24 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.blog-page {
+    margin-top: 100px;
+
+    &__wrap {
+        @extend %flexItemCenter;
+        gap: 40px;
+        margin-top: 32px;
+    }
+
+    &__btn {
+        opacity: 0.7;
+
+        &--active {
+            opacity: 1;
+        }
+    }
+}
