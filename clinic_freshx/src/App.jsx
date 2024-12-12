@@ -5,10 +5,10 @@ import UserRouter from './Router/User_router';
 import AdminRouter from './Router/Admin_router';
 import { UserContext } from './services/UserContext';
 import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
 import { ColorModeContext, useMode } from './theme';
 import ThemeTransition from './components/common/ThemeTransition';
 import ThemeBottom from './components/common/ThemeBottom';
+import "./assets/css/main.css"
 const App = () => {
   const [theme, colorMode] = useMode();
   const { user, checkUserRole } = useContext(UserContext);
@@ -23,8 +23,6 @@ const App = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <ThemeBottom />
         <ThemeTransition>
           <Router>
             <Routes>

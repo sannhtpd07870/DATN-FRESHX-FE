@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { useContext, useState } from 'react';
 import { UserContext } from './UserContext';
-import axios from './axios';
+import axios from './axiosInstance';
 
 const useAuthService = () => {
     const [userData, setUserData] = useState(null);
@@ -71,8 +71,6 @@ const useAuthService = () => {
             });
         console.log("Auth token saved in cookies");
 
-           
-           
             return accessToken; // Trả về token mới
         } catch (error) {
             console.error('Error refreshing token:', error);

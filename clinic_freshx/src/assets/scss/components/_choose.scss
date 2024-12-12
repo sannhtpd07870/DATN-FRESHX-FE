@@ -1,0 +1,41 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.choose {
+    margin-top: 130px;
+    padding: 50px 30px 0;
+    background: var(--Primary-Color-White);
+    border-radius: 30px;
+}
+
+.choose-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-top: 60px;
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding-bottom: 50px;
+    }
+
+    &__img {
+        display: block;
+    }
+
+    &__title {
+        margin-top: 20px;
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__desc {
+        margin-top: 8px !important;
+    }
+}
