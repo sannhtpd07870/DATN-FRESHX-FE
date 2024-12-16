@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- JS load -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Font -->
+        <link rel="stylesheet" href="./font/stylesheet.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Fresh-X | Liên hệ</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header.html");
+        </script>
+
+        <!-- Main -->
+        <main>
+            <!-- Hero -->
+            <div class="hero--other1">
+                <img
+                    src="./assets/img/hero/bg-other1.png"
+                    alt=""
+                    class="hero__image"
+                />
+                <div class="hero--overlay">
+                    <h1 class="hero__title heading1">Đăng Ký Khám</h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="action">
+                    <button
+                        data-target="#modal1"
+                        class="open-modal action__text button-large"
+                    >
+                        Liên hệ
+                    </button>
+                    <span class="action__separate"></span>
+                    <button
+                        href="./book.html"
+                        class="action__text action__text--active button-large"
+                    >
+                        Đặt lịch hẹn
+                    </button>
+                    <span class="action__separate"></span>
+                    <a href="./doctor.html" class="action__text button-large">
+                        Tìm Bác sĩ
+                    </a>
+                </div>
+
+                <!-- Book -->
+                <form action="" class="book">
+                    <div class="book__container">
+                        <h2 class="heading2">Nội dung chi tiết đặt lịch hẹn</h2>
+
+                        <div class="form">
+                            <div class="form__row">
+                                <!-- Cơ sở -->
+                                <div class="form-group">
+                                    <label
+                                        for="facilityInput"
+                                        class="form-group__label heading4"
+                                    >
+                                        Cơ sở
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div class="form-group__wrap">
+                                        <input
+                                            id="facilityInput"
+                                            type="text"
+                                            class="form-group__input"
+                                            placeholder="Chọn cơ sở"
+                                            data-input="facilityDrop"
+                                            readonly
+                                        />
+                                        <button
+                                            id="facilityBtn"
+                                            type="button"
+                                            class="form-group__btn"
+                                            data-drop-button="facilityDrop"
+                                        >
+                                            <img
+                                                src="./assets/icons/arrowDown2.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        id="facilityDrop"
+                                        class="form-drop"
+                                        data-drop="facilityDrop"
+                                    >
+                                        <p class="form-drop__text desc2">
+                                            Chọn cơ sở
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Hà Nội
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Vinh
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Đồng Hới
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Đồng Hà
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Huế
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Đà Nẵng
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Hội An
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Quảng Ngải
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Quy Nhơn
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Vũng Tàu
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Tp.Hồ Chí Minh
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Fresh-X Cần Thơ
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Chuyên khoa -->
+                                <div class="form-group">
+                                    <label
+                                        for="specialtyInput"
+                                        class="form-group__label heading4"
+                                    >
+                                        Chuyên khoa
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div class="form-group__wrap">
+                                        <input
+                                            type="text"
+                                            class="form-group__input"
+                                            placeholder="Chọn chuyên khoa"
+                                            id="specialtyInput"
+                                            data-input="specialtyDrop"
+                                            readonly
+                                        />
+                                        <button
+                                            type="button"
+                                            class="form-group__btn"
+                                            id="specialtyBtn"
+                                            data-drop-button="specialtyDrop"
+                                        >
+                                            <img
+                                                src="./assets/icons/arrowDown2.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                    <div
+                                        id="specialtyDrop"
+                                        class="form-drop"
+                                        data-drop="specialtyDrop"
+                                    >
+                                        <p class="form-drop__text desc2">
+                                            Chuyên khoa 1
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Chuyên khoa 2
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Chuyên khoa 3
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Bác sĩ -->
+                                <div class="form-group">
+                                    <label
+                                        for="doctorInput"
+                                        class="form-group__label heading4"
+                                    >
+                                        Bác sĩ
+                                    </label>
+                                    <div class="form-group__wrap">
+                                        <input
+                                            type="text"
+                                            class="form-group__input"
+                                            placeholder="Chọn Bác sĩ muốn khám"
+                                            id="doctorInput"
+                                            data-input="doctorDrop"
+                                            readonly
+                                        />
+                                        <button
+                                            type="button"
+                                            class="form-group__btn"
+                                            id="doctorBtn"
+                                            data-drop-button="doctorDrop"
+                                        >
+                                            <img
+                                                src="./assets/icons/arrowDown2.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                    <div
+                                        id="doctorDrop"
+                                        class="form-drop"
+                                        data-drop="doctorDrop"
+                                    >
+                                        <p class="form-drop__text desc2">
+                                            Bác sĩ A
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Bác sĩ B
+                                        </p>
+                                        <p class="form-drop__text desc2">
+                                            Bác sĩ C
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Checkbox -->
+                                <div class="form-group--checkbox">
+                                    <input
+                                        id="check"
+                                        type="checkbox"
+                                        class="form-group__input--checkbox"
+                                    />
+                                    <label
+                                        for="check"
+                                        class="form-group__text button-small"
+                                    >
+                                        Đặt hẹn cho người khác
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <!-- Chọn ngày khám  -->
+                                <div class="form-group">
+                                    <label class="form-group__label heading4">
+                                        Chọn ngày khám
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div class="form-group__wrap">
+                                        <!-- Input để hiển thị ngày đã chọn -->
+                                        <input
+                                            type="text"
+                                            class="form-group__input"
+                                            placeholder="dd/mm/yy"
+                                            id="appointmentDate"
+                                            readonly
+                                        />
+
+                                        <!-- Nút để mở lịch -->
+                                        <button
+                                            type="button"
+                                            class="form-group__btn"
+                                            id="calendarBtn"
+                                        >
+                                            <img
+                                                src="./assets/icons/calendar2.svg"
+                                                alt="Chọn ngày"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="form-group__text desc2">
+                                        <span class="form-group__note">*</span
+                                        >Lưu ý: Tổng đài viên Fresh-X sẽ gọi lại
+                                        cho quý khách để xác nhận thông tin thời
+                                        gian dựa theo đăng ký và điều chỉnh nếu
+                                        cần thiết.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book__container">
+                        <h2 class="heading2">Thông tin khách hàng</h2>
+
+                        <div action="" class="form">
+                            <div class="form__row">
+                                <!-- Họ và tên -->
+                                <div class="form-group form-group--radio">
+                                    <div class="form-group__container">
+                                        <label
+                                            for="fullName"
+                                            class="form-group__label heading4"
+                                        >
+                                            Họ và tên
+                                            <span class="form-group__note"
+                                                >*</span
+                                            >
+                                        </label>
+                                        <div class="form-group__wrap">
+                                            <input
+                                                id="fullName"
+                                                type="text"
+                                                class="form-group__input"
+                                                placeholder="Họ và tên của bạn"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group__radio-container">
+                                        <div class="form-group__radio-wrap">
+                                            <input
+                                                class="form-group__radio"
+                                                type="radio"
+                                                name="sex"
+                                                id="male"
+                                            />
+                                            <label
+                                                for="male"
+                                                class="form-group__text button-small"
+                                            >
+                                                Nam
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group__radio-wrap">
+                                            <input
+                                                class="form-group__radio"
+                                                type="radio"
+                                                name="sex"
+                                                id="female"
+                                            />
+                                            <label
+                                                for="female"
+                                                class="form-group__text button-small"
+                                            >
+                                                Nữ
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Số điện thoại -->
+                                <div class="form-group">
+                                    <label
+                                        for="phone"
+                                        class="form-group__label heading4"
+                                    >
+                                        Số điện thoại
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div
+                                        class="form-group__wrap form-group__wrap--error"
+                                    >
+                                        <input
+                                            id="phone"
+                                            type="tel"
+                                            class="form-group__input"
+                                            placeholder="Số điện thoại của bạn"
+                                        />
+                                        <div
+                                            class="form-group__error"
+                                            id="phoneError"
+                                        >
+                                            Số điện thoại không hợp lệ. Vui lòng
+                                            nhập lại.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <!-- Ngày tháng năm sinh  -->
+                                <div class="form-group">
+                                    <label
+                                        for="birthDay"
+                                        class="form-group__label heading4"
+                                    >
+                                        Ngày tháng năm sinh
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div class="form-group__wrap">
+                                        <input
+                                            id="birthDay"
+                                            type="text"
+                                            class="form-group__input"
+                                            placeholder="dd/mm/yy"
+                                        />
+                                        <button
+                                            type="button"
+                                            class="form-group__btn"
+                                        >
+                                            <img
+                                                src="./assets/icons/calendar2.svg"
+                                                alt=""
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Email  -->
+                                <div class="form-group">
+                                    <label
+                                        for="email"
+                                        class="form-group__label heading4"
+                                    >
+                                        Email
+                                        <span class="form-group__note">*</span>
+                                    </label>
+                                    <div
+                                        class="form-group__wrap form-group__wrap--error"
+                                    >
+                                        <input
+                                            id="email"
+                                            type="email"
+                                            class="form-group__input"
+                                            placeholder="Email của bạn"
+                                        />
+                                        <div
+                                            class="form-group__error"
+                                            id="emailError"
+                                        >
+                                            Email là bắt buộc nếu số điện thoại
+                                            không hợp lệ.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lý do khám -->
+                        <div class="form__bot">
+                            <div class="form-group">
+                                <label
+                                    for="reason"
+                                    class="form-group__label heading4"
+                                >
+                                    Lý do khám
+                                    <span class="form-group__note">*</span>
+                                </label>
+                                <div
+                                    class="form-group__wrap form-group__wrap--textarea"
+                                >
+                                    <textarea
+                                        class="form-group__textarea"
+                                        name=""
+                                        id="reason"
+                                        placeholder="Triệu chứng của bạn"
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <div
+                                class="form-group--checkbox form-group--checkbox-bot"
+                            >
+                                <input
+                                    id="check2"
+                                    type="checkbox"
+                                    class="form-group__input--checkbox"
+                                    placeholder="Chọn Bác sĩ muốn khám"
+                                />
+                                <label
+                                    for="check2"
+                                    class="form-group__text button-small"
+                                >
+                                    Tôi đã đọc và xác nhận
+                                    <span class="form-group__term">
+                                        Điều khoản dịch vụ
+                                    </span>
+                                    của Phòng khám.
+                                    <span class="form-group__note">*</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="book__btn btn">
+                        Gửi thông tin
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./templates/footer.html");
+        </script>
+
+        <!-- Chat box -->
+        <div>
+            <button class="chat">
+                <img src="./assets/icons/Chat.svg" alt="" />
+            </button>
+
+            <div class="chat-box">
+                <div class="chat-header">
+                    <p class="chat-header__title button-large">Fresh-X AI</p>
+                    <img src="./assets/icons/close.svg" alt="" class="close" />
+                </div>
+
+                <div class="chat-body">
+                    <!-- AI chat -->
+                    <div class="chat-body__wrap">
+                        <p class="chat-body__name button-large">AI</p>
+                        <p class="chat-body__ai-chat desc2">
+                            Xin chào, tôi là Fresh-X AI trợ lý ảo sức khỏe của
+                            bạn. Hôm nay bạn cảm thấy thế nào?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="chat-footer__action">
+                        <img
+                            src="./assets/icons/camera.svg"
+                            alt=""
+                            class="camera"
+                        />
+                        <img
+                            src="./assets/icons/image.svg"
+                            alt=""
+                            class="image"
+                        />
+                        <img src="./assets/icons/mic.svg" alt="" class="mic" />
+                    </div>
+
+                    <form action="" class="chat-footer__form">
+                        <input
+                            placeholder="Viết gì đó, ..."
+                            type="text"
+                            class="chat-footer__input desc2"
+                        />
+                        <button type="submit" class="chat-footer__send">
+                            <img src="./assets/icons/send.svg" alt="" />
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal cho camera -->
+            <div class="camera-modal" style="display: none">
+                <video class="video" width="300" height="200" autoplay></video>
+                <button class="capture-button">Chụp ảnh</button>
+            </div>
+        </div>
+
+        <!-- Modal contact -->
+        <div id="modal1" class="modal">
+            <div class="modal__container">
+                <div class="modal__col">
+                    <h2 class="modal__title">Hotline</h2>
+
+                    <img
+                        src="./assets/icons/close2.svg"
+                        alt=""
+                        class="modal-close"
+                    />
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hà Nội</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vinh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hới</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hà</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Huế</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đà Nẵng</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hội An</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quảng Ngải</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quy Nhơn</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vũng Tàu</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Tp.Hồ Chí Minh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Cần Thơ</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                </div>
+
+                <div class="modal__col modal__col--bot">
+                    <div class="modal__wrap">
+                        <img src="./assets/icons/request.svg" alt="" />
+                        <p class="button-large">Cổng dịch vụ CSKH 24/7</p>
+                    </div>
+                    <button class="btn modal__btn">Gửi yêu cầu</button>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+        <!-- Js -->
+        <script defer type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- JS load -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Font -->
+        <link rel="stylesheet" href="./font/stylesheet.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Fresh-X | Chuyên khoa</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header.html");
+        </script>
+
+        <!-- Main -->
+        <main>
+            <!-- Hero -->
+            <div class="hero--other1">
+                <img
+                    src="./assets/img/hero/bg-other2.png"
+                    alt=""
+                    class="hero__image"
+                />
+                <div class="hero--overlay">
+                    <h1 class="hero__title heading1">Chuyên Khoa</h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="action">
+                    <button
+                        data-target="#modal1"
+                        class="action__text button-large open-modal"
+                    >
+                        Liên hệ
+                    </button>
+                    <span class="action__separate"></span>
+                    <a href="./book.html" class="action__text button-large">
+                        Đặt lịch hẹn
+                    </a>
+                    <span class="action__separate"></span>
+                    <a href="#!" class="action__text button-large">
+                        Tìm Bác sĩ
+                    </a>
+                </div>
+
+                <div id="speci" class="speci"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./templates/footer.html");
+        </script>
+
+        <!-- Chat box -->
+        <div>
+            <button class="chat">
+                <img src="./assets/icons/Chat.svg" alt="" />
+            </button>
+
+            <div class="chat-box">
+                <div class="chat-header">
+                    <p class="chat-header__title button-large">Fresh-X AI</p>
+                    <img src="./assets/icons/close.svg" alt="" class="close" />
+                </div>
+
+                <div class="chat-body">
+                    <!-- AI chat -->
+                    <div class="chat-body__wrap">
+                        <p class="chat-body__name button-large">AI</p>
+                        <p class="chat-body__ai-chat desc2">
+                            Xin chào, tôi là Fresh-X AI trợ lý ảo sức khỏe của
+                            bạn. Hôm nay bạn cảm thấy thế nào?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="chat-footer__action">
+                        <img
+                            src="./assets/icons/camera.svg"
+                            alt=""
+                            class="camera"
+                        />
+                        <img
+                            src="./assets/icons/image.svg"
+                            alt=""
+                            class="image"
+                        />
+                        <img src="./assets/icons/mic.svg" alt="" class="mic" />
+                    </div>
+
+                    <form action="" class="chat-footer__form">
+                        <input
+                            placeholder="Viết gì đó, ..."
+                            type="text"
+                            class="chat-footer__input desc2"
+                        />
+                        <button type="submit" class="chat-footer__send">
+                            <img src="./assets/icons/send.svg" alt="" />
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal cho camera -->
+            <div class="camera-modal" style="display: none">
+                <video class="video" width="300" height="200" autoplay></video>
+                <button class="capture-button">Chụp ảnh</button>
+            </div>
+        </div>
+
+        <!-- Modal contact -->
+        <div id="modal1" class="modal">
+            <div class="modal__container">
+                <div class="modal__col">
+                    <h2 class="modal__title">Hotline</h2>
+
+                    <img
+                        src="./assets/icons/close2.svg"
+                        alt=""
+                        class="modal-close"
+                    />
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hà Nội</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vinh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hới</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hà</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Huế</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đà Nẵng</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hội An</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quảng Ngải</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quy Nhơn</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vũng Tàu</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Tp.Hồ Chí Minh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Cần Thơ</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                </div>
+
+                <div class="modal__col modal__col--bot">
+                    <div class="modal__wrap">
+                        <img src="./assets/icons/request.svg" alt="" />
+                        <p class="button-large">Cổng dịch vụ CSKH 24/7</p>
+                    </div>
+                    <button class="btn modal__btn">Gửi yêu cầu</button>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal Item -->
+        <div id="modal2" class="modal"></div>
+
+        <!-- Modal giới thiệu chuyên khoa -->
+        <div class="modal"></div>
+
+        <!-- Js -->
+        <script defer type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>

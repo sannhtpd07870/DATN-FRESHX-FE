@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- JS load -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Font -->
+        <link rel="stylesheet" href="./font/stylesheet.css" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Fresh-X</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header.html");
+        </script>
+
+        <!-- Main -->
+        <main>
+            <!-- Hero -->
+            <div class="hero">
+                <div class="hero__wrap-img">
+                    <img
+                        src="./assets/img/hero/bg1.png"
+                        alt=""
+                        class="hero__img"
+                    />
+                    <img
+                        src="./assets/img/hero/bg2.png"
+                        alt=""
+                        class="hero__img"
+                    />
+                    <img
+                        src="./assets/img/hero/bg3.png"
+                        alt=""
+                        class="hero__img"
+                    />
+                </div>
+                <div class="container">
+                    <div class="hero__inner">
+                        <section class="hero-content">
+                            <h1 class="heading1 hero-content__title">
+                                Hệ Thống<br />
+                                Phòng Khám Được Tin Tưởng Nhất Ở Việt Nam
+                            </h1>
+                            <p class="desc1">
+                                Fresh-X cam kết về trách nhiệm xã hội và đóng
+                                góp tích cực vào sự phát triển bền vững của cộng
+                                đồng
+                            </p>
+                            <button class="hero-content__btn btn">
+                                Xem Thêm
+                            </button>
+                        </section>
+                        <div class="container">
+                            <div class="hero-containers">
+                                <!-- Hero Item 1 -->
+                                <article
+                                    data-target="#modal1"
+                                    class="open-modal hero-container"
+                                >
+                                    <div class="hero-container__item">
+                                        <img
+                                            src="./assets/icons/phone2.svg"
+                                            alt=""
+                                            class="hero-container__icon"
+                                        />
+                                        <section
+                                            class="hero-container__content"
+                                        >
+                                            <h3
+                                                class="hero-container__title button-large"
+                                            >
+                                                Liên hệ
+                                            </h3>
+                                            <p
+                                                class="hero-container__desc desc2"
+                                            >
+                                                Hỏi về phương pháp điều trị và
+                                                phương pháp của chúng tôi
+                                            </p>
+                                        </section>
+                                    </div>
+                                </article>
+                                <!-- Hero Item 2 -->
+                                <article class="hero-container">
+                                    <a
+                                        href="./book.html"
+                                        class="hero-container__item"
+                                    >
+                                        <img
+                                            src="./assets/icons/calendar2.svg"
+                                            alt=""
+                                            class="hero-container__icon"
+                                        />
+                                        <section
+                                            class="hero-container__content"
+                                        >
+                                            <h3
+                                                class="hero-container__title button-large"
+                                            >
+                                                Đặt lịch hẹn
+                                            </h3>
+                                            <p
+                                                class="hero-container__desc desc2"
+                                            >
+                                                Đặt lịch hẹn với phòng khám của
+                                                chúng tôi
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
+                                <!-- Hero Item 3 -->
+                                <article class="hero-container">
+                                    <a
+                                        href="./doctor.html"
+                                        class="hero-container__item"
+                                    >
+                                        <img
+                                            src="./assets/icons/doctor.svg"
+                                            alt=""
+                                            class="hero-container__icon"
+                                        />
+                                        <section
+                                            class="hero-container__content"
+                                        >
+                                            <h3
+                                                class="hero-container__title button-large"
+                                            >
+                                                Tìm bác sĩ
+                                            </h3>
+                                            <p
+                                                class="hero-container__desc desc2"
+                                            >
+                                                Chọn theo tên, chuyên môn và
+                                                nhiều hơn thế
+                                            </p>
+                                        </section>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="hero__dots">
+                            <span
+                                id="dot1"
+                                class="hero__dot hero__dot--active"
+                            ></span>
+                            <span id="dot2" class="hero__dot"></span>
+                            <span id="dot3" class="hero__dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Why choose -->
+                <div class="choose">
+                    <h2 class="heading2 choose__title">
+                        Tại sao nên chọn Fresh-X
+                    </h2>
+
+                    <div class="choose-container">
+                        <img
+                            src="./assets/img/choose/avt.png"
+                            alt=""
+                            class="choose-container__img"
+                        />
+
+                        <div class="choose-container__wrap">
+                            <!-- Choose Item 1 -->
+                            <article class="choose-container__item">
+                                <img
+                                    src="./assets/icons/stethoscope.svg"
+                                    alt=""
+                                />
+                                <h3 class="choose-container__title heading4">
+                                    Chuyên gia hàng đầu
+                                </h3>
+                                <p class="choose-container__desc desc1">
+                                    Fresh-X quy tụ đội ngũ chuyên gia, bác sĩ,
+                                    dược sĩ và điều dưỡng có trình độ chuyên môn
+                                    cao, tay nghề giỏi, tận tâm và chuyên
+                                    nghiệp. Luôn đặt người bệnh làm trung tâm,
+                                    Vinmec cam kết đem đến dịch vụ chăm sóc sức
+                                    khỏe tốt cho khách hàng.
+                                </p>
+                            </article>
+
+                            <!-- Choose Item 2 -->
+                            <article class="choose-container__item">
+                                <img src="./assets/icons/secure.svg" alt="" />
+                                <h3 class="choose-container__title heading4">
+                                    Quản lý hàng đầu
+                                </h3>
+                                <p class="choose-container__desc desc1">
+                                    Hệ thống Y tế Fresh-X được quản lý và vận
+                                    hành dưới sự giám sát của những nhà quản lý
+                                    y tế giàu kinh nghiệm, cùng với sự hỗ trợ
+                                    của phương tiện kỹ thuật hiện đại, nhằm đảm
+                                    bảo cung cấp dịch vụ chăm sóc sức khỏe toàn
+                                    diện và hiệu quả.
+                                </p>
+                            </article>
+
+                            <!-- Choose Item 3 -->
+                            <article class="choose-container__item">
+                                <img src="./assets/icons/tech.svg" alt="" />
+                                <h3 class="choose-container__title heading4">
+                                    Công nghệ tiên tiến
+                                </h3>
+                                <p class="choose-container__desc desc1">
+                                    Fresh-X cung cấp cơ sở vật chất hạng nhất và
+                                    dịch vụ 5 sao bằng cách sử dụng các công
+                                    nghệ tiên tiến được quản lý bởi các bác sĩ
+                                    lâm sàng lành nghề để đảm bảo dịch vụ chăm
+                                    sóc sức khỏe toàn diện và hiệu quả cao
+                                </p>
+                            </article>
+
+                            <!-- Choose Item 4 -->
+                            <article class="choose-container__item">
+                                <img src="./assets/icons/setting.svg" alt="" />
+                                <h3 class="choose-container__title heading4">
+                                    Nghiên cứu & Đổi mới
+                                </h3>
+                                <p class="choose-container__desc desc1">
+                                    Fresh-X liên tục thúc đẩy y học hàn lâm dựa
+                                    trên nghiên cứu có phương pháp và sự phát
+                                    triển y tế được chia sẻ từ quan hệ đối tác
+                                    toàn cầu với các hệ thống chăm sóc sức khỏe
+                                    hàng đầu thế giới nhằm cung cấp các phương
+                                    pháp điều trị mang tính cách mạng và sáng
+                                    tạo cho tiêu chuẩn chăm sóc bệnh nhân tốt
+                                    nhất.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News -->
+                <div class="new">
+                    <section class="new-content">
+                        <h2 class="heading2 heading2--mid">
+                            Cùng chúng tôi tạo ra sức khỏe
+                        </h2>
+                        <p class="desc1 desc1--mid">
+                            Cập nhật thông tin mới nhất, lời khuyên của chuyên
+                            gia và các mẹo thực tế để giữ cho bạn khỏe mạnh và
+                            hạnh phúc
+                        </p>
+                    </section>
+
+                    <div id="new" class="new-container"></div>
+
+                    <a href="./blog.html" class="new__btn btn">Xem Thêm</a>
+                </div>
+
+                <!-- Blog -->
+                <div class="blog">
+                    <section class="blog-content">
+                        <h2 class="heading2 heading2--mid">
+                            Cùng chúng tôi tạo ra sức khỏe
+                        </h2>
+                        <p class="desc1 desc1--mid">
+                            Chúng tôi cung cấp tài nguyên và kết nối mà bạn cần
+                            để phát triển. Hãy cùng chúng tôi tạo ra tương lai
+                            lành mạnh hơn.
+                        </p>
+                    </section>
+
+                    <div id="blog" class="blog-container"></div>
+                </div>
+            </div>
+
+            <!-- Client -->
+            <div class="client">
+                <div id="client" class="client-container"></div>
+            </div>
+
+            <div class="container">
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+        <script>
+            load("#footer", "./templates/footer.html");
+        </script>
+
+        <!-- Chat box -->
+        <div>
+            <button class="chat">
+                <img src="./assets/icons/Chat.svg" alt="" />
+            </button>
+
+            <div class="chat-box">
+                <div class="chat-header">
+                    <p class="chat-header__title button-large">Fresh-X AI</p>
+                    <img src="./assets/icons/close.svg" alt="" class="close" />
+                </div>
+
+                <div class="chat-body">
+                    <!-- AI chat -->
+                    <div class="chat-body__wrap">
+                        <p class="chat-body__name button-large">AI</p>
+                        <p class="chat-body__ai-chat desc2">
+                            Xin chào, tôi là Fresh-X AI trợ lý ảo sức khỏe của
+                            bạn. Hôm nay bạn cảm thấy thế nào?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="chat-footer__action">
+                        <img
+                            src="./assets/icons/camera.svg"
+                            alt=""
+                            class="camera"
+                        />
+                        <img
+                            src="./assets/icons/image.svg"
+                            alt=""
+                            class="image"
+                        />
+                        <img src="./assets/icons/mic.svg" alt="" class="mic" />
+                    </div>
+
+                    <form action="" class="chat-footer__form">
+                        <input
+                            placeholder="Viết gì đó, ..."
+                            type="text"
+                            class="chat-footer__input desc2"
+                        />
+                        <button type="submit" class="chat-footer__send">
+                            <img src="./assets/icons/send.svg" alt="" />
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal cho camera -->
+            <div class="camera-modal" style="display: none">
+                <video class="video" width="300" height="200" autoplay></video>
+                <button class="capture-button">Chụp ảnh</button>
+            </div>
+        </div>
+
+        <!-- Modal contact -->
+        <div id="modal1" class="modal">
+            <div class="modal__container">
+                <div class="modal__col">
+                    <h2 class="modal__title">Hotline</h2>
+
+                    <img
+                        src="./assets/icons/close2.svg"
+                        alt=""
+                        class="modal-close"
+                    />
+                </div>
+
+                <div class="modal__row">
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hà Nội</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vinh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hới</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đồng Hà</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Huế</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Đà Nẵng</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Hội An</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quảng Ngải</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Quy Nhơn</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Vũng Tàu</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Tp.Hồ Chí Minh</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                    <div class="modal__col">
+                        <p class="button-large">Fresh-X Cần Thơ</p>
+                        <a href="#!" class="modal__phone button-large"
+                            >08232240040</a
+                        >
+                    </div>
+                </div>
+
+                <div class="modal__col modal__col--bot">
+                    <div class="modal__wrap">
+                        <img src="./assets/icons/request.svg" alt="" />
+                        <p class="button-large">Cổng dịch vụ CSKH 24/7</p>
+                    </div>
+                    <button class="btn modal__btn">Gửi yêu cầu</button>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Js -->
+        <script defer type="module" src="./assets/js/main.js"></script>
+    </body>
+</html>
