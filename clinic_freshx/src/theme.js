@@ -172,44 +172,72 @@ export const themeSettings = (mode) => {
       mode: mode,
       ...(mode === "dark"
         ? {
-            // palette values for dark mode
-            primary: {
-              main: colors.primary[500],
-            },
-            secondary: {
-              main: colors.greenAccent[500],
-            },
+            primary: { main: colors.primary[500] },
+            secondary: { main: colors.greenAccent[500] },
             neutral: {
               dark: colors.grey[700],
               main: colors.grey[500],
               light: colors.grey[100],
             },
-            background: {
-              default: "#000000", // Thay đổi thành đen hoàn toàn
-              paper: "#000000", // Thêm màu đen cho các thành phần paper
-            },
+            background: { default: "#000000", paper: "#000000" },
             text: {
-              primary: "#ffffff", // Đặt màu chữ chính thành trắng
-              secondary: "#cccccc", // Đặt màu chữ phụ thành xám nhạt
+              primary: "#ffffff",
+              secondary: "#cccccc",
             },
           }
         : {
-            // palette values for light mode
-            primary: {
-              main: colors.primary[100],
-            },
-            secondary: {
-              main: colors.greenAccent[500],
-            },
+            primary: { main: colors.primary[100] },
+            secondary: { main: colors.greenAccent[500] },
             neutral: {
               dark: colors.grey[700],
               main: colors.grey[500],
               light: colors.grey[100],
             },
-            background: {
-              default: "#fcfcfc",
-            },
+            background: { default: "#fcfcfc" },
           }),
+    },
+    typography: {
+      fontFamily: "'Roboto', 'Arial', sans-serif", // Font chính
+      fontSize: 16, // Kích thước font mặc định (1rem = 14px)
+      h1: {
+        fontSize: "2rem", // Kích thước tiêu đề h1
+        fontWeight: 700, // Độ đậm chữ
+      },
+      h2: {
+        fontSize: "1.75rem",
+        fontWeight: 700,
+      },
+      h3: {
+        fontSize: "1.5rem",
+        fontWeight: 600,
+      },
+      h4: {
+        fontSize: "1.25rem",
+        fontWeight: 600,
+      },
+      h5: {
+        fontSize: "1rem",
+        fontWeight: 500,
+      },
+      h6: {
+        fontSize: "0.875rem",
+        fontWeight: 500,
+      },
+      body1: {
+        fontSize: "1.2rem ",
+        fontWeight: 400,
+        lineHeight: 1.5,
+      },
+      body2: {
+        fontSize: "1.2rem",
+        fontWeight: 400,
+        lineHeight: 1.5,
+      },
+      button: {
+        fontSize: "0.875rem",
+        fontWeight: 500,
+        textTransform: "none", // Không viết hoa toàn bộ
+      },
     },
     transitions: {
       duration: {
@@ -222,21 +250,27 @@ export const themeSettings = (mode) => {
         leavingScreen: 195,
       },
       easing: {
-        easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-        easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-        sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
+        easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
+        easeOut: "cubic-bezier(0.0, 0, 0.2, 1)",
+        easeIn: "cubic-bezier(0.4, 0, 1, 1)",
+        sharp: "cubic-bezier(0.4, 0, 0.6, 1)",
       },
     },
     components: {
       MuiCssBaseline: {
         styleOverrides: `
-          body {
-            transition: background-color 0.3s ease, color 0.3s ease;
+          @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            fontSize: "1.5rem !important",
+            unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
           }
         `,
       },
     },
+    
   };
 };
 

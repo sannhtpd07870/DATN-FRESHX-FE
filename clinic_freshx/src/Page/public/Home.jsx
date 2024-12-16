@@ -5,7 +5,7 @@ import News from "../../components/public/Home/News";
 import Blog from "../../components/public/Home/Blog";
 import Client from "../../components/public/Home/Client";
 import Feedback from "../../components/public/Home/Feedback";
-import Data from "../../assets/data/data.json";
+import Data from "../../assets/datajson/dataclien.json";
 const Home = () => {
 
   const [data, setData] = useState(null)

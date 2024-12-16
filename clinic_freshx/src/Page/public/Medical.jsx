@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import heroBackground from '../../assets/img/hero/bg-other3.png';
-import data from "../../assets/data/data.json";
+import data from "../../assets/datajson/dataclien.json";
 // Template function
 const medicalTemplate = (dataMedical) => {
   return (

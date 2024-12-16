@@ -1,5 +1,5 @@
 import { useState } from "react";
-import data from "../../assets/data/data.json";
+import data from "../../assets/datajson/dataclien.json";
 const Specialty = () =>{
     const [modalData, setModalData] = useState(null);
 

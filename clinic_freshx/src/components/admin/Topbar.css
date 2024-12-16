@@ -1,0 +1,101 @@
+.topbar{
+  border-bottom:  1px solid #dddddd;
+}
+
+.topbar-search {
+  display: flex;
+  border-radius: 3px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.user-profile:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.user-info {
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+.user-role {
+  color: #666;
+  font-size: 1.2rem !important;
+}
+
+.user-avatar {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.menu-item {
+  min-width: 200px;
+  padding: 8px 16px;
+}
+
+.menu-item-icon {
+  margin-right: 8px;
+}
+
+.menu-divider {
+  margin: 8px 0;
+}
+  /* Dark mode variables */
+  [data-theme="dark"] {
+    --topbar-bg: #1a1a1a;
+    --search-bg: #333;
+    --icon-color: #fff;
+    --text-primary: #fff;
+    --text-secondary: #999;
+    --hover-bg: #333;
+    --menu-bg: #1a1a1a;
+    --item-hover-bg: #333;
+    --divider-color: #333;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .topbar-search {
+      display: none;
+    }
+    
+    .user-info {
+      display: none;
+    }
+  }
+
+.mobile-menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+  
+  .topbar-search {
+    display: none;
+  }
+  
+  .user-info {
+    display: none;
+  }
+}

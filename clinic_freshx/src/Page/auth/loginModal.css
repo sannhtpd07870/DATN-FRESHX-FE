@@ -1,0 +1,90 @@
+.login-modal {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.login-modal .container {
+    background: linear-gradient(to bottom, #ffffff, #a0d8ef);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+.login-modal .container img {
+    width: 50px;
+    height: 50px;
+}
+.login-modal .container h1 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+.login-modal .container p {
+    font-size: 0.9em;
+    color: #555;
+    margin: 10px 0;
+}
+.login-modal .login-modal .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #000;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+.login-modal .btn i {
+    margin-right: 10px;
+}
+.login-modal .btn-google {
+    border-color: #db4437;
+}
+.login-modal .btn-google:hover {
+    background-color: #db4437;
+    color: #fff;
+}
+.login-modal .btn-facebook {
+    border-color: #3b5998;
+}
+.login-modal .btn-facebook:hover {
+    background-color: #3b5998;
+    color: #fff;
+}
+.login-modal .btn-email {
+    border-color: #000;
+}
+.login-modal .btn-email:hover {
+    background-color: #000;
+    color: #fff;
+}
+.login-modal .container a {
+    color: #007bff;
+    text-decoration: none;
+}
+.login-modal .container a:hover {
+    text-decoration: underline;
+}
+.login-modal .container .forgot-password {
+    color: red;
+}
+.login-modal .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #000;
+    cursor: pointer;
+}

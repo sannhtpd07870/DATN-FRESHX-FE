@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthService from '../../services/authService';
 import './Login.css';
+import { message } from 'antd';
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -15,9 +16,15 @@ const Login = () => {
        try {
            const success = await postLogin(email, password);
            if (success) {
-               navigate('/dashboard');
+               navigate('/admin');
            }
-       } finally {
+       }
+       catch (err) {
+        console.error('Error during login:', err);
+        message.error("lỗi đăng nhập")
+       }
+       
+       finally {
            setLoading(false);
        }
    };

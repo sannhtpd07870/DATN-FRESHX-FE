@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import HomeData from '../../../assets/data/Homedata.json'
+import HomeData from '../../../assets/datajson/Homedata.json'
 const HeroSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);

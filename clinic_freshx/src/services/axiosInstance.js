@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const apiDomain = 'https://your-api-domain.com'; // Replace with your API domain
+const apiDomain = 'https://localhost:7075'; // Replace with your API domain
 
 const axiosInstance = axios.create({
   baseURL: apiDomain,

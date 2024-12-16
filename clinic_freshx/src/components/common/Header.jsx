@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
+import LoginModal from '../../Page/auth/loginModal';
+import { Button, Modal } from 'antd';
 const Header = () => {
   const location = useLocation();
 
@@ -8,6 +9,7 @@ const Header = () => {
   const isActive = (path) => {
     return location.pathname === path ? 'navbar__item--active' : '';
   };
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   return (
     <>
@@ -20,13 +22,13 @@ const Header = () => {
                 <img src="./assets/icons/Message.svg" alt="Email" />
                 <p className="button-small header-top__text">FreshX@gmail.com</p>
               </a>
- 
+
               <a href="tel:0823240040" className="header-top__wrap">
                 <img src="./assets/icons/phone.svg" alt="Phone" />
                 <p className="button-small header-top__text">0823240040</p>
               </a>
             </div>
- 
+
             <div className="header-top__right">
               {/* Search */}
               <form className="header-search">
@@ -37,7 +39,7 @@ const Header = () => {
                   className="header-search__input"
                 />
               </form>
- 
+
               <div className="header-top__action">
                 <Link to="/book">
                   <img
@@ -62,14 +64,14 @@ const Header = () => {
           </div>
         </div>
       </div>
- 
+
       <div className="header-bot">
         <div className="container">
           <div className="header__inner">
             <Link to="/">
               <img src="./assets/img/Logo.png" alt="Logo" className="header-bot__logo" />
             </Link>
- 
+
             <nav className="navbar">
               <ul className="navbar__list">
                 <li className={`navbar__item ${isActive('/')}`}>
@@ -92,13 +94,24 @@ const Header = () => {
                   <Link to="/pharmacy-info" className="navbar__link button-small">Thông tin dược</Link>
                   <span className="navbar__separate"></span>
                 </li>
+                <Button type="default" onClick={() => setLoginModalOpen(true)}>
+                  Open Login Modal
+                </Button>
               </ul>
             </nav>
           </div>
         </div>
       </div>
+      <Modal
+        title="Đăng nhập vào Fresh-X"
+        open={isLoginModalOpen}
+        onCancel={() => setLoginModalOpen(false)}
+        footer={null} // Hide default footer
+      >
+        <LoginModal />
+      </Modal>
     </>
   );
 };
- 
+
 export default Header;

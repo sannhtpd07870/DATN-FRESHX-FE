@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HomeData from '../../../assets/data/Homedata.json'
+import HomeData from '../../../assets/datajson/Homedata.json'
 
 const ChooseSection = () => {
   const [chooseItems, setChooseItems] = useState([]);
