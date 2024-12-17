@@ -220,3 +220,135 @@
         margin-top: 10px;
     }
 }
+
+.modal-login {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+    &__container {
+        @extend %position;
+
+        padding: 70px;
+        border-radius: 15px;
+        background: linear-gradient(331deg, #1e90d2 5.39%, #fff 94.34%);
+    }
+
+    &__col {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        @extend %flexItemCenter;
+        justify-content: center;
+
+        background: var(--Primary-Color-White);
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__content {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__desc {
+        margin-top: 12px;
+        text-align: center;
+        color: var(--Primary-Color-MixBlue, #104c70);
+        line-height: 1.61;
+        width: 360px;
+    }
+
+    &__action {
+        @extend %flexItemCenter;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+
+        padding: 8px 16px;
+        border-radius: 32px;
+        border: 2px solid var(--Primary-color-BlueDark);
+
+        background: var(--Primary-Color-White);
+        cursor: pointer;
+    }
+
+    &__bot {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__link {
+        color: #e74747;
+        cursor: pointer;
+    }
+
+    &__form {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    &__wrap-inline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        padding: 0 0 0 16px;
+        border-radius: 99px;
+        background: #fff;
+    }
+
+    &__input {
+        width: 100%;
+        display: block;
+        padding: 8px 16px;
+        border-radius: 99px;
+        border: 2px solid var(--Primary-color-BlueDark);
+        background: var(--Primary-Color-White);
+    }
+
+    &__btn-large {
+        width: 100%;
+        border-radius: 99px;
+        padding: 8px;
+        background: linear-gradient(90deg, #1e90d2 0%, #104c70 100%);
+        color: var(--Primary-Color-White);
+    }
+
+    &__btn-small {
+        padding: 8px 16px;
+        border-radius: 99px;
+        opacity: 0.6;
+        background: var(--Primary-Color-Gray);
+    }
+}

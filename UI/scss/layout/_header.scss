@@ -5,6 +5,29 @@
     align-items: center;
 }
 
+.header {
+    &__right {
+        @extend %flexItemCenter;
+        gap: 38px;
+    }
+
+    &__btn {
+        padding: 10px 15px;
+        border-radius: 99px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--Primary-color-BlueDark);
+        transition: 0.25s;
+
+        color: var(--Primary-Color-White);
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
 .header__inner {
     @extend %flexItemCenter;
     justify-content: space-between;
@@ -35,31 +58,23 @@
 
     &__action {
         @extend %flexItemCenter;
-        gap: 7px;
+        gap: 10px;
     }
 
     &__separate {
+        display: block;
         width: 2px;
-        height: 19px;
+        height: 20px;
         border-radius: 2px;
         background: var(--Primary-Color-White);
     }
 
-    &__language {
-        @extend %flexItemCenter;
-        gap: 3px;
-    }
+    &__avt {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
 
-    &__flags {
-        @extend %flexItemCenter;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    &__flag {
-        width: 34px;
-        height: 23px;
-        border-radius: 5px;
+        border-radius: 50%;
     }
 }
 
