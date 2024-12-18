@@ -1352,9 +1352,26 @@ html {
   --Primary-Color-BlueLight: #1e90d2;
 }
 
-.navbar__list, .header-search, .header-top__flags, .header-top__language, .header-top__action, .header-top__right, .header-top__wrap, .header-top__left, .header__inner {
+.navbar__list, .header-search, .header-top__action, .header-top__right, .header-top__wrap, .header-top__left, .header__inner, .header__right {
   display: flex;
   align-items: center;
+}
+
+.header__right {
+  gap: 38px;
+}
+.header__btn {
+  padding: 10px 15px;
+  border-radius: 99px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--Primary-color-BlueDark);
+  transition: 0.25s;
+  color: var(--Primary-Color-White);
+}
+.header__btn:hover {
+  opacity: 0.7;
 }
 
 .header__inner {
@@ -1378,25 +1395,20 @@ html {
   gap: 45px;
 }
 .header-top__action {
-  gap: 7px;
+  gap: 10px;
 }
 .header-top__separate {
+  display: block;
   width: 2px;
-  height: 19px;
+  height: 20px;
   border-radius: 2px;
   background: var(--Primary-Color-White);
 }
-.header-top__language {
-  gap: 3px;
-}
-.header-top__flags {
-  flex-direction: column;
-  gap: 5px;
-}
-.header-top__flag {
-  width: 34px;
-  height: 23px;
-  border-radius: 5px;
+.header-top__avt {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .header-bot {
@@ -2978,13 +2990,13 @@ html {
   margin-top: 20px;
 }
 
-.modal-form__box, .modal-book, .modal__col {
+.modal-login__form, .modal-login__bot, .modal-login__action, .modal-login__content, .modal-login__close, .modal-login__col, .modal-form__box, .modal-book, .modal__col {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.modal-book, .modal-speci, .modal__overlay, .modal__container {
+.modal-login__container, .modal-book, .modal-speci, .modal__overlay, .modal__container {
   position: fixed;
   z-index: 1;
   top: 50%;
@@ -3153,6 +3165,110 @@ html {
 }
 .modal-form__box + .modal-form__box {
   margin-top: 10px;
+}
+
+.modal-login {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.modal-login.active {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-login__container {
+  padding: 70px;
+  border-radius: 15px;
+  background: linear-gradient(331deg, #1e90d2 5.39%, #fff 94.34%);
+}
+.modal-login__col {
+  flex-direction: column;
+  gap: 40px;
+}
+.modal-login__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  justify-content: center;
+  background: var(--Primary-Color-White);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.modal-login__content {
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-login__desc {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--Primary-Color-MixBlue, #104c70);
+  line-height: 1.61;
+  width: 360px;
+}
+.modal-login__action {
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-login__btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 32px;
+  border: 2px solid var(--Primary-color-BlueDark);
+  background: var(--Primary-Color-White);
+  cursor: pointer;
+}
+.modal-login__bot {
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-login__link {
+  color: #e74747;
+  cursor: pointer;
+}
+.modal-login__form {
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-login__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.modal-login__wrap-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 0 16px;
+  border-radius: 99px;
+  background: #fff;
+}
+.modal-login__input {
+  width: 100%;
+  display: block;
+  padding: 8px 16px;
+  border-radius: 99px;
+  border: 2px solid var(--Primary-color-BlueDark);
+  background: var(--Primary-Color-White);
+}
+.modal-login__btn-large {
+  width: 100%;
+  border-radius: 99px;
+  padding: 8px;
+  background: linear-gradient(90deg, #1e90d2 0%, #104c70 100%);
+  color: var(--Primary-Color-White);
+}
+.modal-login__btn-small {
+  padding: 8px 16px;
+  border-radius: 99px;
+  opacity: 0.6;
+  background: var(--Primary-Color-Gray);
 }
 
 /*# sourceMappingURL=main.css.map */

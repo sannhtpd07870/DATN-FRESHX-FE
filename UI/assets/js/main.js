@@ -557,3 +557,90 @@ dots.forEach((dot, index) => {
 });
 
 automaticSlide();
+
+// Login
+const loginButton = document.querySelector(".header__btn");
+const signInModal = document.getElementById("signIn");
+const signUpModal = document.getElementById("signUp");
+const closeButtons = document.querySelectorAll(".modal-login__close img");
+const openSignUpLink = document.getElementById("openSignUp");
+const openSignInLink = document.getElementById("openSignIn");
+const overlays = document.querySelectorAll(".modal__overlay");
+
+// Functions to show/hide modals
+const showModal = (modal) => {
+    modal.classList.add("active");
+};
+
+const hideModal = (modal) => {
+    modal.classList.remove("active");
+};
+
+// Event Listeners
+loginButton.addEventListener("click", () => {
+    showModal(signInModal);
+});
+
+openSignUpLink.addEventListener("click", () => {
+    hideModal(signInModal);
+    showModal(signUpModal);
+});
+
+openSignInLink.addEventListener("click", () => {
+    hideModal(signUpModal);
+    showModal(signInModal);
+});
+
+closeButtons.forEach((button) =>
+    button.addEventListener("click", () => {
+        hideModal(signInModal);
+        hideModal(signUpModal);
+    })
+);
+
+overlays.forEach((overlay) =>
+    overlay.addEventListener("click", () => {
+        hideModal(signInModal);
+        hideModal(signUpModal);
+    })
+);
+
+const forgotPasswordModal = document.getElementById("fogotPass");
+const resetPasswordModal = document.getElementById("resetPass");
+const forgotPasswordLink = document.querySelector(
+    ".modal-login__bot .modal-login__link:nth-child(2)"
+);
+const resetPasswordLink = document.getElementById("resetPasswordLink"); // Nếu có link để mở modal reset password
+
+// Function to handle modal transitions
+forgotPasswordLink.addEventListener("click", () => {
+    hideModal(signInModal);
+    showModal(forgotPasswordModal);
+});
+
+// Optional: Link to reset password modal if applicable
+if (resetPasswordLink) {
+    resetPasswordLink.addEventListener("click", () => {
+        hideModal(forgotPasswordModal);
+        showModal(resetPasswordModal);
+    });
+}
+
+// Close modal functionality for all modals
+closeButtons.forEach((button) =>
+    button.addEventListener("click", () => {
+        hideModal(signInModal);
+        hideModal(signUpModal);
+        hideModal(forgotPasswordModal);
+        hideModal(resetPasswordModal);
+    })
+);
+
+overlays.forEach((overlay) =>
+    overlay.addEventListener("click", () => {
+        hideModal(signInModal);
+        hideModal(signUpModal);
+        hideModal(forgotPasswordModal);
+        hideModal(resetPasswordModal);
+    })
+);
