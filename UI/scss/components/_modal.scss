@@ -225,11 +225,14 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
+    max-height: 500px;
+    overflow: auto;
 
     &.active {
         visibility: visible;
         opacity: 1;
     }
+
     &__container {
         @extend %position;
 
@@ -329,7 +332,7 @@
     }
 
     &__input {
-        width: 100%;
+        width: 280px;
         display: block;
         padding: 8px 16px;
         border-radius: 99px;
@@ -350,5 +353,28 @@
         border-radius: 99px;
         opacity: 0.6;
         background: var(--Primary-Color-Gray);
+
+        color: var(--Primary-Color-White);
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__check-text {
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-left: auto;
+        color: var(--Primary-color-BlueDark);
+        font-weight: 600;
+    }
+
+    &__checkbox {
+        margin-right: auto;
     }
 }
