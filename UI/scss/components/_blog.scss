@@ -10,14 +10,33 @@
     padding: 50px 100px;
     border-radius: 30px;
     background: var(--Primary-Color-White);
+
+    @include abstracts.screen(xl) {
+        padding: 20px 40px;
+    }
 }
 
 .blog-container {
     margin-top: 60px;
 
+    @include abstracts.screen(lg) {
+        margin-top: 30px;
+    }
+
+    &__thumb {
+        @include abstracts.screen(lg) {
+            width: 100%;
+        }
+    }
+
     &__item {
         @extend %flexItemCenter;
         gap: 20px;
+
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 
     &__item + &__item {
@@ -31,5 +50,9 @@
 
     &__btn {
         margin-top: 60px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 20px;
+        }
     }
 }

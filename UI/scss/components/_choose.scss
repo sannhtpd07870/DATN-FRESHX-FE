@@ -10,6 +10,11 @@
     padding: 50px 30px 0;
     background: var(--Primary-Color-White);
     border-radius: 30px;
+
+    @include abstracts.screen(lg) {
+        margin-top: -55px;
+        padding: 20px;
+    }
 }
 
 .choose-container {
@@ -24,6 +29,16 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         padding-bottom: 50px;
+
+        @include abstracts.screen(md) {
+            grid-template-columns: 1fr;
+        }
+
+        &:last-child {
+            @include abstracts.screen(md) {
+                padding-bottom: 0;
+            }
+        }
     }
 
     &__img {

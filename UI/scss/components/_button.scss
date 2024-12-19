@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 .btn {
     display: inline-flex;
     justify-content: center;
@@ -10,6 +12,10 @@
     color: var(--Primary-Color-White, #fff);
     font-size: 1.8rem;
     font-weight: 600;
+
+    @include abstracts.screen(lg) {
+        padding: 10px 20px;
+    }
 
     &:hover {
         opacity: 0.7;

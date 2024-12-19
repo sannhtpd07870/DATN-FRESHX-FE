@@ -1,7 +1,12 @@
+@use "../abstracts";
 .heading1 {
     font-size: 6.2rem;
     font-weight: 700;
     line-height: 1.12;
+
+    @include abstracts.screen(lg) {
+        font-size: 4.8rem;
+    }
 }
 
 .heading2 {
@@ -16,6 +21,10 @@
         width: 162px;
         height: 3px;
         background: var(--Primary-color-BlueDark);
+    }
+
+    @include abstracts.screen(lg) {
+        font-size: 3.2rem;
     }
 
     &--mid {
@@ -74,6 +83,10 @@
 .button-large {
     font-size: 1.8rem;
     font-weight: 600;
+
+    @include abstracts.screen(lg) {
+        font-size: 1.6rem;
+    }
 }
 
 .button-small {

@@ -14,26 +14,12 @@
                 </a>
 
                 <a href="tel:0823240040" class="header-top__wrap">
-                    <img src="./assets/icons/phone.svg" alt="" />
+                    <img src="./assets/icons/phone2.svg" alt="" />
                     <p class="button-small header-top__text">0823240040</p>
                 </a>
             </div>
 
             <div class="header-top__right">
-                <!-- Search -->
-                <form class="header-search">
-                    <img
-                        src="./assets/icons/Search.svg"
-                        alt=""
-                        class="header-search__icon"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Tìm kiếm..."
-                        class="header-search__input"
-                    />
-                </form>
-
                 <div class="header-top__action">
                     <a href="./book.html">
                         <img
@@ -43,6 +29,14 @@
                         />
                     </a>
                 </div>
+                <div class="header__btn d-lg-none">Đăng nhập</div>
+
+                <button
+                    class="js-toggle d-none d-lg-block"
+                    toggle-target="#navbar"
+                >
+                    <img src="./assets/icons/menu.svg" alt="" />
+                </button>
             </div>
         </div>
     </div>
@@ -57,7 +51,7 @@
                     class="header-bot__logo"
             /></a>
 
-            <div class="header__right">
+            <div class="header__right d-lg-none">
                 <nav class="navbar">
                     <ul class="navbar__list">
                         <li class="navbar__item navbar__item--active">
@@ -100,9 +94,48 @@
                         </li>
                     </ul>
                 </nav>
-
-                <div class="header__btn">Đăng nhập</div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal: navbar mobile -->
+<div>
+    <div id="navbar" class="mobile hide d-none d-lg-block">
+        <a class="logo" href="./">
+            <img src="./assets/img/logo.png" class="logo__img" alt="" />
+        </a>
+        <ul class="navbar__list">
+            <li class="navbar__item navbar__item--active">
+                <a href="/" class="navbar__link button-small">Trang chủ</a>
+                <span class="navbar__separate"></span>
+            </li>
+            <li class="navbar__item">
+                <a href="./specialty.html" class="navbar__link button-small"
+                    >Chuyên Khoa</a
+                >
+                <span class="navbar__separate"></span>
+            </li>
+            <li class="navbar__item">
+                <a href="./medical.html" class="navbar__link button-small"
+                    >Gói Khám</a
+                >
+                <span class="navbar__separate"></span>
+            </li>
+            <li class="navbar__item">
+                <a href="./about.html" class="navbar__link button-small"
+                    >Về Fresh-X</a
+                >
+                <span class="navbar__separate"></span>
+            </li>
+            <li class="navbar__item">
+                <a href="./medicine.html" class="navbar__link button-small"
+                    >Thông tin dược</a
+                >
+                <span class="navbar__separate"></span>
+            </li>
+        </ul>
+        <div class="header__btn">Đăng nhập</div>
+    </div>
+    <div class="mobile__overlay js-toggle" toggle-target="#navbar"></div>
 </div>

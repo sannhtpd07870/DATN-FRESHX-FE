@@ -12,14 +12,27 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    @include abstracts.screen(lg) {
+        margin-top: 70px;
+    }
+
     &__inner {
         position: relative;
         padding: 210px 0 100px;
+
+        @include abstracts.screen(lg) {
+            padding: 50px 0;
+        }
     }
 
     &__top {
         display: flex;
         justify-content: space-between;
+
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            gap: 30px;
+        }
     }
 }
 
@@ -65,11 +78,24 @@
 
 .footer-left {
     width: 48%;
+
+    @include abstracts.screen(lg) {
+        width: 100%;
+    }
 }
 
 .footer-right {
     display: flex;
     gap: 40px;
+
+    @include abstracts.screen(lg) {
+        justify-content: space-between;
+    }
+
+    @include abstracts.screen(sm) {
+        flex-direction: column;
+        gap: 32px;
+    }
 
     &__title {
         padding: 10px 0;
@@ -96,6 +122,11 @@
     &__container {
         @extend %flexItemCenter;
         justify-content: space-between;
+
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 
     &__copyright,
@@ -132,6 +163,10 @@
     @extend %flexItemCenter;
     gap: 10px;
     margin-top: 64px;
+
+    @include abstracts.screen(lg) {
+        margin-top: 30px;
+    }
 
     &__input {
         width: 302px;

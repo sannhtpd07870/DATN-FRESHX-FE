@@ -6,22 +6,35 @@
 }
 
 .action {
+    width: 352px;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    border: 1px solid var(--Primary-color-BlueDark);
+    padding: 20px;
+    border-radius: 20px;
+
     &__text--active {
         color: var(--Primary-color-BlueDark);
     }
 
     &__separate {
+        display: block;
         width: 3px;
-        height: 38px;
-        background: #d9d9d9;
+        height: 20px;
+        background: var(--Primary-color-BlueDark);
     }
 }
 
 .action-large {
-    padding: 20px;
-    margin-bottom: 40px;
+    padding: 0 10px;
+    margin: 40px 0;
     border-radius: 20px;
-    background: var(--Primary-Color-WhiteMixGray);
+    background: var(--Primary-Color-White);
 
     &__bot {
         @extend %flexItemCenter;

@@ -12,11 +12,22 @@
     background: var(--Primary-Color-White);
     border-radius: 30px;
 
+    @include abstracts.screen(lg) {
+        padding: 20px 40px;
+
+        flex-direction: column;
+    }
+
     &__img {
         width: 397px;
         height: 500px;
         object-fit: cover;
         border-radius: 30px;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+            height: auto;
+        }
     }
 }
 

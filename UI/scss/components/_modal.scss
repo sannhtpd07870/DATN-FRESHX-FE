@@ -16,6 +16,7 @@
 }
 
 .modal {
+    position: relative;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -23,6 +24,12 @@
     &.active {
         visibility: visible;
         opacity: 1;
+    }
+
+    &-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
     }
 
     &__container {
@@ -34,10 +41,22 @@
         padding: 30px;
         border-radius: 35px;
         background: var(--Primary-Color-White);
+
+        @include abstracts.screen(lg) {
+            width: 80%;
+            height: 80vh;
+            overflow: auto;
+        }
     }
 
     &__col {
         @extend %flexItemCenter;
+
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
 
         &--bot {
             margin-top: 22px;
@@ -82,6 +101,9 @@
 }
 
 .modal-speci {
+    width: 80%;
+    height: 60vh;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,6 +112,10 @@
     border-radius: 35px;
 
     padding: 30px 60px;
+
+    @include abstracts.screen(lg) {
+        padding: 20px;
+    }
 
     &__close {
         position: absolute;
@@ -239,6 +265,10 @@
         padding: 70px;
         border-radius: 15px;
         background: linear-gradient(331deg, #1e90d2 5.39%, #fff 94.34%);
+
+        @include abstracts.screen(md) {
+            padding: 30px;
+        }
     }
 
     &__col {

@@ -8,10 +8,18 @@
 .blog-page {
     margin-top: 100px;
 
+    @include abstracts.screen(lg) {
+        margin-top: 60px;
+    }
+
     &__wrap {
         @extend %flexItemCenter;
         gap: 40px;
         margin-top: 32px;
+
+        @include abstracts.screen(lg) {
+            gap: 20px;
+        }
     }
 
     &__btn {

@@ -11,6 +11,12 @@ $error-color: #e74747;
     padding: 40px 35px;
     border-radius: 30px;
     background: var(--Primary-Color-White);
+    margin-top: 70px;
+
+    @include abstracts.screen(lg) {
+        margin-top: 50px;
+        padding: 20px;
+    }
 
     &__container + &__container {
         margin-top: 60px;
@@ -21,6 +27,10 @@ $error-color: #e74747;
         position: relative;
         left: 50%;
         translate: -50%;
+
+        @include abstracts.screen(lg) {
+            margin-top: 30px;
+        }
     }
 }
 
@@ -29,11 +39,19 @@ $error-color: #e74747;
     gap: 30px;
     margin-top: 46px;
 
+    @include abstracts.screen(lg) {
+        flex-direction: column;
+    }
+
     &__row {
         display: flex;
         flex-direction: column;
         gap: 30px;
         width: 50%;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+        }
     }
 
     &__bot {
@@ -43,10 +61,16 @@ $error-color: #e74747;
 
 .form-group {
     position: relative;
+
     &--radio {
         display: flex;
         align-items: end;
         gap: 25px;
+
+        @include abstracts.screen(lg) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 
     &--checkbox,
@@ -82,11 +106,19 @@ $error-color: #e74747;
         &--textarea {
             height: 207px;
             align-items: flex-start;
+
+            @include abstracts.screen(lg) {
+                height: 110px;
+            }
         }
     }
 
     &__container {
         width: 90%;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+        }
     }
 
     &__input {

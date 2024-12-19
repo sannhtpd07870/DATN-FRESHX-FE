@@ -33,6 +33,11 @@
         left: 50%;
         translate: -50% -50%;
         color: var(--Primary-Color-White);
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &__wrap-img {
@@ -48,6 +53,10 @@
         height: 677px;
         object-fit: cover;
         flex-shrink: 0;
+
+        @include abstracts.screen(lg) {
+            height: 65vh;
+        }
     }
 
     &__inner {
@@ -78,6 +87,18 @@
 
 .hero-content {
     width: 55%;
+
+    @include abstracts.screen(xl) {
+        width: 65%;
+    }
+
+    @include abstracts.screen(lg) {
+        width: 70%;
+    }
+
+    @include abstracts.screen(md) {
+        width: 90%;
+    }
 
     &__title {
         width: 90%;
