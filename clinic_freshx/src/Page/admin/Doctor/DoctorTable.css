@@ -1,0 +1,67 @@
+    /* DoctorTable.css */
+
+.doctor-table-container {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .doctor-table th, 
+  .doctor-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Ẩn đường kẻ dọc */
+.doctor-table td, 
+.doctor-table th {
+  border-right: none;
+  border-left: none;
+}
+  .doctor-table th {
+    font-weight: bold;
+  }
+  
+  /* .doctor-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  } */
+  
+  .doctor-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .expand-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  .expand-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .expanded-row {
+    background-color: #f9f9f9;
+  }
+  
+  .expanded-row td {
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  

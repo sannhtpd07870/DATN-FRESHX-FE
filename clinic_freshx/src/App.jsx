@@ -5,10 +5,12 @@ import UserRouter from './Router/User_router';
 import AdminRouter from './Router/Admin_router';
 import { UserContext } from './services/UserContext';
 import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext, useMode } from './theme';
-import ThemeTransition from './components/common/ThemeTransition';
-import ThemeBottom from './components/common/ThemeBottom';
+// import ThemeTransition from './components/common/ThemeTransition';
+// import ThemeBottom from './components/common/ThemeBottom';
+import "./assets/css/main.css"
+import "./assets/scss/main.scss"
 const App = () => {
   const [theme, colorMode] = useMode();
   const { user, checkUserRole } = useContext(UserContext);
@@ -19,13 +21,11 @@ const App = () => {
     return null; // hoặc hiển thị một thông báo lỗi
   }
 
- 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <ThemeBottom />
-        <ThemeTransition>
+      <CssBaseline />
+  
           <Router>
             <Routes>
             {/* Public routes */}
@@ -52,16 +52,16 @@ const App = () => {
               path="/dashboard"
               element={
                 (() => {
-                  const role = checkUserRole();
-                  if (role === 'admin') return <Navigate to="/admin" replace />;
-                  if (role === 'user') return <Navigate to="/user" replace />;
+                  const user = checkUserRole();
+                  if (user=== 'admin') return <Navigate to="/admin" replace />;
+                  if (user === 'user') return <Navigate to="/user" replace />;
                   return <Navigate to="/" replace />;
                 })()
               }
             />
           </Routes>
         </Router>
-        </ThemeTransition>
+  
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

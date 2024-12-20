@@ -1,0 +1,82 @@
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.content .header .toggle {
+    display: flex;
+    align-items: center;
+}
+.content .header .toggle button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.content .header .toggle button:last-child {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.content .header .icons i {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.content table th, .content table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.content table th {
+    background-color: #f9f9f9;
+    font-weight: 500;
+}
+.content table td i {
+    color: #ff0000;
+    cursor: pointer;
+}
+.content .request {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+    }
+    .content {
+        padding: 10px;
+    }
+    .content .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .content .header .toggle {
+        margin-bottom: 10px;
+    }
+}

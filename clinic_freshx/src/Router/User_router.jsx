@@ -9,7 +9,7 @@ import UserDashboard from '../components/user/UserDashboard';
 const UserRouter = () => {
   return (
     <Routes>
-      <Route path="/user" element={<UserLayout />}>
+      <Route path="/" element={<UserLayout />}>
         <Route index element={<UserDashboard />} />
         {/* <Route path="ho-so" element={<UserProfile />} />
         <Route path="lich-hen" element={<UserAppointments />} />

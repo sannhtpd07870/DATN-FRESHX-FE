@@ -1,0 +1,142 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.new-page {
+    margin-top: 70px;
+
+    &__container {
+        margin-top: 52px;
+    }
+
+    &__item {
+        position: relative;
+        background: var(--Primary-Color-White);
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+
+        &--large {
+            border-radius: 20px;
+        }
+    }
+
+    &__content {
+        padding: 12px 5px 20px;
+
+        &--large {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            border-radius: 0px 0px 20px 20px;
+            opacity: 0.8;
+            background: var(
+                --Color-Gradient-Blue,
+                linear-gradient(
+                    180deg,
+                    rgba(30, 144, 210, 0.9) 0%,
+                    rgba(16, 76, 112, 0.9) 29.12%
+                )
+            );
+            padding: 20px;
+            color: var(--Primary-Color-White);
+        }
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.3;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__desc {
+        margin-top: 18px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &--large {
+            margin-top: 16px;
+        }
+    }
+
+    &__link {
+        display: block;
+        margin-top: 29px;
+        text-decoration: underline;
+
+        &--large {
+            margin-top: 40px;
+        }
+    }
+}
+
+.new-page-detail {
+    margin-top: 42px;
+
+    &__heading {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    &__container {
+        margin-top: 20px;
+    }
+
+    &__content {
+        border-top: 1px solid var(--Primary-Color-Gray);
+    }
+
+    &__title {
+        margin-top: 42px;
+    }
+
+    &__text {
+        margin-top: 20px;
+    }
+
+    &__text + &__text {
+        margin-top: 10px;
+    }
+
+    &__wrap {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    &__img {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    &__sub {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    &__link {
+        cursor: pointer;
+        text-decoration: underline;
+        color: var(--Primary-color-BlueDark);
+    }
+}

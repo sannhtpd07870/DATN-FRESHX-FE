@@ -1,0 +1,35 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.blog {
+    margin-top: 60px;
+    padding: 50px 100px;
+    border-radius: 30px;
+    background: var(--Primary-Color-White);
+}
+
+.blog-container {
+    margin-top: 60px;
+
+    &__item {
+        @extend %flexItemCenter;
+        gap: 20px;
+    }
+
+    &__item + &__item {
+        margin-top: 20px;
+    }
+
+    &__desc {
+        margin-top: 16px;
+        color: var(--Primary-Color-Gray);
+    }
+
+    &__btn {
+        margin-top: 60px;
+    }
+}

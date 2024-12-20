@@ -1,0 +1,30 @@
+.admin-main{
+    background-color: antiquewhite;
+    height: 95%;
+    margin-top: 1.4%;
+    margin-right: 2%;
+    margin-left: 1%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.admin-main .css-dev-only-do-not-override-142vneq .ant-table {
+    all: unset;
+  }
+  
+  .admin-main th, 
+  .admin-main td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+
+.admin-main td, 
+ .admin-main th {
+  border-right: none;
+  border-left: none;
+}
+  .admin-main th {
+    font-weight: bold;
+  }
