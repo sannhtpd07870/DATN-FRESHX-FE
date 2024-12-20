@@ -13,6 +13,11 @@
     background: var(--Primary-Color-White);
     border-radius: 20px;
 
+    @include abstracts.screen(lg) {
+        margin-top: 60px;
+        padding: 15px 25px;
+    }
+
     &__title {
         font-size: 4rem;
         font-weight: 700;
@@ -52,6 +57,11 @@
     justify-content: space-between;
     margin-top: 20px;
 
+    @include abstracts.screen(lg) {
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
     &__item {
         width: 34px;
         height: 34px;
@@ -86,6 +96,10 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 22px;
+
+        @include abstracts.screen(md) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__item {

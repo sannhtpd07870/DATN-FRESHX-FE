@@ -1,9 +1,20 @@
 @use "../abstracts";
 
 .speci {
+    margin-top: 70px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+
+    @include abstracts.screen(lg) {
+        margin-top: 50px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include abstracts.screen(md) {
+        margin-top: 50px;
+        grid-template-columns: 1fr;
+    }
 
     &__content {
         width: 55%;
@@ -56,6 +67,18 @@
         border-radius: 0 0 10px 10px;
 
         transition: 0.35s linear;
+
+        @include abstracts.screen(xl) {
+            height: 20%;
+        }
+
+        @include abstracts.screen(lg) {
+            height: 23%;
+        }
+
+        @include abstracts.screen(lg) {
+            height: 18%;
+        }
     }
 
     &__title {

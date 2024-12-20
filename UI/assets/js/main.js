@@ -376,6 +376,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+// ------------------------------------------------------- //
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+/**
+ * JS toggle
+ *
+ * Cách dùng:
+ * <button class="js-toggle" toggle-target="#box" >Click</button>
+ * <div id="box">Content show/hide</div>
+ */
+window.addEventListener("template-loaded", initJsToggle);
+
+function initJsToggle() {
+    $$(".js-toggle").forEach((button) => {
+        const target = button.getAttribute("toggle-target");
+        if (!target) {
+            document.body.innerText = `Cần thêm toggle-target cho: ${button.outerHTML}`;
+        }
+        button.onclick = (e) => {
+            e.preventDefault();
+
+            if (!$(target)) {
+                return (document.body.innerText = `Không tìm thấy phần tử "${target}"`);
+            }
+            const isHidden = $(target).classList.contains("hide");
+
+            requestAnimationFrame(() => {
+                $(target).classList.toggle("hide", !isHidden);
+                $(target).classList.toggle("show", isHidden);
+            });
+        };
+        document.onclick = function (e) {
+            if (!e.target.closest(target)) {
+                const isHidden = $(target).classList.contains("hide");
+                if (!isHidden) {
+                    button.click();
+                }
+            }
+        };
+    });
+}
+
+window.addEventListener("template-loaded", () => {
+    const links = $$(".js-dropdown-list > li > a");
+
+    links.forEach((link) => {
+        link.onclick = () => {
+            if (window.innerWidth > 991) return;
+            const item = link.closest("li");
+            item.classList.toggle("navbar__item--active");
+        };
+    });
+});
 
 // ------------------------------------------------------ //
 
@@ -558,89 +611,98 @@ dots.forEach((dot, index) => {
 
 automaticSlide();
 
-// Login
-const loginButton = document.querySelector(".header__btn");
-const signInModal = document.getElementById("signIn");
-const signUpModal = document.getElementById("signUp");
-const closeButtons = document.querySelectorAll(".modal-login__close img");
-const openSignUpLink = document.getElementById("openSignUp");
-const openSignInLink = document.getElementById("openSignIn");
-const overlays = document.querySelectorAll(".modal__overlay");
+// DropDown
+// Hàm chung để mở và đóng dropdown
+function toggleDropdownMenu(button, dropdown, otherDropdowns) {
+    button.addEventListener("click", function () {
+        // Kiểm tra xem dropdown hiện đang được hiển thị hay ẩn
+        const isDropdownVisible = dropdown.style.display === "block";
 
-// Functions to show/hide modals
-const showModal = (modal) => {
-    modal.classList.add("active");
-};
+        // Đóng tất cả các dropdown khác
+        otherDropdowns.forEach(function (otherDropdown) {
+            otherDropdown.style.display = "none";
+        });
 
-const hideModal = (modal) => {
-    modal.classList.remove("active");
-};
-
-// Event Listeners
-loginButton.addEventListener("click", () => {
-    showModal(signInModal);
-});
-
-openSignUpLink.addEventListener("click", () => {
-    hideModal(signInModal);
-    showModal(signUpModal);
-});
-
-openSignInLink.addEventListener("click", () => {
-    hideModal(signUpModal);
-    showModal(signInModal);
-});
-
-closeButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-        hideModal(signInModal);
-        hideModal(signUpModal);
-    })
-);
-
-overlays.forEach((overlay) =>
-    overlay.addEventListener("click", () => {
-        hideModal(signInModal);
-        hideModal(signUpModal);
-    })
-);
-
-const forgotPasswordModal = document.getElementById("fogotPass");
-const resetPasswordModal = document.getElementById("resetPass");
-const forgotPasswordLink = document.querySelector(
-    ".modal-login__bot .modal-login__link:nth-child(2)"
-);
-const resetPasswordLink = document.getElementById("resetPasswordLink"); // Nếu có link để mở modal reset password
-
-// Function to handle modal transitions
-forgotPasswordLink.addEventListener("click", () => {
-    hideModal(signInModal);
-    showModal(forgotPasswordModal);
-});
-
-// Optional: Link to reset password modal if applicable
-if (resetPasswordLink) {
-    resetPasswordLink.addEventListener("click", () => {
-        hideModal(forgotPasswordModal);
-        showModal(resetPasswordModal);
+        // Nếu dropdown hiện tại chưa hiển thị, thì mở nó
+        if (!isDropdownVisible) {
+            dropdown.style.display = "block";
+        }
     });
 }
 
-// Close modal functionality for all modals
-closeButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-        hideModal(signInModal);
-        hideModal(signUpModal);
-        hideModal(forgotPasswordModal);
-        hideModal(resetPasswordModal);
-    })
+// Lấy phần tử cần thao tác
+const openProfileButton = document.getElementById("openProfile");
+const profileDropdown = document.getElementById("profile");
+
+const openMessageButton = document.getElementById("openMessage");
+const messageDropdown = document.getElementById("message");
+
+// Lấy tất cả các dropdown khác mà ta muốn đóng khi mở một dropdown mới
+const allDropdowns = [profileDropdown, messageDropdown];
+
+// Áp dụng hàm toggleDropdownMenu cho cả profile và message
+toggleDropdownMenu(openProfileButton, profileDropdown, allDropdowns);
+toggleDropdownMenu(openMessageButton, messageDropdown, allDropdowns);
+
+// Login
+// Lấy các phần tử modal và các nút mở modal
+const modals = {
+    signIn: document.querySelector(".modal-login.signIn"),
+    signUp: document.querySelector(".modal-login.signUp"),
+    forgotPass: document.querySelector(".modal-login.forgotPass"),
+    resetPass: document.querySelector(".modal-login.resetPass"),
+};
+
+// Lấy các phần tử nút mở modal
+const buttons = {
+    openSignIn: document.querySelector(".header__btn"),
+    openSignUp: document.querySelector(".modal-login__link.signup"),
+    openSignIn2: document.querySelector(".modal-login__link.signin"),
+    forgotPassword: document.querySelector(".modal-login__link.forgot"),
+    resetPassword: document.querySelector(".modal-login__btn-large.reset"),
+};
+
+// Lấy các nút đóng modal và overlay
+const closeButtons = document.querySelectorAll(".modal-login__close");
+const overlays = document.querySelectorAll(".modal__overlay");
+
+// Hàm chung để thêm class 'active' vào modal
+function activateModal(modal) {
+    modal.classList.add("active");
+}
+
+// Hàm chung để loại bỏ class 'active' khỏi modal
+function deactivateModal(modal) {
+    modal.classList.remove("active");
+}
+
+// Hàm đóng tất cả các modal
+function closeAllModals() {
+    Object.values(modals).forEach((modal) => deactivateModal(modal));
+}
+
+// Hàm hiển thị modal cụ thể
+function showModal(modalToShow) {
+    closeAllModals(); // Đóng tất cả các modal khác trước khi mở modal mới
+    activateModal(modalToShow);
+}
+
+// Sự kiện mở modal
+buttons.openSignIn.addEventListener("click", () => showModal(modals.signIn));
+buttons.openSignUp.addEventListener("click", () => showModal(modals.signUp));
+buttons.forgotPassword.addEventListener("click", () =>
+    showModal(modals.forgotPass)
+);
+buttons.resetPassword.addEventListener("click", () =>
+    showModal(modals.resetPass)
 );
 
-overlays.forEach((overlay) =>
-    overlay.addEventListener("click", () => {
-        hideModal(signInModal);
-        hideModal(signUpModal);
-        hideModal(forgotPasswordModal);
-        hideModal(resetPasswordModal);
-    })
-);
+// Sự kiện đóng modal khi nhấn vào nút đóng
+closeButtons.forEach((button) => {
+    button.addEventListener("click", closeAllModals);
+});
+
+// Sự kiện đóng modal khi nhấn vào overlay (vùng tối ngoài modal)
+overlays.forEach((overlay) => {
+    overlay.addEventListener("click", closeAllModals);
+});

@@ -17,6 +17,12 @@
     border-top: 4px solid var(--Primary-Color-Dark);
     border-left: 4px solid var(--Primary-Color-Dark);
     background: var(--Primary-Color-White);
+
+    @include abstracts.screen(sm) {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
 }
 
 .chat-header {
@@ -30,6 +36,10 @@
     background: var(--Primary-Color-BlueLight);
     margin-bottom: 20px;
 
+    @include abstracts.screen(sm) {
+        border-radius: 0;
+    }
+
     &__title {
         color: var(--Primary-Color-White);
     }
@@ -39,6 +49,10 @@
     padding: 0 20px;
     height: 520px;
     overflow: auto;
+
+    @include abstracts.screen(md) {
+        height: 82%;
+    }
 
     &__wrap {
         display: flex;
@@ -106,6 +120,10 @@
 
         &::placeholder {
             color: var(--Primary-Color-White);
+        }
+
+        @include abstracts.screen(sm) {
+            width: 263px;
         }
     }
 }

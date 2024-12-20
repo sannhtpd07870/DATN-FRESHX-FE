@@ -40,6 +40,7 @@
                         class="hero__img"
                     />
                 </div>
+
                 <div class="container">
                     <div class="hero__inner">
                         <section class="hero-content">
@@ -56,7 +57,8 @@
                                 Xem Thêm
                             </button>
                         </section>
-                        <div class="container">
+
+                        <div class="container d-lg-none">
                             <div class="hero-containers">
                                 <!-- Hero Item 1 -->
                                 <article
@@ -65,7 +67,7 @@
                                 >
                                     <div class="hero-container__item">
                                         <img
-                                            src="./assets/icons/phone2.svg"
+                                            src="./assets/icons/phone.svg"
                                             alt=""
                                             class="hero-container__icon"
                                         />
@@ -144,7 +146,8 @@
                                 </article>
                             </div>
                         </div>
-                        <div class="hero__dots">
+
+                        <div class="hero__dots d-xl-none">
                             <span
                                 id="dot1"
                                 class="hero__dot hero__dot--active"
@@ -167,7 +170,7 @@
                         <img
                             src="./assets/img/choose/avt.png"
                             alt=""
-                            class="choose-container__img"
+                            class="choose-container__img d-lg-none"
                         />
 
                         <div class="choose-container__wrap">
@@ -451,7 +454,7 @@
         </div>
 
         <!-- Modal SignIn -->
-        <div id="signIn" class="modal-login modal">
+        <div class="modal-login signIn">
             <div class="modal-login__container">
                 <div class="modal-login__close">
                     <img src="./assets/icons/close2.svg" alt="" />
@@ -482,7 +485,7 @@
                             <p class="button-small">Đăng nhập với Facebook</p>
                         </a>
 
-                        <div class="modal-login__btn">
+                        <div class="modal-login__btn open-login">
                             <img src="./assets/icons/user.svg" alt="" />
                             <p class="button-small">
                                 Sử dụng Email / số điện thoại
@@ -493,14 +496,11 @@
                     <div class="modal-login__bot">
                         <p class="modal-login__text button-small">
                             Bạn chưa có tài khoản?
-                            <span id="openSignUp" class="modal-login__link"
+                            <span class="modal-login__link signup"
                                 >Đăng ký ngay</span
                             >
                         </p>
-                        <p
-                            id="forgotPasswordLink"
-                            class="modal-login__link button-small"
-                        >
+                        <p class="modal-login__link forgot button-small">
                             Bạn quên mật khẩu
                         </p>
                     </div>
@@ -510,7 +510,7 @@
         </div>
 
         <!-- Modal Signup -->
-        <div id="signUp" class="modal-login">
+        <div id="signUp" class="modal-login signUp">
             <div class="modal-login__container">
                 <div class="modal-login__close">
                     <img src="./assets/icons/close2.svg" alt="" />
@@ -552,14 +552,11 @@
                     <div class="modal-login__bot">
                         <p class="modal-login__text button-small">
                             Bạn chưa có tài khoản?
-                            <span id="openSignIn" class="modal-login__link"
+                            <span class="modal-login__link signup"
                                 >Đăng nhập ngay</span
                             >
                         </p>
-                        <p
-                            id="forgotPasswordLink"
-                            class="modal-login__link button-small"
-                        >
+                        <p class="modal-login__link forgot button-small">
                             Bạn quên mật khẩu
                         </p>
                     </div>
@@ -569,7 +566,7 @@
         </div>
 
         <!-- Modal Fogot Password -->
-        <div id="fogotPass" class="modal-login">
+        <div class="modal-login forgotPass">
             <div class="modal-login__container">
                 <div class="modal-login__close">
                     <img src="./assets/icons/close2.svg" alt="" />
@@ -615,8 +612,8 @@
                         </div>
 
                         <button
-                            id="resetPasswordLink"
-                            class="modal-login__btn-large button-small"
+                            type="button"
+                            class="modal-login__btn-large reset button-small"
                         >
                             Đặt lại mật khẩu
                         </button>
@@ -627,7 +624,7 @@
         </div>
 
         <!-- Modal Reset Password -->
-        <div id="resetPass" class="modal-login">
+        <div class="modal-login resetPass">
             <div class="modal-login__container">
                 <div class="modal-login__close">
                     <img src="./assets/icons/close2.svg" alt="" />
@@ -669,10 +666,349 @@
                             />
                         </div>
 
+                        <a
+                            href="./index-login.html"
+                            class="modal-login__btn-large button-small"
+                        >
+                            Đăng nhập ngay
+                        </a>
+                    </form>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal Login email -->
+        <div class="modal-login email">
+            <div class="modal-login__container">
+                <div class="modal-login__close">
+                    <img src="./assets/icons/close2.svg" alt="" />
+                </div>
+                <div class="modal-login__col">
+                    <img
+                        src="./assets/img/Logo.png"
+                        alt=""
+                        class="modal-login__logo"
+                    />
+
+                    <div class="modal-login__content">
+                        <h2 class="heading4">Đăng nhập vào Fresh-X</h2>
+                        <p class="modal-login__desc button-small">
+                            Mỗi người nên sử dụng riêng một tài khoản, tài khoản
+                            nhiều người sử dụng sẽ bị khóa.
+                        </p>
+                    </div>
+
+                    <form class="modal-login__form">
+                        <div class="modal-login__wrap">
+                            <button
+                                class="desc1 modal-login__text"
+                                for="email-login"
+                            >
+                                Đăng nhập với số điện thoại
+                            </button>
+                            <input
+                                id="email-login"
+                                placeholder="Email hoặc Username"
+                                type="email"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__wrap">
+                            <input
+                                id="email-login"
+                                placeholder="Mật khẩu"
+                                type="password"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__checkbox">
+                            <input type="checkbox" name="" id="checkUser" />
+                            <label class="button-small" for="checkUser"
+                                >Ghi nhớ đăng nhập</label
+                            >
+                        </div>
+
                         <button class="modal-login__btn-large button-small">
                             Đăng nhập ngay
                         </button>
                     </form>
+
+                    <div class="modal-login__bot">
+                        <p class="modal-login__text button-small">
+                            Bạn chưa có tài khoản?
+                            <span id="openSignUp" class="modal-login__link"
+                                >Đăng ký ngay</span
+                            >
+                        </p>
+                        <p
+                            id="forgotPasswordLink"
+                            class="modal-login__link button-small"
+                        >
+                            Bạn quên mật khẩu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal Login phone -->
+        <div class="modal-login phone">
+            <div class="modal-login__container">
+                <div class="modal-login__close">
+                    <img src="./assets/icons/close2.svg" alt="" />
+                </div>
+                <div class="modal-login__col">
+                    <img
+                        src="./assets/img/Logo.png"
+                        alt=""
+                        class="modal-login__logo"
+                    />
+
+                    <div class="modal-login__content">
+                        <h2 class="heading4">Đăng nhập vào Fresh-X</h2>
+                        <p class="modal-login__desc button-small">
+                            Mỗi người nên sử dụng riêng một tài khoản, tài khoản
+                            nhiều người sử dụng sẽ bị khóa.
+                        </p>
+                    </div>
+
+                    <form class="modal-login__form">
+                        <div class="modal-login__wrap">
+                            <button
+                                class="desc1 modal-login__text"
+                                for="email-login"
+                            >
+                                Đăng nhập với email
+                            </button>
+                            <input
+                                id="email-login"
+                                placeholder="Số điện thoại"
+                                type="email"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__wrap-inline">
+                            <input
+                                id="email-login"
+                                placeholder="Nhập mã xác nhận"
+                                type="email"
+                                class="button-small"
+                            />
+                            <button class="modal-login__btn-small">
+                                Gửi mã
+                            </button>
+                        </div>
+
+                        <div class="modal-login__checkbox">
+                            <input type="checkbox" name="" id="checkPhone" />
+                            <label
+                                class="button-small modal-login__check-text"
+                                for="checkPhone"
+                                >Ghi nhớ đăng nhập</label
+                            >
+                        </div>
+
+                        <button class="modal-login__btn-large button-small">
+                            Đăng nhập ngay
+                        </button>
+                    </form>
+
+                    <div class="modal-login__bot">
+                        <p class="modal-login__text button-small">
+                            Bạn chưa có tài khoản?
+                            <span id="openSignUp" class="modal-login__link"
+                                >Đăng ký ngay</span
+                            >
+                        </p>
+                        <p
+                            id="forgotPasswordLink"
+                            class="modal-login__link button-small"
+                        >
+                            Bạn quên mật khẩu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal SigUp email -->
+        <div class="modal-login sign-up phone">
+            <div class="modal-login__container">
+                <div class="modal-login__close">
+                    <img src="./assets/icons/close2.svg" alt="" />
+                </div>
+                <div class="modal-login__col">
+                    <img
+                        src="./assets/img/Logo.png"
+                        alt=""
+                        class="modal-login__logo"
+                    />
+
+                    <div class="modal-login__content">
+                        <h2 class="heading4">Đăng ký tài khoản Fresh-X</h2>
+                        <p class="modal-login__desc button-small">
+                            Mỗi người nên sử dụng riêng một tài khoản, tài khoản
+                            nhiều người sử dụng sẽ bị khóa.
+                        </p>
+                    </div>
+
+                    <form class="modal-login__form">
+                        <div class="modal-login__wrap">
+                            <label class="desc1" for="email-login">
+                                Tên của bạn?
+                            </label>
+                            <input
+                                id="email-signUp"
+                                placeholder="Email hoặc Username"
+                                type="text"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__wrap">
+                            <button
+                                class="desc1 modal-login__text"
+                                for="email-login"
+                            >
+                                Đăng ký với số điện thoại
+                            </button>
+                            <input
+                                id="email-signUp"
+                                placeholder="Email hoặc Username"
+                                type="email"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <input
+                            id="email-signUp"
+                            placeholder="Mật khẩu"
+                            type="password"
+                            class="modal-login__input button-small"
+                        />
+
+                        <div class="modal-login__wrap-inline">
+                            <input
+                                id="email-login"
+                                placeholder="Nhập mã xác nhận"
+                                type="email"
+                                class="button-small"
+                            />
+                            <button class="modal-login__btn-small">
+                                Gửi mã
+                            </button>
+                        </div>
+
+                        <button class="modal-login__btn-large button-small">
+                            Đăng nhập ngay
+                        </button>
+                    </form>
+
+                    <div class="modal-login__bot">
+                        <p class="modal-login__text button-small">
+                            Bạn chưa có tài khoản?
+                            <span id="openSignUp" class="modal-login__link"
+                                >Đăng ký ngay</span
+                            >
+                        </p>
+                        <p
+                            id="forgotPasswordLink"
+                            class="modal-login__link button-small"
+                        >
+                            Bạn quên mật khẩu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__overlay"></div>
+        </div>
+
+        <!-- Modal SigUp phone -->
+        <div id="signUpEmail" class="modal-login">
+            <div class="modal-login__container">
+                <div class="modal-login__close">
+                    <img src="./assets/icons/close2.svg" alt="" />
+                </div>
+                <div class="modal-login__col">
+                    <img
+                        src="./assets/img/Logo.png"
+                        alt=""
+                        class="modal-login__logo"
+                    />
+
+                    <div class="modal-login__content">
+                        <h2 class="heading4">Đăng ký tài khoản Fresh-X</h2>
+                        <p class="modal-login__desc button-small">
+                            Mỗi người nên sử dụng riêng một tài khoản, tài khoản
+                            nhiều người sử dụng sẽ bị khóa.
+                        </p>
+                    </div>
+
+                    <form class="modal-login__form">
+                        <div class="modal-login__wrap">
+                            <label class="desc1" for="phoneSignUp">
+                                Tên của bạn?
+                            </label>
+                            <input
+                                id="phoneSignUp"
+                                placeholder="Họ và tên"
+                                type="text"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__wrap">
+                            <button
+                                class="desc1 modal-login__text"
+                                for="email-login"
+                            >
+                                Đăng ký với email
+                            </button>
+                            <input
+                                id="email-signUp"
+                                placeholder="Số điện thoại"
+                                type="tel"
+                                class="modal-login__input button-small"
+                            />
+                        </div>
+
+                        <div class="modal-login__wrap-inline">
+                            <input
+                                id="email-login"
+                                placeholder="Nhập mã xác nhận"
+                                type="email"
+                                class="button-small"
+                            />
+                            <button class="modal-login__btn-small">
+                                Gửi mã
+                            </button>
+                        </div>
+
+                        <button class="modal-login__btn-large button-small">
+                            Đăng nhập ngay
+                        </button>
+                    </form>
+
+                    <div class="modal-login__bot">
+                        <p class="modal-login__text button-small">
+                            Bạn chưa có tài khoản?
+                            <span id="openSignUp" class="modal-login__link"
+                                >Đăng ký ngay</span
+                            >
+                        </p>
+                        <p
+                            id="forgotPasswordLink"
+                            class="modal-login__link button-small"
+                        >
+                            Bạn quên mật khẩu
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="modal__overlay"></div>
