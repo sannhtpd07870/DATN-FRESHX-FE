@@ -35,7 +35,8 @@ const App = () => {
             <Route
               path="/user/*"
               element={
-                checkUserRole() === 'user' ? <UserRouter /> : <Navigate to="/" replace />
+                // checkUserRole() === 'user' ? <UserRouter /> : <Navigate to="/" replace />
+                <UserRouter />
               }
             />
 
