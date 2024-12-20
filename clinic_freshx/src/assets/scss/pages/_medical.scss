@@ -1,0 +1,265 @@
+@use "../abstracts";
+
+.medical {
+    margin-top: 75px;
+}
+
+.medical-container {
+    &__title {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.25;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--Primary-color-BlueDark);
+        }
+    }
+
+    &__maternity {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 56px;
+    }
+
+    &__item {
+        border-radius: 22px;
+        background: #fff;
+        overflow: hidden;
+        transition: 0.25s ease;
+
+        &:hover {
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.55);
+        }
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 22px 22px 0px 0px;
+    }
+
+    &__content {
+        padding: 20px 10px;
+    }
+
+    &__heading {
+        transition: 0.25s;
+    }
+
+    &__item:hover &__heading {
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__desc {
+        margin-top: 10px;
+        color: var(--Primary-Color-Gray);
+
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.medical-container + .medical-container {
+    margin-top: 100px;
+}
+
+.hero-medical {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--Primary-color-BlueDark);
+
+    &__content {
+        width: 54%;
+        padding-left: 13%;
+        color: var(--Primary-Color-White);
+        flex-shrink: 0;
+    }
+
+    &__title {
+        width: 70%;
+    }
+
+    &__sub-title {
+        margin-top: 20px;
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-top: 52px;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.why-medical {
+    margin-top: 100px;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__img {
+        width: 50%;
+        object-fit: cover;
+    }
+
+    &__title {
+        color: var(--Primary-color-BlueDark);
+    }
+
+    &__list {
+        margin-top: 20px;
+    }
+
+    &__item {
+        list-style: disc;
+        margin-top: 0 !important;
+    }
+
+    &__btn {
+        position: relative;
+        left: 50%;
+        translate: -50%;
+        margin-top: 45px;
+    }
+}
+
+.doctor-medical {
+    margin-top: 100px;
+
+    &__title {
+        padding: 25px 0;
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.33;
+        color: var(--Primary-Color-White);
+        background: var(--Primary-color-BlueDark);
+
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    &__sub-title {
+        width: 65%;
+        position: relative;
+        left: 50%;
+        translate: -50%;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    &__container {
+        padding-left: 13%;
+        margin-top: 58px;
+        overflow: hidden;
+    }
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__item {
+        position: relative;
+        width: 278px;
+        height: 416px;
+        border-radius: 15px;
+        overflow: hidden;
+        color: var(--Primary-Color-White);
+    }
+
+    &__item:hover &__content {
+        bottom: 0;
+    }
+
+    &__avt {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: -150px;
+        width: 100%;
+        padding: 20px;
+        background: var(
+            --Color-Gradient-Blue,
+            linear-gradient(
+                180deg,
+                rgba(30, 144, 210, 0.9) 0%,
+                rgba(16, 76, 112, 0.9) 29.12%
+            )
+        );
+        border-radius: 0px 0px 15px 15px;
+        opacity: 0.9;
+        transition: 0.25s linear;
+    }
+
+    &__name {
+        text-align: center;
+    }
+
+    &__dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+
+        margin-top: 60px;
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        background: rgba(16, 76, 112, 0.6);
+        border-radius: 50%;
+
+        &--active {
+            background: var(--Primary-color-BlueDark);
+        }
+    }
+
+    &__btn {
+        position: relative;
+        left: 50%;
+        translate: -50%;
+        margin-top: 70px;
+    }
+}
+
+.medical-content {
+    margin-top: 30px;
+
+    &__wrap + &__wrap {
+        margin-top: 32px;
+    }
+
+    &__heading {
+        margin-bottom: 10px;
+    }
+
+    &__desc {
+        margin-top: 5px !important;
+    }
+}

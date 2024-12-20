@@ -1,0 +1,120 @@
+.modal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom right, #d0eaff, #4a90e2);
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 12px;
+    box-shadow: 24px;
+    padding: 2rem;
+    width: 400px;
+  }
+.container-modal {
+
+    text-align: center;
+}
+.container-modal  h2 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.container-modal label{
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-size: 0.9em;
+    color: #333;
+}
+.container-modal input[type="text"],
+.container-modal input[type="password"] {
+    background-color: #ffff;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1em;
+}
+.container-modal .remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+.container-modal .remember-me input {
+    margin-right: 5px;
+}
+.container-modal a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+.container-modal a:hover {
+    text-decoration: underline;
+}
+.container-modal .btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 20px 0;
+}
+.container-modal .btn-signin {
+    background-color: #238636;
+    color: white;
+    margin-bottom: 10px;
+}
+.container-modal .btn-signin:hover {
+    background-color: #2ea043;
+}
+.container-modal .btn-passkey {
+    background-color: #21262d;
+    color: #c9d1d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-modal .btn-passkey i {
+    margin-right: 5px;
+}
+.container-modal .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+.container-modal .nsm7Bb-HzV7m-LgbsSe{
+ border-radius: 20px;
+ border: 1px solid black;
+}
+.container-modal .separator::before,
+.container-modal .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #30363d;
+}
+.container-modal .separator:not(:empty)::before {
+    margin-right: .25em;
+}
+.container-modal .separator:not(:empty)::after {
+    margin-left: .25em;
+}
+.container-modal .footer {
+    margin-top: 20px;
+}
+.container-modal .footer a{
+    color: red;
+}
+.container-modal  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    color: #333;
+    cursor: pointer;
+}
