@@ -1,9 +1,212 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, Modal, Select, Table, Row, Col, Checkbox, message } from 'antd';
-import { PlusOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axios from '../../../services/axiosInstance';
+import { Table, Button, Input, Modal, message, Row, Col, Form, Select, Checkbox } from 'antd';
+import { EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useTheme } from '@mui/material/styles';
-import useDebounce from '../../hooks/useDebounce';
+import useDebounce from "../../../components/admin/useDebounce";
+import Create from './Create';
+
+const { Option } = Select;
+
+const ExpandedRow = ({ record, onSave, onCancel, isEditing, setIsEditing, editingRecord, setEditingRecord }) => {
+    const [formData, setFormData] = useState({
+        code: record.code,
+        name: record.name,
+        departmentId: record.departmentId,
+        inventoryTypeId: record.inventoryTypeId,
+        specialtyId: record.specialtyId,
+        costCenterId: record.costCenterId,
+        isSuspended: record.isSuspended,
+        isSourceManagement: record.isSourceManagement
+    });
+
+    const [departments, setDepartments] = useState([]);
+    const [specialties, setSpecialties] = useState([]);
+    const [inventoryTypes, setInventoryTypes] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [deptRes, specRes, invRes] = await Promise.all([
+                    axios.get('/api/department'),
+                    axios.get('/api/specialty'),
+                    axios.get('/api/inventorytype')
+                ]);
+                setDepartments(deptRes.data.data);
+                setSpecialties(specRes.data.data);
+                setInventoryTypes(invRes.data.data);
+            } catch (error) {
+                message.error('Không thể lấy dữ liệu!');
+            }
+        };
+        fetchData();
+    }, []);
+
+    const handleInputChange = (field, value) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleSaveClick = async () => {
+        try {
+            const updatedData = {
+                ...record,
+                ...formData
+            };
+            await onSave(updatedData);
+            setIsEditing(false);
+        } catch (error) {
+            message.error('Cập nhật không thành công!');
+        }
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+        setEditingRecord(null);
+    };
+
+    return (
+        <div>
+            <Form layout="vertical">
+                <Row gutter={[16, 16]}>
+                    <Col span={12}>
+                        <strong>Mã nhà thuốc:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Input
+                                value={formData.code}
+                                onChange={(e) => handleInputChange('code', e.target.value)}
+                            />
+                        ) : (
+                            record.code
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Tên nhà thuốc:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Input
+                                value={formData.name}
+                                onChange={(e) => handleInputChange('name', e.target.value)}
+                            />
+                        ) : (
+                            record.name
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Khoa/Phòng:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Select
+                                value={formData.departmentId}
+                                onChange={(value) => handleInputChange('departmentId', value)}
+                                style={{ width: '100%' }}
+                            >
+                                {departments.map((dept) => (
+                                    <Option key={dept.departmentId} value={dept.departmentId}>
+                                        {dept.name}
+                                    </Option>
+                                ))}
+                            </Select>
+                        ) : (
+                            departments.find(d => d.departmentId === record.departmentId)?.name || 'N/A'
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Loại kho:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Select
+                                value={formData.inventoryTypeId}
+                                onChange={(value) => handleInputChange('inventoryTypeId', value)}
+                                style={{ width: '100%' }}
+                            >
+                                {inventoryTypes.map((type) => (
+                                    <Option key={type.id} value={type.id}>
+                                        {type.name}
+                                    </Option>
+                                ))}
+                            </Select>
+                        ) : (
+                            inventoryTypes.find(t => t.id === record.inventoryTypeId)?.name || 'N/A'
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Chuyên khoa:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Select
+                                value={formData.specialtyId}
+                                onChange={(value) => handleInputChange('specialtyId', value)}
+                                style={{ width: '100%' }}
+                            >
+                                {specialties.map((spec) => (
+                                    <Option key={spec.id} value={spec.id}>
+                                        {spec.name}
+                                    </Option>
+                                ))}
+                            </Select>
+                        ) : (
+                            specialties.find(s => s.id === record.specialtyId)?.name || 'N/A'
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Mã trung tâm chi phí:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Input
+                                value={formData.costCenterId}
+                                onChange={(e) => handleInputChange('costCenterId', e.target.value)}
+                                type="number"
+                            />
+                        ) : (
+                            record.costCenterId
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Checkbox
+                                checked={formData.isSourceManagement}
+                                onChange={(e) => handleInputChange('isSourceManagement', e.target.checked)}
+                            >
+                                Quản lý nguồn
+                            </Checkbox>
+                        ) : (
+                            <strong>Quản lý nguồn: {record.isSourceManagement ? 'Có' : 'Không'}</strong>
+                        )}
+                    </Col>
+                    <Col span={12}>
+                        <strong>Trạng thái:</strong>{' '}
+                        {editingRecord?.pharmacyId === record.pharmacyId ? (
+                            <Select
+                                value={formData.isSuspended}
+                                onChange={(value) => handleInputChange('isSuspended', value)}
+                                style={{ width: '100%' }}
+                            >
+                                <Option value={false}>Hoạt động</Option>
+                                <Option value={true}>Tạm ngừng</Option>
+                            </Select>
+                        ) : (
+                            record.isSuspended ? 'Tạm ngừng' : 'Hoạt động'
+                        )}
+                    </Col>
+                    <Col span={24}>
+                        <Button 
+                            type="primary" 
+                            onClick={handleSaveClick}
+                            disabled={!isEditing}
+                            style={{ marginRight: 8 }}
+                        >
+                            Lưu
+                        </Button>
+                        <Button 
+                            onClick={handleCancel} 
+                            disabled={!isEditing}
+                        >
+                            Thoát
+                        </Button>
+                    </Col>
+                </Row>
+            </Form>
+        </div>
+    );
+};
 
 const Pharmacy = () => {
     const [data, setData] = useState([]);
@@ -12,25 +215,18 @@ const Pharmacy = () => {
     const [searchKeyword, setSearchKeyword] = useState('');
     const [editingRecord, setEditingRecord] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    const [departments, setDepartments] = useState([]);
-    const [specialties, setSpecialties] = useState([]);
-    const [inventoryTypes, setInventoryTypes] = useState([]);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [form] = Form.useForm();
     const theme = useTheme();
     const debouncedSearchKeyword = useDebounce(searchKeyword, 500);
+    const [isModalVisible, setModalVisible] = useState(false);
+
+    const handleOpen = () => setModalVisible(true);
+    const handleClose = () => setModalVisible(false);
 
     useEffect(() => {
         if (debouncedSearchKeyword !== undefined) {
             fetchData();
         }
     }, [debouncedSearchKeyword]);
-
-    useEffect(() => {
-        fetchDepartments();
-        fetchSpecialties();
-        fetchInventoryTypes();
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -42,36 +238,9 @@ const Pharmacy = () => {
             });
             setData(response.data.data);
         } catch (error) {
-            message.error('Không thể lấy dữ liệu nhà thuốc!');
+            message.error('Không thể lấy dữ liệu!');
         } finally {
             setLoading(false);
-        }
-    };
-
-    const fetchDepartments = async () => {
-        try {
-            const response = await axios.get('/api/department');
-            setDepartments(response.data.data);
-        } catch (error) {
-            message.error('Không thể lấy dữ liệu khoa/phòng!');
-        }
-    };
-
-    const fetchSpecialties = async () => {
-        try {
-            const response = await axios.get('/api/specialty');
-            setSpecialties(response.data.data);
-        } catch (error) {
-            message.error('Không thể lấy dữ liệu chuyên khoa!');
-        }
-    };
-
-    const fetchInventoryTypes = async () => {
-        try {
-            const response = await axios.get('/api/inventorytype');
-            setInventoryTypes(response.data.data);
-        } catch (error) {
-            message.error('Không thể lấy dữ liệu loại kho!');
         }
     };
 
@@ -82,62 +251,25 @@ const Pharmacy = () => {
                 name: updatedRecord.name,
                 departmentId: updatedRecord.departmentId,
                 inventoryTypeId: updatedRecord.inventoryTypeId,
-                isSuspended: updatedRecord.isSuspended,
-                nameUnaccented: updatedRecord.name,
                 specialtyId: updatedRecord.specialtyId,
                 costCenterId: updatedRecord.costCenterId,
-                isSourceManagement: updatedRecord.isSourceManagement
+                isSuspended: updatedRecord.isSuspended,
+                isSourceManagement: updatedRecord.isSourceManagement,
+                nameUnaccented: updatedRecord.name
             });
             message.success('Cập nhật thành công!');
             fetchData();
             setEditingRecord(null);
-            setIsEditing(false);
             setExpandedRowKeys([]);
         } catch (error) {
             message.error('Cập nhật không thành công!');
         }
     };
 
-    const handleAdd = async (values) => {
-        try {
-            await axios.post('/api/pharmacy', {
-                ...values,
-                nameUnaccented: values.name
-            });
-            message.success('Thêm nhà thuốc thành công!');
-            setIsModalVisible(false);
-            form.resetFields();
-            fetchData();
-        } catch (error) {
-            message.error('Thêm nhà thuốc thất bại!');
-        }
-    };
-
-    const handleDelete = (record) => {
-        Modal.confirm({
-            title: 'Xác nhận xóa',
-            content: `Bạn có chắc chắn muốn xóa nhà thuốc "${record.name}" không?`,
-            okText: 'Xóa',
-            okType: 'danger',
-            cancelText: 'Hủy',
-            onOk: async () => {
-                try {
-                    await axios.delete(`/api/pharmacy/${record.pharmacyId}`);
-                    message.success('Xóa nhà thuốc thành công!');
-                    fetchData();
-                } catch (error) {
-                    message.error('Xóa nhà thuốc thất bại!');
-                }
-            }
-        });
-    };
-
     const handleCancel = () => {
         setEditingRecord(null);
         setIsEditing(false);
         setExpandedRowKeys([]);
-        setIsModalVisible(false);
-        form.resetFields();
     };
 
     const handleEdit = (record) => {
@@ -150,28 +282,49 @@ const Pharmacy = () => {
         setSearchKeyword(e.target.value);
     };
 
+    const handleExpandRow = (record) => {
+        setEditingRecord(false);
+        setIsEditing(false);
+        setExpandedRowKeys((prevKeys) => {
+            const keys = [...prevKeys];
+            const index = keys.indexOf(record.pharmacyId);
+            if (index === -1) {
+                keys.push(record.pharmacyId);
+            } else {
+                keys.splice(index, 1);
+            }
+            return keys;
+        });
+    };
+
+    const handleDelete = (record) => {
+        Modal.confirm({
+            title: `Bạn có chắc chắn muốn xóa nhà thuốc ${record.name}?`,
+            onOk: async () => {
+                try {
+                    await axios.delete(`/api/pharmacy/${record.pharmacyId}`);
+                    message.success('Xóa thành công!');
+                    fetchData();
+                } catch (error) {
+                    message.error('Xóa không thành công!');
+                }
+            },
+            onCancel() {
+                message.info('Hủy xóa');
+            },
+        });
+    };
+
     const columns = [
         {
             title: 'Mã nhà thuốc',
             dataIndex: 'code',
-            key: 'code',
-            render: (text, record) => (
-                <Button type="link" onClick={() => handleEdit(record)}>
-                    {text}
-                </Button>
-            )
+            key: 'code'
         },
         {
             title: 'Tên nhà thuốc',
             dataIndex: 'name',
             key: 'name'
-        },
-        {
-            title: 'Khoa/Phòng',
-            dataIndex: 'departmentId',
-            key: 'departmentId',
-            render: (departmentId) => 
-                departments.find(d => d.departmentId === departmentId)?.name
         },
         {
             title: 'Trạng thái',
@@ -186,7 +339,7 @@ const Pharmacy = () => {
                 <div>
                     <Button
                         icon={<EyeOutlined />}
-                        onClick={() => handleEdit(record)}
+                        onClick={() => handleExpandRow(record)}
                         style={{ marginRight: 8 }}
                     >
                         Xem
@@ -218,16 +371,17 @@ const Pharmacy = () => {
                     value={searchKeyword}
                     onChange={handleSearchChange}
                     style={{ width: 300 }}
-                    allowClear
                 />
-                <Button
-                    type="primary"
-                    icon={<PlusOutlined />}
-                    onClick={() => setIsModalVisible(true)}
-                >
+                <Button type="primary" onClick={handleOpen}>
                     Thêm nhà thuốc
                 </Button>
             </div>
+
+            <Create
+                isActive={isModalVisible}
+                onClose={handleClose}
+                onRefresh={fetchData}
+            />
 
             <Table
                 columns={columns}
@@ -247,120 +401,10 @@ const Pharmacy = () => {
                         setIsEditing={setIsEditing}
                         editingRecord={editingRecord}
                         setEditingRecord={setEditingRecord}
-                        departments={departments}
-                        specialties={specialties}
-                        inventoryTypes={inventoryTypes}
                     />
                 )}
                 style={{ backgroundColor: theme.palette.mode === 'dark' ? '#252525' : '#f0f0f0' }}
             />
-
-            <Modal
-                title="Thêm nhà thuốc mới"
-                visible={isModalVisible}
-                onOk={() => form.submit()}
-                onCancel={handleCancel}
-                width={800}
-            >
-                <Form
-                    form={form}
-                    layout="vertical"
-                    onFinish={handleAdd}
-                >
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="code"
-                                label="Mã nhà thuốc"
-                                rules={[{ required: true, message: 'Vui lòng nhập mã nhà thuốc!' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="name"
-                                label="Tên nhà thuốc"
-                                rules={[{ required: true, message: 'Vui lòng nhập tên nhà thuốc!' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="departmentId"
-                                label="Khoa/Phòng"
-                                rules={[{ required: true, message: 'Vui lòng chọn khoa/phòng!' }]}
-                            >
-                                <Select>
-                                    {departments.map(dept => (
-                                        <Option key={dept.departmentId} value={dept.departmentId}>
-                                            {dept.name}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="inventoryTypeId"
-                                label="Loại kho"
-                                rules={[{ required: true, message: 'Vui lòng chọn loại kho!' }]}
-                            >
-                                <Select>
-                                    {inventoryTypes.map(type => (
-                                        <Option key={type.id} value={type.id}>
-                                            {type.name}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="specialtyId"
-                                label="Chuyên khoa"
-                            >
-                                <Select>
-                                    {specialties.map(spec => (
-                                        <Option key={spec.id} value={spec.id}>
-                                            {spec.name}
-                                        </Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="costCenterId"
-                                label="Mã trung tâm chi phí"
-                            >
-                                <Input type="number" />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="isSourceManagement"
-                                valuePropName="checked"
-                            >
-                                <Checkbox>Quản lý nguồn</Checkbox>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="isSuspended"
-                                label="Trạng thái"
-                                initialValue={false}
-                            >
-                                <Select>
-                                    <Option value={false}>Hoạt động</Option>
-                                    <Option value={true}>Tạm ngừng</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
-            </Modal>
         </div>
     );
 };

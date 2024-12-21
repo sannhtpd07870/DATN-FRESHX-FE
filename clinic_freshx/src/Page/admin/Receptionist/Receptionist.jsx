@@ -4,6 +4,7 @@ import { Table, Button, Input, Modal, message, Row, Col, Form, Select, DatePicke
 import { EyeOutlined, EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { useTheme } from '@mui/material/styles';
 import useDebounce from "../../../components/admin/useDebounce";
+import Create from './Create';
 import moment from 'moment';
 
 const { Option } = Select;
@@ -29,8 +30,7 @@ const ExpandedRow = ({ record, onSave, onCancel, isEditing, setIsEditing, editin
         try {
             const updatedData = {
                 ...record,
-                ...formData,
-                dateOfBirth: moment(formData.dateOfBirth).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]')
+                ...formData
             };
             await onSave(updatedData);
             setIsEditing(false);
@@ -39,12 +39,17 @@ const ExpandedRow = ({ record, onSave, onCancel, isEditing, setIsEditing, editin
         }
     };
 
+    const handleCancel = () => {
+        setIsEditing(false);
+        setEditingRecord(null);
+    };
+
     return (
         <div>
             <Form layout="vertical">
                 <Row gutter={[16, 16]}>
                     <Col span={8}>
-                        <strong>Họ tên:</strong>{' '}
+                        <strong>Họ và tên:</strong>{' '}
                         {editingRecord?.receptionistId === record.receptionistId ? (
                             <Input
                                 value={formData.name}
@@ -120,7 +125,6 @@ const ExpandedRow = ({ record, onSave, onCancel, isEditing, setIsEditing, editin
                         )}
                     </Col>
 
-                    {/* Action Buttons */}
                     <Col span={24}>
                         <Button 
                             type="primary" 
@@ -131,7 +135,7 @@ const ExpandedRow = ({ record, onSave, onCancel, isEditing, setIsEditing, editin
                             Lưu
                         </Button>
                         <Button 
-                            onClick={onCancel}
+                            onClick={handleCancel}
                             disabled={!isEditing}
                         >
                             Hủy
@@ -150,8 +154,7 @@ const Receptionist = () => {
     const [searchKeyword, setSearchKeyword] = useState('');
     const [editingRecord, setEditingRecord] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [form] = Form.useForm();
+    const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
     const theme = useTheme();
     const debouncedSearchKeyword = useDebounce(searchKeyword, 500);
 
@@ -164,7 +167,7 @@ const Receptionist = () => {
     const fetchData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('/api/receptionist/detail', {
+            const response = await axios.get('/api/receptionist', {
                 params: {
                     searchKeyword: debouncedSearchKeyword
                 }
@@ -179,36 +182,74 @@ const Receptionist = () => {
 
     const handleSave = async (updatedRecord) => {
         try {
-            await axios.put(`/api/receptionist/${updatedRecord.receptionistId}`, {
-                name: updatedRecord.name,
-                phone: updatedRecord.phone,
-                email: updatedRecord.email,
-                gender: updatedRecord.gender,
-                dateOfBirth: updatedRecord.dateOfBirth,
-                isSuspended: updatedRecord.isSuspended
-            });
+            await axios.put(`/api/receptionist/${updatedRecord.receptionistId}`, updatedRecord);
             message.success('Cập nhật thành công!');
             fetchData();
             setEditingRecord(null);
-            setIsEditing(false);
             setExpandedRowKeys([]);
         } catch (error) {
             message.error('Cập nhật không thành công!');
         }
     };
 
-    // ... Rest of the component implementation (handleAdd, handleDelete, etc.) ...
+    const handleCancel = () => {
+        setEditingRecord(null);
+        setIsEditing(false);
+        setExpandedRowKeys([]);
+    };
+
+    const handleEdit = (record) => {
+        setEditingRecord(record);
+        setIsEditing(true);
+        setExpandedRowKeys([record.receptionistId]);
+    };
+
+    const handleDelete = (record) => {
+        Modal.confirm({
+            title: 'Xác nhận xóa',
+            content: `Bạn có chắc chắn muốn xóa lễ tân "${record.name}" không?`,
+            okText: 'Xóa',
+            okType: 'danger',
+            cancelText: 'Hủy',
+            onOk: async () => {
+                try {
+                    await axios.delete(`/api/receptionist/${record.receptionistId}`);
+                    message.success('Xóa lễ tân thành công!');
+                    fetchData();
+                } catch (error) {
+                    message.error('Xóa lễ tân thất bại!');
+                }
+            },
+            onCancel() {
+                message.info('Đã hủy xóa');
+            },
+        });
+    };
+
+    const handleExpandRow = (record) => {
+        setEditingRecord(null);
+        setIsEditing(false);
+        setExpandedRowKeys((prevKeys) => {
+            const keys = [...prevKeys];
+            const index = keys.indexOf(record.receptionistId);
+            if (index === -1) {
+                keys.push(record.receptionistId);
+            } else {
+                keys.splice(index, 1);
+            }
+            return keys;
+        });
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchKeyword(e.target.value);
+    };
 
     const columns = [
         {
-            title: 'Họ tên',
+            title: 'Họ và tên',
             dataIndex: 'name',
-            key: 'name',
-            render: (text, record) => (
-                <Button type="link" onClick={() => handleExpandRow(record)}>
-                    {text}
-                </Button>
-            )
+            key: 'name'
         },
         {
             title: 'Số điện thoại',
@@ -224,12 +265,6 @@ const Receptionist = () => {
             title: 'Giới tính',
             dataIndex: 'gender',
             key: 'gender'
-        },
-        {
-            title: 'Ngày sinh',
-            dataIndex: 'dateOfBirth',
-            key: 'dateOfBirth',
-            render: (date) => moment(date).format('DD/MM/YYYY')
         },
         {
             title: 'Trạng thái',
@@ -276,16 +311,21 @@ const Receptionist = () => {
                     value={searchKeyword}
                     onChange={handleSearchChange}
                     style={{ width: 300 }}
-                    allowClear
                 />
                 <Button
                     type="primary"
                     icon={<PlusOutlined />}
-                    onClick={() => setIsModalVisible(true)}
+                    onClick={() => setIsCreateModalVisible(true)}
                 >
                     Thêm lễ tân
                 </Button>
             </div>
+
+            <Create
+                isActive={isCreateModalVisible}
+                onClose={() => setIsCreateModalVisible(false)}
+                onRefresh={fetchData}
+            />
 
             <Table
                 columns={columns}
@@ -309,86 +349,6 @@ const Receptionist = () => {
                 )}
                 style={{ backgroundColor: theme.palette.mode === 'dark' ? '#252525' : '#f0f0f0' }}
             />
-
-            <Modal
-                title="Thêm lễ tân mới"
-                visible={isModalVisible}
-                onOk={() => form.submit()}
-                onCancel={handleCancel}
-                width={800}
-            >
-                <Form
-                    form={form}
-                    layout="vertical"
-                    onFinish={handleAdd}
-                >
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="name"
-                                label="Họ tên"
-                                rules={[{ required: true, message: 'Vui lòng nhập họ tên!' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="phone"
-                                label="Số điện thoại"
-                                rules={[{ required: true, message: 'Vui lòng nhập số điện thoại!' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="email"
-                                label="Email"
-                                rules={[
-                                    { required: true, message: 'Vui lòng nhập email!' },
-                                    { type: 'email', message: 'Email không hợp lệ!' }
-                                ]}
-                            >
-                                <Input />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="gender"
-                                label="Giới tính"
-                                rules={[{ required: true, message: 'Vui lòng chọn giới tính!' }]}
-                            >
-                                <Select>
-                                    <Option value="Nam">Nam</Option>
-                                    <Option value="Nữ">Nữ</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="dateOfBirth"
-                                label="Ngày sinh"
-                                rules={[{ required: true, message: 'Vui lòng chọn ngày sinh!' }]}
-                            >
-                                <DatePicker style={{ width: '100%' }} format="DD/MM/YYYY" />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                name="isSuspended"
-                                label="Trạng thái"
-                                initialValue={0}
-                            >
-                                <Select>
-                                    <Option value={0}>Hoạt động</Option>
-                                    <Option value={1}>Tạm ngừng</Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
-            </Modal>
         </div>
     );
 };

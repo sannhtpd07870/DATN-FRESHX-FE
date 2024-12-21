@@ -14,6 +14,8 @@ import ServiceGroup from "../Page/admin/ServiceGroup/ServiceGroup.jsx"
 import InventoryType from "../Page/admin/InventoryType/InventoryType.jsx"
 import Receptionist from "../Page/admin/Receptionist/Receptionist.jsx"
 import Patient from "../Page/admin/Patient/Patient.jsx"
+import Pharmacy from '../Page/admin/Pharmacy/Pharmacy.jsx';
+
 // import UserManagement from '../components/admin/UserManagement';
 // import AppointmentManagement from '../components/admin/AppointmentManagement';
 // import ServiceManagement from '../components/admin/ServiceManagement';
@@ -36,6 +38,8 @@ const AdminRouter = () => {
        <Route path="inventorytype" element={<InventoryType/>}/>
        <Route path="receptionist" element={<Receptionist/>}/> 
       <Route path="patient" element={<Patient/>}/>
+      <Route path="pharmacy" element={<Pharmacy/>}/>
+     
       </Route>
     </Routes>
   );
