@@ -11,11 +11,15 @@ import DrugCatalog from '../Page/admin/DrugCatalog/DrugCatalog.jsx';
 import Supplier from '../Page/admin/Supplier/Supplier.jsx'
 import UnitOfMeasure from "../Page/admin/UnitOfMeasure/UnitOfMeasure.jsx"
 import ServiceGroup from "../Page/admin/ServiceGroup/ServiceGroup.jsx"
+import ServiceCatalog from '../Page/admin/ServiceCatalog/ServiceCatalog.jsx';
 import InventoryType from "../Page/admin/InventoryType/InventoryType.jsx"
 import Receptionist from "../Page/admin/Receptionist/Receptionist.jsx"
 import Patient from "../Page/admin/Patient/Patient.jsx"
 import Pharmacy from '../Page/admin/Pharmacy/Pharmacy.jsx';
-
+import TestBase from '../Page/admin/TestBase.jsx';
+import QRCodeScanner from '../Page/admin/Qrcode.jsx';
+import QRCodeFromImageJSQR from '../Page/admin/Qrimage.jsx';
+import ReceptionForm from '../Page/admin/Reception.jsx';
 // import UserManagement from '../components/admin/UserManagement';
 // import AppointmentManagement from '../components/admin/AppointmentManagement';
 // import ServiceManagement from '../components/admin/ServiceManagement';
@@ -35,11 +39,15 @@ const AdminRouter = () => {
        <Route path="supplier" element={<Supplier/>}/>
        <Route path="unitofmeasure" element= {<UnitOfMeasure/>}/>
        <Route path="servicegroup" element={<ServiceGroup/>}/>
+       <Route path="servicecatalog" element={<ServiceCatalog/>}/>
        <Route path="inventorytype" element={<InventoryType/>}/>
        <Route path="receptionist" element={<Receptionist/>}/> 
       <Route path="patient" element={<Patient/>}/>
       <Route path="pharmacy" element={<Pharmacy/>}/>
-     
+      <Route path="test" element={<TestBase/>}/>
+      <Route path="qr" element={<QRCodeScanner/>}/>
+      <Route path="qrcode" element={<QRCodeFromImageJSQR/>}/>
+      <Route path='reception' element={<ReceptionForm/>} />
       </Route>
     </Routes>
   );

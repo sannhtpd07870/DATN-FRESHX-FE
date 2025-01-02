@@ -7,6 +7,7 @@ import { UserContext } from './services/UserContext';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext, useMode } from './theme';
+import { GlobalStyles } from '@mui/material';
 // import ThemeTransition from './components/common/ThemeTransition';
 // import ThemeBottom from './components/common/ThemeBottom';
 import "./assets/css/main.css"
@@ -25,7 +26,14 @@ const App = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
-  
+      <GlobalStyles
+        styles={{
+          '.css-1f0zctz': {
+            height: 'auto !important',
+            minHeight: '100vh',
+          },
+        }}
+      />
           <Router>
             <Routes>
             {/* Public routes */}
@@ -43,7 +51,8 @@ const App = () => {
             <Route
               path="/admin/*"
               element={
-                checkUserRole() === 'admin' ? <AdminRouter /> : <Navigate to="/" replace />
+                <AdminRouter />
+                // checkUserRole() === 'admin' ? <AdminRouter /> : <Navigate to="/" replace />
               }
             />
 
@@ -61,7 +70,6 @@ const App = () => {
             />
           </Routes>
         </Router>
-  
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

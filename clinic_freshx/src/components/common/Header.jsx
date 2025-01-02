@@ -109,6 +109,7 @@ const Header = () => {
           </div>
         </div>
         <LoginModal isActive={isModalActive} onClose={handleCloseModal} />
+        
       </div>
       
     </>

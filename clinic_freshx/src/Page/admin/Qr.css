@@ -1,0 +1,7 @@
+.videoCanvas{
+    width: 450px;
+    min-height: 100px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #000;
+}
