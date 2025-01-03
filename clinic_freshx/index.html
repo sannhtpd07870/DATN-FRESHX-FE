@@ -9,5 +9,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+          config: {
+            bot_id: '7384550659657826311',
+          },
+          componentProps: {
+            title: 'Freshx',
+            icon: 'https://cdn.icon-icons.com/icons2/405/PNG/512/Ai_40670.png'
+          },
+        });
+    </script>
   </body>
 </html>

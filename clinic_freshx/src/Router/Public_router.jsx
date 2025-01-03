@@ -10,6 +10,7 @@ import Book from '../Page/public/Book.jsx';
 import Login from '../Page/auth/Login';
 import Blog from '../Page/public/Blog.jsx';
 import Chat from '../Page/public/Chat.jsx';
+import NotificationComponent from '../components/common/Notification.jsx';
 // import Contact from '../components/Public/Contact';
 // import Appointment from '../components/Public/Appointment';
 
@@ -18,6 +19,7 @@ const PublicRouter = () => {
     <Routes>
        <Route path='chat' element = {<Chat/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="thong-bao" element= {<NotificationComponent/>}/>
       <Route path="/" element={<PublicLayout />}>
         <Route index element={<Home />} />
         <Route path="specialty" element = {<Specialty/>}/>
@@ -26,7 +28,6 @@ const PublicRouter = () => {
         <Route path="chuyen-gia-y-te" element ={<Doctor/> }/>
         <Route path="book" element ={<Book/>}/>
         <Route path="blog" element = {<Blog/>}/>
-       
       </Route>
     </Routes>
   );
