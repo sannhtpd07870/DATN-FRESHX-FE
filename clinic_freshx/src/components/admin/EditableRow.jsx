@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Row, Col, Input, Select, Button, message } from 'antd';
+import { Form, Row, Col, Input, Select, Button, message, Checkbox } from 'antd';
 import axios from "../../services/axiosInstance";
 
 const { Option } = Select;
@@ -57,7 +57,7 @@ const EditableRow = ({
             await onSave(updatedData);
             setIsEditing(false);
         } catch (error) {
-            message.error('Cập nhật không thành công!');
+            message.error('Cập nhật không thành công!');   
         }
     };
 
@@ -93,16 +93,25 @@ const EditableRow = ({
                                         </Option>
                                     ))}
                                 </Select>
-                            ) : null
+                            ) : field.type === 'checkbox' ? (
+                                <Checkbox
+                                    checked={formData[field.name]}
+                                    onChange={(e) => handleInputChange(field.name, e.target.checked)}
+                                >
+                                </Checkbox>
+                            ): null
                         ) : (
-                            field.type === 'select'
-                            ? optionsData[field.name]?.find((opt) => opt[field.name] === record[field.optionValue])?.[field.optionLabel] || 'N/A'
-                            : field.type === 'date'
-                            ? record[field.name]
-                              ? new Date(record[field.name]).toLocaleString()
-                              : 'Invalid Date'
-                            : record[field.name]
-                        )}
+                            field.type === 'select' ? (
+                                optionsData[field.name]?.find((opt) => opt[field.name] === record[field.optionValue])?.[field.optionLabel] || 'N/A'
+                              ) : field.type === 'date' ? (
+                                record[field.name] ? new Date(record[field.name]).toLocaleString() : 'Invalid Date'
+                              ) : field.type === 'checkbox' ? (
+                                <input type="checkbox" checked={!!record[field.name]} disabled />
+                              ) : (
+                                record[field.name]
+                              )
+                            )    
+                        }
                     </Col>
                 ))}
                 <Col span={24}>

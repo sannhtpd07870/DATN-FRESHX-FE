@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import Cookies from "js-cookie";
 import './Sidebar.css';
 import { useTheme } from '@mui/material/styles';
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { LeftOutlined, CloseOutlined  } from '@ant-design/icons';
 
 const Item = ({ title, to, icon, isActive }) => {
   return (
@@ -19,7 +20,6 @@ const Item = ({ title, to, icon, isActive }) => {
 const SideBar = ({ isOpen, onClose }) => {
   const theme = useTheme();
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [userData, setUser] = useState([]);
   const location = useLocation();
 
@@ -40,17 +40,17 @@ const SideBar = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <nav className={`sidebar ${isCollapsed ? 'collapsed' : ''} ${isOpen ? 'open' : ''}`} style={{ backgroundColor: theme.palette.mode === 'dark' ? '#201f1f' : '#f0f0f0' }}>
+      <nav className={`sidebar ${isOpen ? 'open' : 'close'}`} style={{ backgroundColor: theme.palette.mode === 'dark' ? '#201f1f' : '#f0f0f0'}}>
         <div className="sidebar-header">
           <button
             className="toggle-btn"
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => onClose()}
             aria-label="Toggle Sidebar"
           >
-            <i className={`fa-solid ${isCollapsed ? 'fa-bars' : 'fa-times'}`}></i>
+            <CloseOutlined />
           </button>
 
-          {!isCollapsed && (
+           
             <div className="profile-section">
               <img
                 src="../../assets/img/Logo.png"
@@ -71,7 +71,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 </span>
               </div>
             </div>
-          )}
+          
         </div>
 
         <div className="sidebar-menu">

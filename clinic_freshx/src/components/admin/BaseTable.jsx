@@ -63,17 +63,22 @@ const BaseTable = ({
 
   const handleSave = async (updatedRecord) => {
     try {
-        console.log("cập nhật")
       const respoint = await axios.put(
         `${UpdateEndpoint}/${updatedRecord[primaryKey]}`,
         updatedRecord
       );
-      console.log(respoint)
       message.success('Cập nhật thành công!');
       fetchData();
       handleCancel();
     } catch (error) {
-      message.error('Cập nhật không thành công!', error);
+        console.log(error)
+       if(error.status && error.status === 400 && error.response.data.data.length >0){
+        const erdata = error.response.data.data
+        erdata.map((item) => (
+            message.error(`${item.field}: ${item.message}`)
+        ))
+       }
+      message.error('Cập nhật không thành công!');
     }
   };
 

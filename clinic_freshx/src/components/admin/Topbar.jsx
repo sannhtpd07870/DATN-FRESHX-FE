@@ -13,6 +13,8 @@ import InputBase from "@mui/material/InputBase";
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';  
+import MenuIcon from '@mui/icons-material/Menu';
+
 import { 
   Box, 
   IconButton, 
@@ -24,13 +26,12 @@ import {
   ListItemIcon,
   ListItemText 
 } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
 
 import useAuthService from "../../services/authService";
 import { ColorModeContext, tokens } from "../../theme";
 import './Topbar.css';
 
-const Topbar = ({ onMenuClick }) => {
+const Topbar = ({ onMenuClick,isOpen  }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
@@ -82,9 +83,10 @@ const Topbar = ({ onMenuClick }) => {
     }
   }, []);
 
+  console.log(onMenuClick)
   return (
     <Box display="flex" justifyContent="space-between" p={2} className="topbar">
-      <Box className="mobile-menu">
+      <Box className="mobile-menu" style={{display: `${!isOpen? 'block' : 'none'}`}}>
         <IconButton onClick={onMenuClick}>
           <MenuIcon />
         </IconButton>
