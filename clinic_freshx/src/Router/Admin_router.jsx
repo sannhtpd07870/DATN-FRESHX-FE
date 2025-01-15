@@ -19,7 +19,7 @@ import Pharmacy from '../Page/admin/Pharmacy/Pharmacy.jsx';
 import TestBase from '../Page/admin/TestBase.jsx';
 import QRCodeScanner from '../Page/admin/Qrcode.jsx';
 import QRCodeFromImageJSQR from '../Page/admin/Qrimage.jsx';
-import ReceptionForm from '../Page/admin/Reception.jsx';
+import ReceptionForm from '../Page/admin/Reception/Reception.jsx';
 import Examine from '../Page/admin/Examine/Examine.jsx';
 import SupplierCatalog from '../Page/admin/SupplierCatalog/SupplierCatalog.jsx';
 // import UserManagement from '../components/admin/UserManagement';
