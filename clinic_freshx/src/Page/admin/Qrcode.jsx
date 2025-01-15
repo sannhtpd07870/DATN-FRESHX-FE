@@ -1,7 +1,73 @@
 import React, { useRef, useState, useEffect } from "react";
 import jsQR from "jsqr";
+import { isArrayBuffer } from "@microsoft/signalr/dist/esm/Utils";
+import "./Qr.css"
 
-const QRCodeScanner = () => {
+const Cccd = ({ onDataScanned }) => {
+
+  if (onDataScanned == "No result") {
+    return (<></>)
+  }
+  // Tách dữ liệu từ scannedData
+  const [id, no, fullName, dob, gender, address, issueDate] = onDataScanned.split("|");
+
+// Hàm chuyển đổi ngày từ ddMMyyyy sang yyyy-MM-dd
+const formatDate = (dateStr) => {
+  const day = dateStr.slice(0, 2);
+  const month = dateStr.slice(2, 4);
+  const year = dateStr.slice(4, 8);
+  return `${day}-${month}-${year}`;
+};
+
+// Tạo JSON với ngày được định dạng lại
+const jsonData = {
+  id,
+  fullName,
+  dob: formatDate(dob),
+  gender,
+  address,
+  issueDate: formatDate(issueDate),
+};
+  return (
+    <div className="Cccd">
+    <div className="card">
+      <img alt="Vietnam national emblem" src="../../../public/assets/img/Quoc_Huy_Viet_Nam.png" />
+      <div className="left-fields">
+        <div>
+          <div className="title">Số CCCD</div>
+          <div className="value">{jsonData.id}</div>
+        </div>
+        <div>
+          <div className="title">Họ và tên</div>
+          <div className="value">{jsonData.fullName}</div>
+        </div>
+        <div className="gender-dob">
+          <div>
+            <div className="title">Giới tính</div>
+            <div className="value">{jsonData.gender}</div>
+          </div>
+          <div>
+            <div className="title">Ngày sinh</div>
+            <div className="value">{jsonData.dob}</div>
+          </div>
+        </div>
+        <div>
+          <div className="title">Nơi thường trú</div>
+          <div className="value">{jsonData.address}</div>
+        </div>
+        <div>
+          <div className="title">Ngày cấp CCCD</div>
+          <div className="value">{jsonData.issueDate}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  );
+};
+
+
+const QRCodeScanner = ({ onDataScanned }) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [data, setData] = useState("No result");
@@ -9,16 +75,29 @@ const QRCodeScanner = () => {
   const [cameraDevices, setCameraDevices] = useState([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState("");
   const [qrDetected, setQrDetected] = useState(false);
+  // Tách dữ liệu từ scannedData
 
   useEffect(() => {
-    navigator.mediaDevices.enumerateDevices().then((devices) => {
-      const videoDevices = devices.filter((device) => device.kind === "videoinput");
-      setCameraDevices(videoDevices);
-      if (videoDevices.length > 0) {
-        setSelectedDeviceId(videoDevices[0].deviceId);
+    const checkCameraAccess = async () => {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter((device) => device.kind === "videoinput");
+        setCameraDevices(videoDevices);
+
+        if (videoDevices.length > 0) {
+          setSelectedDeviceId(videoDevices[0].deviceId);
+        } else {
+          alert("No camera devices found. Please connect a camera and refresh the page.");
+        }
+      } catch (err) {
+        console.error("Error accessing devices: ", err);
+        alert("Unable to access camera. Please grant permissions and refresh the page.");
       }
-    });
+    };
+
+    checkCameraAccess();
   }, []);
+
 
   useEffect(() => {
     const startVideo = async () => {
@@ -55,6 +134,11 @@ const QRCodeScanner = () => {
           const video = videoRef.current;
           const context = canvas.getContext("2d");
 
+          if (video.videoWidth === 0 || video.videoHeight === 0) {
+            // console.warn("Video dimensions are not available yet.");
+            return;
+          }
+
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -69,23 +153,28 @@ const QRCodeScanner = () => {
             setQrDetected(true);
             setData(code.data);
             setIsScanning(false);
+
+            if (onDataScanned) {
+              onDataScanned(code.data);
+            }
           } else {
             setQrDetected(false);
           }
         }
       };
 
+
       const interval = setInterval(scanQRCode, 200);
       return () => clearInterval(interval);
     }
-  }, [isScanning, qrDetected]);
+  }, [isScanning, qrDetected, onDataScanned]);
 
   const drawGuideFrame = (context, width, height, isDetected) => {
     // Calculate center frame dimensions
     const frameSize = Math.min(width, height) * 0.6;
     const x = (width - frameSize) / 2;
     const y = (height - frameSize) / 2;
-    
+
     // Set colors based on QR detection
     const frameColor = isDetected ? "#00FF00" : "#FF0000";
     const cornerSize = 30;
@@ -131,19 +220,20 @@ const QRCodeScanner = () => {
   };
 
   return (
+    <div style={{display: "flex"}}>
     <div style={{ textAlign: "center" }}>
       <h2>QR Code Scanner</h2>
       <div style={{ position: "relative", width: "100%", maxWidth: "400px", margin: "0 auto" }}>
-        <video 
-          ref={videoRef} 
+        <video
+          ref={videoRef}
           style={{ width: "100%", maxWidth: "400px" }}
         ></video>
-        <canvas 
-          ref={canvasRef} 
-          style={{ 
-            position: "absolute", 
-            top: 0, 
-            left: "50%", 
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "50%",
             transform: "translateX(-50%)",
             width: "100%",
             maxWidth: "400px",
@@ -151,9 +241,6 @@ const QRCodeScanner = () => {
           }}
         ></canvas>
       </div>
-
-      <p>Scanned Data: {data}</p>
-
       {cameraDevices.length > 0 && (
         <select
           value={selectedDeviceId}
@@ -173,6 +260,8 @@ const QRCodeScanner = () => {
           Restart Scanner
         </button>
       )}
+    </div>
+    <Cccd onDataScanned={data} />
     </div>
   );
 };

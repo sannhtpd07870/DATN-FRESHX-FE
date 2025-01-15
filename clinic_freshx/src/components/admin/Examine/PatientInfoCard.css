@@ -1,0 +1,52 @@
+.patient-info-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding-left: 5px;
+  }
+  
+  .patient-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .patient-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .patient-details {
+    display: flex;
+    gap: 1rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  .patient-allergy-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .patient-section {
+    margin-bottom: 1rem;
+  }
+  
+  .patient-section h3 {
+    font-size: 1.6rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+  
+  .patient-history {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .patient-history li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  

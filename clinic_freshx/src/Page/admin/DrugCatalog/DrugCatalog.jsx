@@ -27,13 +27,11 @@ const DrugCatalog = () => {
         { name: 'unitOfMeasureId', label: 'Đơn vị đo lường', type: 'select', optionKey: 'unitOfMeasureId',    width: '100%', optionValue: 'unitOfMeasureId', optionLabel: 'name', optionConfig: {
             endpoint: '/api/unitofmeasure',
         }, span: 8 },
-        { name: 'manufacturerId', label: 'Nhà sản xuất', type: 'select', optionKey: 'manufacturerId', optionValue: 'supplierId', optionLabel: 'name', optionConfig: {
+        { name: 'manufacturerId', label: 'Nhà sản xuất', type: 'select', optionKey: 'supplierId', optionValue: 'supplierId', optionLabel: 'name', optionConfig: {
             endpoint: '/api/supplier',
         }, span: 8 },
         { name: 'countryId', label: 'Quốc gia', type: 'select', optionKey: 'countryId', optionValue: 'countryId', optionLabel: 'name',  optionConfig: {
             endpoint: '/api/country',
-           
-         
         }, span: 8 },
         { name: 'activeIngredient', label: 'Hoạt chất', type: 'input', span: 8 },
         { name: 'usage', label: 'Cách sử dụng', type: 'input', span: 12 },
@@ -41,8 +39,6 @@ const DrugCatalog = () => {
         { name: 'effect', label: 'Tác dụng', type: 'input', span: 12 },
         { name: 'drugTypeId', label: 'Loại thuốc', type: 'select', optionKey: 'drugTypeId', optionValue: 'drugTypeId', optionLabel: 'name', optionConfig: {
             endpoint: '/api/drugtype',
-      
-         
         }, span: 12 },
         { name: 'drugClassification', label: 'Phân loại thuốc', type: 'input', span: 12 },
         { name: 'routeOfAdministration', label: 'Đường dùng', type: 'input', span: 12 },
