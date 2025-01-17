@@ -17,9 +17,9 @@ const PatientInfoCard = ({ patient }) => {
     lastVisit = {},
   } = patient || {};
 
-  const lastVisitDate = lastVisit.date || 'Không rõ';
-  const lastVisitDiagnosis = lastVisit.diagnosis || 'Không rõ';
-  const lastVisitDoctor = lastVisit.doctor || 'Không rõ';
+  const lastVisitDate = lastVisit?.date || 'Không rõ';
+  const lastVisitDiagnosis = lastVisit?.diagnosis || 'Không rõ';
+  const lastVisitDoctor = lastVisit?.doctor || 'Không rõ';
 
   return (
     <div className="patient-info-card" bordered>

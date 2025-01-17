@@ -22,6 +22,7 @@ import QRCodeFromImageJSQR from '../Page/admin/Qrimage.jsx';
 import ReceptionForm from '../Page/admin/Reception/Reception.jsx';
 import Examine from '../Page/admin/Examine/Examine.jsx';
 import SupplierCatalog from '../Page/admin/SupplierCatalog/SupplierCatalog.jsx';
+import Payment from '../Page/admin/Payment/Payment.jsx';
 // import UserManagement from '../components/admin/UserManagement';
 // import AppointmentManagement from '../components/admin/AppointmentManagement';
 // import ServiceManagement from '../components/admin/ServiceManagement';
@@ -52,6 +53,7 @@ const AdminRouter = () => {
       <Route path='reception' element={<ReceptionForm/>} />
       <Route path="examine" element={<Examine />}/>
       <Route path="nhacungcap" element={<SupplierCatalog/>} />
+      <Route path="payment" element={<Payment/>}  />
       </Route>
     </Routes>
   );

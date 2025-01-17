@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { AutoComplete } from 'antd';
+import { AutoComplete, Select, Spin  } from 'antd';
 import axios from "../../../services/axiosInstance";
 import debounce from 'lodash/debounce';
 const AddressSearch = ({ onAddressSelect }) => {
    const [options, setOptions] = useState([]);
+   const [fetching, setFetching] = useState(false);
     const searchAddress = async (value) => {
        if (!value) {
            setOptions([]);
+           setFetching(true);
            return;
        }
         try {
@@ -20,11 +22,12 @@ const AddressSearch = ({ onAddressSelect }) => {
                addressDetails: address.addressDetails
            }));
             setOptions(formattedOptions);
+            setFetching(false);
        } catch (error) {
            console.error('Error searching addresses:', error);
        }
    };
-    const debouncedSearch = debounce(searchAddress, 300);
+    const debouncedSearch = debounce(searchAddress, 800);
     const handleSelect = (value, option) => {
        onAddressSelect(option.addressDetails);
    };
@@ -35,6 +38,7 @@ const AddressSearch = ({ onAddressSelect }) => {
            onSelect={handleSelect}
            style={{ width: '100%' }}
            placeholder="Nhập địa chỉ"
+           notFoundContent={fetching ? <Spin size="small" /> : null}
        />
    );
 };

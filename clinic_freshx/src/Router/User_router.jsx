@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import UserLayout from '../layouts/userLayout.jsx';
+import UserLayout from '../layouts/UserLayout.jsx';
 import UserDashboard from '../components/user/UserDashboard';
 import AccountInfo from '../components/user/AccountInfo.jsx';
 // import UserProfile from '../components/User/UserProfile';

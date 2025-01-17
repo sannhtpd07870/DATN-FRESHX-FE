@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Form, Input, Select, Row, Col, Button, message } from "antd";
+import { Modal, Form, Input, Select, Row, Col, Button, message, Checkbox } from "antd";
 import axios from "../../services/axiosInstance";
 
 const BaseCreate = ({ isActive, onClose, onRefresh, createConfig }) => {
@@ -44,12 +44,29 @@ const BaseCreate = ({ isActive, onClose, onRefresh, createConfig }) => {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            await axios.post(createConfig.endpoint, values);
+            const processedValues = {};
+            createConfig.fields.forEach(field => {
+                if (field.type === 'select') {
+                    processedValues[field.name] = values[field.name] === undefined ? null : values[field.name];
+                }
+                else if (field.type === 'input') {
+                    processedValues[field.name] = values[field.name] === undefined ? null : values[field.name];
+                }
+                else if (field.type === 'checkbox') {
+                    processedValues[field.name] = values[field.name] === undefined ? false : values[field.name];
+                }
+                else {
+                    processedValues[field.name] = values[field.name];
+                }
+            });
+            
+            console.log('Processed values:', processedValues);
+            await axios.post(createConfig.endpoint, processedValues);
             message.success('Tạo mới thành công!');
             onClose();
             onRefresh();
         } catch (error) {
-          console.error(error)
+            console.error(error);
             message.error(error.response?.data?.message || 'Có lỗi xảy ra!');
         } finally {
             setLoading(false);
@@ -74,7 +91,9 @@ const BaseCreate = ({ isActive, onClose, onRefresh, createConfig }) => {
                             }
                         ]}
                     >
-                        <Input {...commonProps} placeholder={`Nhập ${field.label}`} />
+                        <Input {...commonProps} placeholder={`Nhập ${field.label}`}
+                             type={field.inputType === 'number'? 'number' : 'text'}
+                        />
                     </Form.Item>
                 );
 
@@ -95,14 +114,31 @@ const BaseCreate = ({ isActive, onClose, onRefresh, createConfig }) => {
                             placeholder={`Chọn ${field.label}`}
                             options={
                                 optionsData[field.name]?.map(item => ({
-                                    value: item[field.optionLabel],
+                                    value: item[field.optionValue],
                                     label: item[field.optionLabel]
                                 }))
                             }
                         />
                     </Form.Item>
                 );
-
+                case 'checkbox':
+                    return (
+                        <Form.Item
+                            name={field.name}
+                            label={field.label}
+                            valuePropName="checked"
+                            initialValue={false}
+                            rules={[
+                                {
+                                    required: !!field.messageRequired,
+                                    message: field.messageRequired
+                                }
+                            ]}
+                        >
+                            <Checkbox/>
+                               
+                        </Form.Item>
+                    );
             default:
                 return null;
         }
@@ -114,7 +150,8 @@ const BaseCreate = ({ isActive, onClose, onRefresh, createConfig }) => {
             open={isActive}
             onCancel={onClose}
             footer={null}
-            width={800}
+            width="90%"
+            height="auto"
         >
             <Form
                 form={form}

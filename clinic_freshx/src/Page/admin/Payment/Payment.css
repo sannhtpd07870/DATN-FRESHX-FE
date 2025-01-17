@@ -1,0 +1,23 @@
+.payment-container {
+  padding: 24px;
+}
+
+.payment-status-tag {
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.bill-details {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bill-detail-item {
+  margin-bottom: 4px;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 8px;
+} 

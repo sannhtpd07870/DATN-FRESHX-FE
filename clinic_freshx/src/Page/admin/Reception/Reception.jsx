@@ -27,12 +27,34 @@ const { Option } = Select;
 const AddReceptionForm = () => {
   const theme = useTheme();
   const [form] = Form.useForm();
+  const [doctors, setDoctors] = useState([])
   const [services, setServices] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [provinces, setProvinces] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [receptionId, setReceptionId] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [loadingServices, setLoadingServices] = useState(false);
+
+  // Add validation rules
+  const identityCardRules = [
+    { required: true, message: 'CMND/CCCD là bắt buộc!' },
+    { pattern: /^[0-9]{12}$/, message: 'CCCD phải là 12 chữ số!' }
+  ];
+
+  const nameRules = [
+    { required: true, message: 'Tên bệnh nhân là bắt buộc!' },
+    { min: 2, max: 100, message: 'Tên phải từ 2-100 ký tự!' },
+    { pattern: /^[a-zA-ZÀ-ỹ\s]*$/, message: 'Tên chỉ được chứa chữ cái và khoảng trắng!' }
+  ];
+
+  const phoneRules = [
+    { required: true, message: 'Số điện thoại là bắt buộc!' },
+    { pattern: /^(03|05|07|08|09)[0-9]{8}$/, message: 'Số điện thoại không hợp lệ!' }
+  ];
 
   useEffect(() => {
     fetchServices();
@@ -46,6 +68,13 @@ const AddReceptionForm = () => {
   }, []);
 
   const fetchServices = async () => {
+    try {
+      const response = await axios.get('/api/doctor/get-alldoctors');
+      setDoctors(response.data.data);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      message.error('Không thể lấy dữ bác sĩ');
+    }
     try {
       const response = await axios.get('/api/servicecatalog');
       setServices(response.data.data);
@@ -95,89 +124,26 @@ const AddReceptionForm = () => {
     }
   };
 
-  const handleSubmit = async (values) => {
-    setLoading(true);
-    try {
-      const formData = new FormData();
+  const handlePatientSelect = async (patient) => {
+    fetchDistricts(patient.provinceId);
+    fetchWards(patient.districtId);
+    form.resetFields()
+    // Convert gender to match form values
+    const genderValue = patient.gender === 'Nam' ? 'male' : 
+                       patient.gender === 'Nữ' ? 'female' : 'other';
 
-      // Append AddingPatient fields individually
-      
-      formData.append('AddingPatient.IdentityCardNumber', values.addingPatient.identityCardNumber);
-      formData.append('AddingPatient.Name', values.addingPatient.name);
-      formData.append('AddingPatient.Gender', values.addingPatient.gender === 'male' ? 'Nam' :
-        values.addingPatient.gender === 'female' ? 'Nữ' : 'Khác');
-      formData.append('AddingPatient.DateOfBirth', values.addingPatient.dateOfBirth);
-      formData.append('AddingPatient.PhoneNumber', values.addingPatient.phoneNumber);
-      formData.append('AddingPatient.Email', values.addingPatient.email || '');
-      formData.append('AddingPatient.WardId', values.addingPatient.wardId);
-      formData.append('AddingPatient.DistrictId', values.addingPatient.districtId);
-      formData.append('AddingPatient.ProvinceId', values.addingPatient.provinceId);
-      formData.append('AddingPatient.Ethnicity', values.addingPatient.ethnicity || '');
-   // Append avatar file if exists
-      if (values.addingPatient.avatarFile?.[0]?.originFileObj) {
-        formData.append('AddingPatient.AvatarFile', values.addingPatient.avatarFile[0].originFileObj);
-      }
+    // Format date string to YYYY-MM-DD
+    const dateOfBirth = patient.dateOfBirth ? patient.dateOfBirth.split('T')[0] : '';
 
-      // Append other reception fields
-      formData.append('SequenceNumber', values.sequenceNumber || '');
-      formData.append('IsPriority', values.isPriority || false);
-      formData.append('PatientId', values.PatientId || null);
-      formData.append('ReceptionLocationId', values.receptionLocationId || '');
-      formData.append('ReceptionistId', values.receptionistId || '');
-      formData.append('Note', values.note || '');
-
-      // Append medical service requests
-      values.medicalServiceRequests.forEach((request, index) => {
-        formData.append(`MedicalServiceRequest[${index}].RequestTime`, new Date().toISOString());
-        formData.append(`MedicalServiceRequest[${index}].ServiceId`, request.serviceCatalogId);
-        formData.append(`MedicalServiceRequest[${index}].Quantity`, request.quantity);
-        formData.append(`MedicalServiceRequest[${index}].Discount`, request.discount || 0);
-        formData.append(`MedicalServiceRequest[${index}].ServiceTotalAmount`, request.serviceTotalAmount || 0);
-        formData.append(`MedicalServiceRequest[${index}].DepartmentId`, request.departmentId);
-        formData.append(`MedicalServiceRequest[${index}].IsApproved`, true);
-        formData.append(`MedicalServiceRequest[${index}].Status`, true);
-        formData.append(`MedicalServiceRequest[${index}].AssignedById`, 0);
-      });
-
-      // For debugging - log all form data
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-      }
-
-      const response = await axios.post('/api/reception', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }
-      });
-
-      if (response.status === 200) {
-        message.success('Thêm tiếp nhận thành công');
-        form.resetFields();
-        localStorage.removeItem("formData");
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      if (error.response?.data?.message) {
-        message.error(`Lỗi: ${error.response.data.message}`);
-      } else {
-        message.error('Gửi biểu mẫu thất bại');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePatientSelect = (patient) => {
-    fetchDistricts(patient.provinceId),
-    fetchWards(patient.districtId)
+    // Set patient form fields
     form.setFieldsValue({
+      ReceptionId: patient.receptionId,
+      PatientId: patient.patientId,
       addingPatient: {
-        PatientId: patient.PatientId,
         identityCardNumber: patient.identityCardNumber,
         name: patient.name,
-        gender: patient.gender === 'Nam' ? 'male' : 
-                patient.gender === 'Nữ' ? 'female' : 'other',
-        dateOfBirth: patient.dateOfBirth,
+        gender: genderValue,
+        dateOfBirth: dateOfBirth,
         phoneNumber: patient.phoneNumber,
         email: patient.email,
         wardId: patient.wardId,
@@ -186,9 +152,50 @@ const AddReceptionForm = () => {
         ethnicity: patient.ethnicity
       }
     });
+
+    // If patient has receptionId, fetch reception details
+    if (patient.receptionId) {
+ 
+      try {
+        const response = await axios.get(`/api/reception/${patient.receptionId}`);
+        const receptionData = response.data.data;
+     
+        setIsUpdate(true);
+        setReceptionId(patient.receptionId);
+        // Chuyển đổi serviceId thành serviceCatalogId
+        const convertedServices = receptionData.medicalServiceRequest.map(service => ({
+          ...service,
+          serviceCatalogId: service.serviceId, // Chuyển đổi từ serviceId sang serviceCatalogId
+          quantity: service.quantity,
+          discount: service.discount,
+          serviceTotalAmount: service.serviceTotalAmount,
+          departmentId: service.departmentId,
+          doctor: service.assignedById
+        }));
+
+        // Set form values với dữ liệu đã chuyển đổi
+        form.setFieldsValue({
+          sequenceNumber: receptionData.sequenceNumber,
+          isPriority: receptionData.isPriority,
+          receptionLocationId: receptionData.receptionLocationId,
+          receptionistId: receptionData.receptionistId,
+          note: receptionData.note,
+          assignedDoctorId: receptionData.assignedDoctorId,
+          reasonForVisit: receptionData.reasonForVisit,
+          medicalServiceRequests: convertedServices,
+          
+        });
+      } catch (error) {
+        console.error('Error fetching reception details:', error);
+        message.error('Không thể lấy thông tin tiếp nhận');
+      }
+    } else {
+      setIsUpdate(false);
+      setReceptionId(null);
+    }
   };
 
-  const  handleAddressSelect = (addressDetails) => {
+  const handleAddressSelect = (addressDetails) => {
     fetchDistricts(addressDetails.provinceCode),
     fetchWards(addressDetails.districtCode)
     form.setFieldsValue({
@@ -198,6 +205,111 @@ const AddReceptionForm = () => {
         provinceId: addressDetails.provinceCode
       }
     });
+  };
+
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    try {
+      const formData = new FormData();
+
+      // Thêm các trường của patient
+      Object.keys(values.addingPatient).forEach(key => {
+        if (key === 'gender') {
+          formData.append(`AddingPatient.${key}`, 
+            values.addingPatient[key] === 'male' ? 'Nam' :
+            values.addingPatient[key] === 'female' ? 'Nữ' : 'Khác'
+          );
+        } else if (key === 'avatarFile' && values.addingPatient[key]?.[0]?.originFileObj) {
+          formData.append('AddingPatient.AvatarFile', values.addingPatient[key][0].originFileObj);
+        } else {
+          formData.append(`AddingPatient.${key}`, values.addingPatient[key] || '');
+        }
+      });
+
+      // Thêm các trường của reception
+      formData.append('SequenceNumber', values.sequenceNumber ?? "");
+      formData.append('IsPriority', values.isPriority ?? false);
+      formData.append('PatientId', values.PatientId ?? "");
+      formData.append('ReceptionLocationId', values.receptionLocationId ?? "");
+      formData.append('ReceptionistId', values.receptionistId ?? "");
+      formData.append('Note', values.note ?? "");
+      formData.append('AssignedDoctorId', values.assignedDoctorId ?? "");
+      formData.append('ReasonForVisit', values.reasonForVisit ?? "");
+
+      // Thêm medical service requests
+      values.medicalServiceRequests.forEach((service, index) => {
+        formData.append(`MedicalServiceRequest[${index}].ServiceId`, service.serviceCatalogId ?? "");
+        formData.append(`MedicalServiceRequest[${index}].Quantity`, service.quantity ?? 1);
+        formData.append(`MedicalServiceRequest[${index}].Discount`, service.discount ?? 0);
+        formData.append(`MedicalServiceRequest[${index}].ServiceTotalAmount`, service.serviceTotalAmount ?? 0);
+        formData.append(`MedicalServiceRequest[${index}].DepartmentId`, service.departmentId ?? "");
+        formData.append(`MedicalServiceRequest[${index}].IsApproved`, true);
+        formData.append(`MedicalServiceRequest[${index}].Status`, true);
+        formData.append(`MedicalServiceRequest[${index}].AssignedById`, service.doctor ?? "");
+      });
+
+      const url = isUpdate ? `/api/reception/${receptionId}` : '/api/reception';
+      const method = isUpdate ? 'put' : 'post';
+
+      for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
+      const response = await axios[method](url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      if (response.status === 200 ||response.status === 201 ) {
+        message.success(isUpdate ? 'Cập nhật tiếp nhận thành công' : 'Thêm tiếp nhận thành công');
+        form.resetFields();
+        localStorage.removeItem("formData");
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      message.error(error.response?.data?.message || 'Gửi biểu mẫu thất bại');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const calculateTotalAmount = (services) => {
+    return services.reduce((total, service) => {
+      const quantity = service.quantity || 1;
+      const discount = service.discount || 0;
+      const amount = service.serviceTotalAmount || 0;
+      return total + (amount * quantity * (1 - discount / 100));
+    }, 0);
+  };
+
+  useEffect(() => {
+    const currentServices = form.getFieldValue('medicalServiceRequests') || [];
+    const total = calculateTotalAmount(currentServices);
+    setTotalAmount(total);
+  }, [form]);
+
+  const handleServiceSelect = async (serviceId, index) => {
+    setLoadingServices(true);
+    try {
+      const response = await axios.get(`/api/servicecatalog/${serviceId}`);
+      const serviceData = response.data.data;
+      console.log(serviceId)
+      const currentServices = form.getFieldValue('medicalServiceRequests');
+      currentServices[index] = {
+        ...currentServices[index],
+        serviceTotalAmount: serviceData.price,
+        departmentId: serviceData.departmentId
+      };
+      
+      form.setFieldsValue({
+        medicalServiceRequests: currentServices
+      });
+    } catch (error) {
+      console.error('Error fetching service details:', error);
+      message.error('Không thể lấy thông tin dịch vụ');
+    } finally {
+      setLoadingServices(false);
+    }
   };
 
   return (
@@ -215,9 +327,8 @@ const AddReceptionForm = () => {
         >
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '2fr 6fr 6fr',
-            gap: '16px', 
-            width: '50%'}}>
+            gridTemplateColumns: '1.5fr 6fr 6fr 12fr',
+            gap: '16px'}}>
           <span>Tìm bệnh nhân</span>
           <PatientSearch 
           type="cccd" 
@@ -227,9 +338,28 @@ const AddReceptionForm = () => {
           type="name" 
           onPatientSelect={handlePatientSelect}
           />
+
+          <div style={{  display: 'flex', justifyContent: 'flex-end',  gap: '16px'}}>
+          <Form.Item
+            label="Id bệnh nhân"
+            name='PatientId'
+            layout="horizontal"
+          >
+            <Input disabled={true} />
+          </Form.Item>
+          <Form.Item
+            label="Id Tiếp nhận"
+            name='ReceptionId'
+            layout="horizontal"
+          >
+            <Input disabled={true} />
+          </Form.Item>
+          <Button danger onClick={() => form.resetFields()}>
+            Reset
+          </Button>
           </div>
-          
-              
+          </div>
+        
           <Divider orientation="left">Thông Tin Bệnh Nhân</Divider>
           
           <div style={{
@@ -240,7 +370,7 @@ const AddReceptionForm = () => {
             <Form.Item
               label="CMND/CCCD"
               name={['addingPatient', 'identityCardNumber']}
-              rules={[{ required: true, message: 'Vui lòng nhập số CMND/CCCD!' }]}
+              rules={identityCardRules}
             >
          
               <Input />
@@ -249,7 +379,7 @@ const AddReceptionForm = () => {
             <Form.Item
               label="Họ và Tên"
               name={['addingPatient', 'name']}
-              rules={[{ required: true, message: 'Vui lòng nhập họ và tên!' }]}
+              rules={nameRules}
             >
    
               <Input />
@@ -283,7 +413,7 @@ const AddReceptionForm = () => {
             <Form.Item
               label="Số Điện Thoại"
               name={['addingPatient', 'phoneNumber']}
-              rules={[{ required: true, message: 'Vui lòng nhập số điện thoại!' }]}
+              rules={phoneRules}
             >
               <Input />
             </Form.Item>
@@ -303,12 +433,7 @@ const AddReceptionForm = () => {
             >
               <Checkbox />
             </Form.Item>
-            <Form.Item
-            label="Id bệnh nhân"
-            name='PatientId'
-          >
-            <Input/>
-          </Form.Item>
+            
           </div>
           <Form.Item label="Tìm kiếm địa chỉ">
                    <AddressSearch onAddressSelect={handleAddressSelect} />
@@ -367,6 +492,28 @@ const AddReceptionForm = () => {
           >
             <Input />
           </Form.Item>
+
+
+          <Form.Item
+            label="Lý do khám"
+            name="reasonForVisit"
+          >
+            <TextArea rows = {2} />
+          </Form.Item>
+
+          <Form.Item
+            label="Bác sĩ chỉ định"
+            name="assignedDoctorId"
+          >
+            <Select>
+              {doctors.map(doctor => (
+                <Option key={doctor.doctorId} value={doctor.doctorId}>
+                  {doctor.name}
+                </Option>
+              ))}
+            </Select>
+       
+          </Form.Item>
           <Form.Item
             label="Ghi Chú"
             name="note"
@@ -380,78 +527,86 @@ const AddReceptionForm = () => {
             {(fields, { add, remove }) => (
               <>
                 {fields.map(({ key, name, ...restField }) => (
-                  <Space key={key} style={{
-                    display: 'grid',
-                    gap: '16px',
-                  }} align="baseline"
-                  >
-                    <div style={{ display: "flex" }}>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'serviceCatalogId']}
-                        label="Dịch Vụ"
-                        rules={[{ required: true, message: 'Vui lòng chọn dịch vụ!' }]}
-                        style={{ flexGrow: "8" }}
-                      >
-                        <Select placeholder="Chọn dịch vụ">
-                          {services.map((service) => (
-                            <Option key={service.serviceCatalogId} value={service.serviceCatalogId}>
-                              {service.name}
-                            </Option>
-                          ))}
-                        </Select>
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'quantity']}
-                        label="Số Lượng"
-                        rules={[{ required: true, message: 'Vui lòng nhập số lượng!' }]}
-                        style={{ flexGrow: "1" }}
-                      >
-                        <InputNumber min={1} defaultValue={1} />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'discount']}
-                        label="Giảm Giá (%)"
-                        style={{ flexGrow: "1" }}
-                      >
-                        <InputNumber min={0} max={100} />
-                      </Form.Item>
-                      <Form.Item
-                        {...restField}
-                        name={[name, 'departmentId']}
-                        label="Phòng Ban"
-                        rules={[{ required: true, message: 'Vui lòng chọn phòng ban!' }]}
-                        style={{ flexGrow: "6" }}
-                      >
-                        <Select placeholder="Chọn phòng ban">
-                          {departments.map((department) => (
-                            <Option key={department.departmentI} value={department.departmentId}>
-                              {department.name}
-                            </Option>
-                          ))}
-                        </Select>
-                      </Form.Item>
-                    </div>
+                  <Space key={key} style={{ display: 'flex', marginBottom: 8, gap: "5%", alignItems: 'flex-end' }} >
                     <Form.Item
                       {...restField}
-                      name={[name, 'serviceTotalAmount']}
-                      label="Tổng Tiền Dịch Vụ"
+                      name={[name, 'serviceCatalogId']}
+                      rules={[{ required: true, message: 'Vui lòng chọn dịch vụ!' }]}
                     >
-                      <InputNumber min={0} />
+                      <Select 
+                       showSearch
+                       defaultValue = 'null'
+                        loading={loadingServices}
+                        placeholder="Chọn dịch vụ"
+                        onChange={(value) => handleServiceSelect(value, name)}
+                        style={{ width: 300 }}
+                        popupMatchSelectWidth={false}
+                        placement='bottomLeft'
+                        filterOption={(input, option) =>
+                          (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        }
+                        
+                      >
+                        {services.map((service) => (
+                          <Option 
+                            key={service.serviceCatalogId} 
+                            value={service.serviceCatalogId}
+                            label = {` ${service.name} - ${service.price.toLocaleString('vi-VN')}đ `}
+                          >
+                            {service.name} - {service.price.toLocaleString('vi-VN')}đ
+                          </Option>
+                        ))}
+                      </Select>
+                    </Form.Item>
+                    
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'quantity']}
+                      label="Số Lượng"
+                      rules={[{ required: true, message: 'Vui lòng nhập số lượng!' }]}
+                      style={{ flexGrow: "1" }}
+                    >
+                      <InputNumber min={1} defaultValue = '1'/>
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'discount']}
+                      label="Giảm Giá (%)"
+                      style={{ flexGrow: "1" }}
+                    >
+                      <InputNumber min={0} max={100} />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'departmentId']}
+                      label="Phòng Ban"
+                      rules={[{ required: true, message: 'Vui lòng chọn phòng ban!' }]}
+                      style={{ flexGrow: "8" }}
+                    >
+                      <Select placeholder="Chọn phòng ban">
+                        {departments.map((department) => (
+                          <Option key={department.departmentId} value={department.departmentId}>
+                            {department.name}
+                          </Option>
+                        ))}
+                      </Select>
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
                 ))}
                 <Form.Item>
-                  <Button type="dashed" onClick={() => add()} icon={<PlusOutlined />}>
-                    Thêm Dịch Vụ
+                  <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                    Thêm dịch vụ
                   </Button>
                 </Form.Item>
+                
+                <div style={{ marginTop: 16 }}>
+                  <strong>Tổng tiền: {totalAmount.toLocaleString('vi-VN')}đ</strong>
+                </div>
               </>
             )}
            </Form.List>
+
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
               Lưu Tiếp Nhận

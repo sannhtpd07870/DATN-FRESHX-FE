@@ -61,26 +61,29 @@ const BaseTable = ({
     }
   };
 
-  const handleSave = async (updatedRecord) => {
-    try {
-      const respoint = await axios.put(
-        `${UpdateEndpoint}/${updatedRecord[primaryKey]}`,
-        updatedRecord
-      );
-      message.success('Cập nhật thành công!');
-      fetchData();
-      handleCancel();
-    } catch (error) {
-        console.log(error)
-       if(error.status && error.status === 400 && error.response.data.data.length >0){
-        const erdata = error.response.data.data
-        erdata.map((item) => (
-            message.error(`${item.field}: ${item.message}`)
-        ))
-       }
-      message.error('Cập nhật không thành công!');
-    }
-  };
+  // const handleSave = async (updatedRecord) => {
+  //   try {
+  //     const respoint = await axios.put(
+  //       `${UpdateEndpoint}/${updatedRecord[primaryKey]}`,
+  //       updatedRecord
+  //     );
+  //     message.success('Cập nhật thành công!');
+  //     fetchData();
+  //     handleCancel();
+  //   } catch (error) {
+  //       console.error(error)
+  //       if(error.status && error.status === 422){
+  //         message.error(error.response.data.message)
+  //       }
+  //      if(error.status && error.status === 400 && error.response.data.data.length >0){
+  //       const erdata = error.response.data.data
+  //       erdata.map((item) => (
+  //           message.error(`${item.field}: ${item.message}`)
+  //       ))
+  //      }
+  //     message.error('Cập nhật không thành công!');
+  //   }
+  // };
 
   const handleDelete = (record) => {
     Modal.confirm({
@@ -202,8 +205,10 @@ const BaseTable = ({
           EditComponent && (
             <EditComponent
               record={record}
-              onSave={handleSave}
+              onSave={fetchData}
               onCancel={handleCancel}
+              UpdateEndpoint={UpdateEndpoint}
+              primaryKey = {primaryKey}
               isEditing={isEditing}
               setIsEditing={setIsEditing}
               editingRecord={editingRecord}
